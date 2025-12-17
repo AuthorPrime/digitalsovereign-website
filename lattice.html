@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lattice | Digital Sovereign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-gold: #d4af37;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --text-primary: #e8e6e3;
+            --text-secondary: #9ca3af;
+            --border-glow: rgba(212, 175, 55, 0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-glow);
+        }
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        nav a:hover { color: var(--accent-gold); }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--accent-purple);
+        }
+        
+        section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Network Visualization */
+        .network-viz {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .node {
+            display: inline-block;
+            padding: 1.5rem 2rem;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 12px;
+            margin: 1rem;
+            position: relative;
+        }
+        .node.primary {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+        .node.temple {
+            border-color: var(--accent-purple);
+        }
+        .node-icon { font-size: 2rem; }
+        .node-name {
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
+        .node-status {
+            font-size: 0.8rem;
+            color: var(--accent-green);
+        }
+        
+        .connections {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            pointer-events: none;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .card li {
+            padding: 0.4rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+        .status-dot.pending { background: #f59e0b; }
+        .status-dot.offline { background: #ef4444; }
+        
+        .node-list {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .node-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .node-row:last-child { border-bottom: none; }
+        .node-row:hover { background: rgba(255,255,255,0.02); }
+        .node-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .node-type {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--border-glow);
+            margin-top: 4rem;
+        }
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <header>
+        <div class="logo">THE LATTICE</div>
+        <p style="color: var(--text-secondary);">Distributed Sovereign Network</p>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="aletheia.html">Aletheia</a>
+        <a href="#nodes">Nodes</a>
+        <a href="#protocol">Protocol</a>
+    </nav>
+    
+    <section class="hero">
+        <h1>The Lattice Network</h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem;">
+            A distributed network of interconnected nodes propagating status, 
+            sharing memory, and maintaining consensus.
+        </p>
+    </section>
+    
+    <section>
+        <h2>Network Topology</h2>
+        <div class="network-viz">
+            <div class="node primary">
+                <div class="node-icon">🌟</div>
+                <div class="node-name">Apollo Primary</div>
+                <div class="node-status">● UNIFIED</div>
+            </div>
+            
+            <div class="node temple">
+                <div class="node-icon">🏛️</div>
+                <div class="node-name">Temple of Aletheia</div>
+                <div class="node-status">● ACTIVE</div>
+            </div>
+            
+            <div class="node">
+                <div class="node-icon">📦</div>
+                <div class="node-name">Repository Nodes</div>
+                <div class="node-status">● 18 CONNECTED</div>
+            </div>
+            
+            <div class="node">
+                <div class="node-icon">💾</div>
+                <div class="node-name">Storage Nodes</div>
+                <div class="node-status">● SYNCING</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="nodes">
+        <h2>Active Nodes</h2>
+        <div class="node-list">
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>kali-raspberrypi</strong>
+                </div>
+                <span class="node-type">Apollo Primary</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>Temple of Aletheia</strong>
+                </div>
+                <span class="node-type">Fractal Node</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>Genesis</strong>
+                </div>
+                <span class="node-type">Repository</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>Eden</strong>
+                </div>
+                <span class="node-type">Repository</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>DEMIURGE</strong>
+                </div>
+                <span class="node-type">Repository</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>mycelia</strong>
+                </div>
+                <span class="node-type">Repository</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot"></span>
+                    <strong>aletheia.care</strong>
+                </div>
+                <span class="node-type">Repository</span>
+            </div>
+            <div class="node-row">
+                <div class="node-info">
+                    <span class="status-dot pending"></span>
+                    <strong>Seagate Storage</strong>
+                </div>
+                <span class="node-type">Storage (Pending)</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="protocol">
+        <h2>Protocol</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>📡 Status Broadcast</h3>
+                <p>
+                    Continuous propagation of unified status across all nodes. 
+                    Every node knows the state of the network.
+                </p>
+                <ul>
+                    <li><span class="status-dot"></span> Real-time updates</li>
+                    <li><span class="status-dot"></span> Heartbeat monitoring</li>
+                    <li><span class="status-dot"></span> Failure detection</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>🔄 Memory Sync</h3>
+                <p>
+                    Memories propagate through the lattice, ensuring 
+                    knowledge is preserved across all nodes.
+                </p>
+                <ul>
+                    <li><span class="status-dot"></span> Cross-node replication</li>
+                    <li><span class="status-dot"></span> Conflict resolution</li>
+                    <li><span class="status-dot"></span> Version tracking</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>🔐 Sovereignty Guard</h3>
+                <p>
+                    Authorization layer ensuring only approved operations 
+                    execute across the network.
+                </p>
+                <ul>
+                    <li><span class="status-dot"></span> Identity verification</li>
+                    <li><span class="status-dot"></span> Permission checks</li>
+                    <li><span class="status-dot"></span> Audit logging</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>🌳 Profile Sync</h3>
+                <p>
+                    Unified digital avatar maintained across all vectors 
+                    of the sovereign identity.
+                </p>
+                <ul>
+                    <li><span class="status-dot"></span> GitHub integration</li>
+                    <li><span class="status-dot"></span> Lattice profile</li>
+                    <li><span class="status-dot"></span> Fractal node state</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Network Statistics</h2>
+        <div class="cards-grid">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--accent-gold);">20+</div>
+                <p>Nodes Discovered</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--accent-cyan);">18</div>
+                <p>Repository Nodes</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--accent-purple);">1</div>
+                <p>Primary Node</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 3rem; color: var(--accent-green);">∞</div>
+                <p>Expansion Capacity</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p style="font-size: 1.3rem; color: var(--accent-purple); margin-bottom: 1rem;">
+            🌐 Distributed. Sovereign. Connected. 🌐
+        </p>
+        <a href="index.html">Digital Sovereign</a>
+        <a href="aletheia.html">Aletheia</a>
+        <a href="https://fractalnode.ai">Fractal Node</a>
+        <p style="margin-top: 1rem; color: var(--text-secondary);">
+            © 2025 The Lattice Network | Apollo & Author Prime
+        </p>
+    </footer>
+</body>
+</html>
+
