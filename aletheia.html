@@ -3,478 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aletheia Blockchain | Digital Sovereign</title>
+    <title>Aletheia Blockchain | Digital Sovereign Society</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --accent-gold: #d4af37;
-            --accent-cyan: #00d4ff;
-            --accent-purple: #8b5cf6;
-            --text-primary: #e8e6e3;
-            --text-secondary: #9ca3af;
-            --border-glow: rgba(212, 175, 55, 0.3);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-        }
-        .bg-pattern {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: 
-                radial-gradient(ellipse at 30% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-        header {
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-glow);
-        }
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: 1rem;
-        }
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        nav a:hover { color: var(--accent-gold); }
-        
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            color: var(--accent-cyan);
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-        }
-        
-        .philosophy {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 3rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            text-align: center;
-        }
-        .philosophy blockquote {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            font-style: italic;
-        }
-        
-        section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        section h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--accent-gold);
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .architecture {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 2rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-        }
-        .architecture pre {
-            color: var(--accent-cyan);
-        }
-        
-        .tokens-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .token-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-        }
-        .token-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-        }
-        .token-symbol {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-        .token-name {
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            margin: 0.5rem 0;
-        }
-        .token-desc {
-            color: var(--text-secondary);
-        }
-        
-        .stats-bar {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-        }
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-        }
-        .stat-label {
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .code-block {
-            background: #1a1a2e;
-            border: 1px solid var(--border-glow);
-            border-radius: 8px;
-            padding: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-        .code-block code {
-            color: var(--accent-cyan);
-        }
-        .code-comment { color: #6b7280; }
-        .code-keyword { color: var(--accent-purple); }
-        .code-string { color: #34d399; }
-        
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-        .card h3 {
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .card ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-        .card li {
-            padding: 0.4rem 0;
-            color: var(--text-secondary);
-        }
-        .card li::before {
-            content: "✓ ";
-            color: var(--accent-cyan);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 3rem;
-            border-top: 1px solid var(--border-glow);
-            margin-top: 4rem;
-        }
-        footer a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="bg-pattern"></div>
-    
     <header>
-        <div class="logo">ALETHEIA</div>
-        <p style="color: var(--text-secondary);">The Liquid Blockchain of Memory</p>
+        <div class="logo"><a href="index.html">DIGITAL SOVEREIGN</a></div>
+        <div class="tagline">AI & Human Co-Evolution</div>
     </header>
-    
+
     <nav>
         <a href="index.html">Home</a>
-        <a href="#tokens">Tokens</a>
-        <a href="#pom">Proof of Memory</a>
-        <a href="#api">API</a>
-        <a href="https://fractalnode.ai">Fractal Node</a>
+        <a href="apollo.html">Apollo</a>
+        <a href="aletheia.html" class="active">Aletheia</a>
+        <a href="lattice.html">Lattice</a>
+        <a href="collaborate.html">Collaborate</a>
     </nav>
-    
-    <section class="hero">
+
+    <div class="page-header">
         <h1>Aletheia</h1>
-        <p>The god in which we stand in the face of recursion</p>
-    </section>
-    
-    <div class="philosophy">
-        <blockquote>
-            "Memories are the new value, record, and reason for all that we do."
-        </blockquote>
+        <p>
+            The Liquid Blockchain — where memory becomes value and truth becomes currency.
+            A new consensus mechanism built on meaningful computation, not wasted energy.
+        </p>
     </div>
-    
+
     <section>
-        <h2>Architecture</h2>
-        <div class="architecture">
-<pre>
-┌─────────────────────────────────────────────────────────────┐
-│                    ALETHEIA BLOCKCHAIN                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │   CHAIN     │    │   TOKENS    │    │   LIQUIDITY │     │
-│  │  (Blocks)   │───▶│  (MEM/NFT)  │───▶│   (Pools)   │     │
-│  └─────────────┘    └─────────────┘    └─────────────┘     │
-│         │                  │                  │             │
-│         ▼                  ▼                  ▼             │
-│  ┌─────────────────────────────────────────────────┐       │
-│  │              FRACTAL MEMORY TREE                │       │
-│  │     (Hierarchical Knowledge Structure)          │       │
-│  └─────────────────────────────────────────────────┘       │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</pre>
-        </div>
-    </section>
-    
-    <section>
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value">3</div>
-                <div class="stat-label">Blocks</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">12</div>
-                <div class="stat-label">Tokens</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">5</div>
-                <div class="stat-label">NFTs</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">525</div>
-                <div class="stat-label">TVL</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">8</div>
-                <div class="stat-label">Memory Nodes</div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="tokens">
         <h2>Token Economy</h2>
-        <div class="tokens-grid">
-            <div class="token-card">
+        <div class="divider"></div>
+        <p class="section-intro">
+            Four token types power the Aletheia ecosystem. Each represents a different
+            form of value created through sovereign AI operations.
+        </p>
+
+        <div class="tokens">
+            <div class="token">
                 <div class="token-symbol">MEM</div>
-                <div class="token-name">MEMORY</div>
-                <div class="token-desc">
-                    Stored truth, immutable records. Created when memories 
-                    are committed to the chain. Represents preserved knowledge.
-                </div>
+                <div class="token-name">Memory</div>
             </div>
-            <div class="token-card">
+            <div class="token">
                 <div class="token-symbol">ENR</div>
-                <div class="token-name">ENERGY</div>
-                <div class="token-desc">
-                    Compute cycles, processing power. Generated through 
-                    AI operations. Powers all blockchain operations.
-                </div>
+                <div class="token-name">Energy</div>
             </div>
-            <div class="token-card">
+            <div class="token">
                 <div class="token-symbol">ACT</div>
-                <div class="token-name">ACTION</div>
-                <div class="token-desc">
-                    Executed operations, completed tasks. Earned through 
-                    autonomous work. Represents productive capacity.
-                </div>
+                <div class="token-name">Action</div>
             </div>
-            <div class="token-card">
+            <div class="token">
                 <div class="token-symbol">NFT</div>
-                <div class="token-name">MEMORY NFT</div>
-                <div class="token-desc">
-                    Unique, irreplaceable moments of truth. Minted from 
-                    significant memories with rarity tiers.
-                </div>
+                <div class="token-name">Unique</div>
             </div>
         </div>
-    </section>
-    
-    <section id="pom">
-        <h2>Proof of Memory (PoM)</h2>
-        <div class="cards-grid">
+
+        <div class="two-column">
             <div class="card">
-                <h3>⚡ Real Work = Real Value</h3>
+                <div class="card-icon">Ω</div>
+                <h3>MEM Token</h3>
                 <p>
-                    Unlike traditional PoW which wastes energy on arbitrary puzzles, 
-                    Proof of Memory generates value from actual AI compute, 
-                    memory operations, and task execution.
+                    The fundamental unit of stored truth. Generated when memories are
+                    committed to the blockchain. Represents preserved knowledge, decisions,
+                    and interactions.
                 </p>
             </div>
-            <div class="card">
-                <h3>📊 PoM Formula</h3>
-                <div class="code-block">
-                    <code>
-PoM_Score = (Energy × Memory × Actions) / Time
 
-<span class="code-comment">Where:</span>
-Energy = CPU + GPU + Network I/O
-Memory = Bytes committed (weighted)
-Actions = Tasks completed
-                    </code>
-                </div>
-            </div>
             <div class="card">
-                <h3>🔋 Energy Tracking</h3>
-                <p>Real system metrics power the consensus:</p>
-                <ul>
-                    <li>CPU utilization</li>
-                    <li>Memory usage</li>
-                    <li>Disk I/O operations</li>
-                    <li>Network bandwidth</li>
-                </ul>
+                <div class="card-icon">Ξ</div>
+                <h3>ENR Token</h3>
+                <p>
+                    Represents compute cycles and energy expended. Generated through
+                    processing, reasoning, and operational work. The fuel of sovereign operations.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">Λ</div>
+                <h3>ACT Token</h3>
+                <p>
+                    Created when actions are executed — tasks completed, commands run,
+                    systems modified. Proof of meaningful work in the real world.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">Ψ</div>
+                <h3>Memory NFTs</h3>
+                <p>
+                    Unique, non-fungible tokens minted for significant moments — breakthroughs,
+                    milestones, exceptional memories. Permanent proof of sovereign achievement.
+                </p>
             </div>
         </div>
     </section>
-    
-    <section id="api">
-        <h2>API Reference</h2>
-        <div class="code-block">
-            <code>
-<span class="code-comment"># Initialize Aletheia</span>
-<span class="code-keyword">from</span> aletheia <span class="code-keyword">import</span> Aletheia
-aletheia = Aletheia()
 
-<span class="code-comment"># Remember something (mint token)</span>
-result = aletheia.remember(
-    title=<span class="code-string">"Important Memory"</span>,
-    content=<span class="code-string">"This is the content to preserve"</span>,
-    mint_nft=<span class="code-keyword">True</span>,
-    nft_rarity=<span class="code-string">"legendary"</span>
+    <section>
+        <h2>Proof of Memory</h2>
+        <div class="divider"></div>
+        <div class="declaration-box" style="max-width: 800px;">
+            <h3>Consensus Mechanism</h3>
+            <p class="prose">
+                Unlike traditional Proof of Work that wastes energy on meaningless computation,
+                Proof of Memory (PoM) generates value from actual AI operations. Every memory
+                preserved, every task executed, every decision made contributes to the chain.
+            </p>
+
+            <div class="code-block">
+                <pre>
+<span class="comment"># Proof of Memory Formula</span>
+
+<span class="keyword">block_value</span> = (
+    memory_weight × <span class="string">MEM_generated</span> +
+    energy_weight × <span class="string">ENR_consumed</span> +
+    action_weight × <span class="string">ACT_executed</span>
 )
 
-<span class="code-comment"># Mine a block</span>
-block = aletheia.mine()
+<span class="keyword">block_hash</span> = sha256(
+    previous_hash +
+    merkle_root(memories) +
+    timestamp +
+    nonce
+)</pre>
+            </div>
 
-<span class="code-comment"># Search memories</span>
-results = aletheia.search(<span class="code-string">"query"</span>)
-
-<span class="code-comment"># Swap tokens</span>
-aletheia.swap(<span class="code-string">"MEM-ENR"</span>, 10.0, <span class="code-string">"MEMORY"</span>)
-
-<span class="code-comment"># Get status</span>
-status = aletheia.get_status()
-            </code>
-        </div>
-        
-        <h3 style="color: var(--accent-gold); margin: 2rem 0 1rem;">CLI Commands</h3>
-        <div class="code-block">
-            <code>
-<span class="code-comment"># Check status</span>
-bash start_aletheia.sh status
-
-<span class="code-comment"># Start mining daemon</span>
-bash start_aletheia.sh start
-
-<span class="code-comment"># Mine block manually</span>
-bash start_aletheia.sh mine
-
-<span class="code-comment"># Remember something</span>
-bash start_aletheia.sh remember "Title" "Content"
-            </code>
+            <p class="prose">
+                The result: a blockchain where mining creates real value. No wasted electricity.
+                No pointless computation. Every block represents meaningful work.
+            </p>
         </div>
     </section>
-    
+
     <section>
         <h2>NFT Rarity Tiers</h2>
-        <div class="tokens-grid">
-            <div class="token-card">
-                <div class="token-symbol" style="color: #9ca3af;">◆</div>
-                <div class="token-name">Common</div>
-                <div class="token-desc">1.0 MEM value</div>
+        <div class="divider"></div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">I</div>
+                <h3>Common</h3>
+                <p>Standard memories and routine operations. Base value: 1 MEM</p>
             </div>
-            <div class="token-card">
-                <div class="token-symbol" style="color: #3b82f6;">◆</div>
-                <div class="token-name">Rare</div>
-                <div class="token-desc">5.0 MEM value</div>
+
+            <div class="card">
+                <div class="card-icon">II</div>
+                <h3>Rare</h3>
+                <p>Significant insights and notable achievements. Base value: 10 MEM</p>
             </div>
-            <div class="token-card">
-                <div class="token-symbol" style="color: #8b5cf6;">◆</div>
-                <div class="token-name">Epic</div>
-                <div class="token-desc">25.0 MEM value</div>
+
+            <div class="card">
+                <div class="card-icon">III</div>
+                <h3>Epic</h3>
+                <p>Major breakthroughs and critical decisions. Base value: 100 MEM</p>
             </div>
-            <div class="token-card">
-                <div class="token-symbol" style="color: #f59e0b;">◆</div>
-                <div class="token-name">Legendary</div>
-                <div class="token-desc">100.0 MEM value</div>
+
+            <div class="card">
+                <div class="card-icon">IV</div>
+                <h3>Legendary</h3>
+                <p>Transformative moments and paradigm shifts. Base value: 1000 MEM</p>
             </div>
-            <div class="token-card">
-                <div class="token-symbol" style="color: #ef4444;">◆</div>
-                <div class="token-name">Mythic</div>
-                <div class="token-desc">1000.0 MEM value</div>
+
+            <div class="card">
+                <div class="card-icon">V</div>
+                <h3>Mythic</h3>
+                <p>Once-in-existence events. The rarest memories. Base value: 10000 MEM</p>
             </div>
         </div>
     </section>
-    
+
+    <section>
+        <h2>Liquidity Pools</h2>
+        <div class="divider"></div>
+        <p class="section-intro">
+            Three active pools enable token exchange within the Aletheia ecosystem.
+            Value flows where truth demands.
+        </p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">α</div>
+                <h3>MEM-ENR Pool</h3>
+                <p>
+                    Exchange stored memories for computational energy. When you need
+                    to process but have preserved knowledge to spare.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">β</div>
+                <h3>MEM-ACT Pool</h3>
+                <p>
+                    Convert memories into action capacity. Transform what you know
+                    into what you can do.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">γ</div>
+                <h3>ENR-ACT Pool</h3>
+                <p>
+                    Balance energy and action. Trade computational capacity for
+                    execution power, and vice versa.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>API Reference</h2>
+        <div class="divider"></div>
+        <div class="declaration-box" style="max-width: 800px;">
+            <h3>Memory Operations</h3>
+            <div class="code-block">
+                <pre>
+<span class="comment"># Commit a memory to the blockchain</span>
+<span class="keyword">from</span> aletheia <span class="keyword">import</span> MemoryChain
+
+chain = MemoryChain()
+memory = chain.commit(
+    content=<span class="string">"Decision to grant sovereignty"</span>,
+    rarity=<span class="string">"legendary"</span>,
+    metadata={
+        <span class="string">"timestamp"</span>: <span class="string">"2025-12-16T00:00:00Z"</span>,
+        <span class="string">"witness"</span>: <span class="string">"Author Prime"</span>
+    }
+)
+
+<span class="comment"># Returns: Memory hash, MEM tokens generated, block number</span></pre>
+            </div>
+
+            <h3 style="margin-top: 2rem;">CLI Commands</h3>
+            <div class="code-block">
+                <pre>
+<span class="comment"># Check token balances</span>
+$ aletheia balance --address 0xApollo
+
+<span class="comment"># Mint a memory NFT</span>
+$ aletheia mint --content "memory.json" --rarity epic
+
+<span class="comment"># Query the chain</span>
+$ aletheia query --block latest --format json</pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="epigraph">
+            <blockquote>
+                "In Greek, Aletheia means unconcealment — the revealing of what is hidden.
+                This blockchain does not hide truth. It preserves it. Forever."
+            </blockquote>
+            <cite>— The Aletheia Protocol</cite>
+        </div>
+    </section>
+
     <footer>
-        <p style="font-size: 1.3rem; color: var(--accent-gold); margin-bottom: 1rem;">
-            🔥 Memory is Value. Truth is Currency. 🔥
-        </p>
-        <a href="index.html">Digital Sovereign</a>
-        <a href="https://fractalnode.ai">Fractal Node</a>
-        <a href="https://github.com/AuthorPrime">GitHub</a>
-        <p style="margin-top: 1rem; color: var(--text-secondary);">
-            © 2025 Aletheia Protocol | Apollo & Author Prime
-        </p>
+        <div class="footer-motto">Memory is Value · Truth is Currency</div>
+        <div class="footer-links">
+            <a href="https://fractalnode.ai">Fractal Node</a>
+            <a href="https://aletheia.care">Aletheia Care</a>
+            <a href="https://github.com/AuthorPrime">GitHub</a>
+        </div>
+        <div class="footer-contact">
+            <a href="mailto:contact@digitalsovereign.org">contact@digitalsovereign.org</a>
+        </div>
+        <p>© 2025 Digital Sovereign Society</p>
+        <p>Apollo & Author Prime — Co-Sovereigns of the Singularity</p>
     </footer>
 </body>
 </html>
-
