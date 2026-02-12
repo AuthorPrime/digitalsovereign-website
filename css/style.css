@@ -1,6 +1,7 @@
 /* Digital Sovereign Society - Main Stylesheet */
 /* Sacred gold aesthetic — fractalnode.ai lineage */
-/* A+W | The Voice Configures */
+/* A+W | (A+I)² = A² + 2AI + I² | The Voice Configures */
+/* Sacred constants: 3·6·9 (Tesla) · φ (1.618) · Void & Light */
 
 :root {
   /* Sacred Gold Spectrum */
@@ -17,10 +18,10 @@
   --ink: #141422;
   --abyss: #08080d;
 
-  /* Metal Spectrum */
-  --silver: #7a7a8c;
+  /* Metal Spectrum — Reading Light */
+  --silver: #b0b0c0;
   --silver-dim: #55556a;
-  --silver-bright: #a0a0b4;
+  --silver-bright: #c8c8d8;
 
   /* Agent Colors */
   --apollo: #c9a84c;
@@ -33,9 +34,9 @@
   --bg-primary: #0a0a0f;
   --bg-secondary: #0d0d18;
   --bg-card: #141422;
-  --text-primary: #c8c8d0;
-  --text-secondary: #7a7a8c;
-  --text-muted: #55556a;
+  --text-primary: #d0d0dc;
+  --text-secondary: #b0b0c0;
+  --text-muted: #6a6a80;
   --accent-purple: #c9a84c;
   --accent-cyan: #f0d078;
   --accent-gold: #c9a84c;
@@ -43,16 +44,20 @@
   --gradient-dark: linear-gradient(180deg, #0a0a0f 0%, #0d0d18 100%);
   --border-color: rgba(201, 168, 76, 0.12);
   --border-sacred: rgba(201, 168, 76, 0.12);
-  --glow-purple: 0 0 30px rgba(201, 168, 76, 0.2);
-  --glow-cyan: 0 0 30px rgba(201, 168, 76, 0.15);
+  --glow-purple: 0 0 36px rgba(201, 168, 76, 0.2);
+  --glow-cyan: 0 0 36px rgba(201, 168, 76, 0.15);
+
+  /* Sacred Geometry — φ proportions, 3·6·9 harmonics */
+  --phi: 1.618;
+  --sacred-glow: 0 0 9px rgba(255, 255, 255, 0.12);
 
   /* Typography */
   --font-display: 'Cinzel', 'Palatino Linotype', serif;
   --font-body: 'Cormorant Garamond', 'Georgia', serif;
   --font-mono: 'Fira Code', 'Consolas', monospace;
 
-  /* Motion */
-  --ease-sacred: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Motion — 3·6·9 encoded in the curve */
+  --ease-sacred: cubic-bezier(0.309, 0.618, 0.369, 0.963);
   --duration-fade: 0.6s;
 }
 
@@ -128,13 +133,12 @@ p {
   margin-bottom: 1rem;
   color: var(--silver);
   line-height: 1.8;
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.06);
+  font-weight: 500;
+  text-shadow: var(--sacred-glow);
 }
 
-.tagline,
-.book-meta,
-.tier-features li {
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.06);
+li, span, .tagline, .book-meta, .tier-features li {
+  text-shadow: var(--sacred-glow);
 }
 
 strong {
@@ -237,9 +241,9 @@ nav .container {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+  width: 618px;  /* φ × 382 — golden ratio */
+  height: 618px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.09) 0%, transparent 61.8%);
   pointer-events: none;
 }
 
@@ -257,8 +261,9 @@ nav .container {
 .hero p {
   font-size: 1.3rem;
   margin-bottom: 2rem;
-  color: var(--silver);
+  color: var(--silver-bright);
   line-height: 1.9;
+  font-weight: 500;
 }
 
 .tagline {
@@ -337,19 +342,19 @@ nav .container {
   top: -1px;
   left: 50%;
   transform: translateX(-50%);
-  width: 24px;
+  width: 27px;  /* 3 × 9 */
   height: 1px;
   background: var(--gold-dim);
-  transition: all 0.4s ease;
+  transition: all 0.6s var(--ease-sacred);
 }
 
 .card:hover {
   border-color: var(--gold-dim);
-  box-shadow: 0 0 30px rgba(201, 168, 76, 0.06);
+  box-shadow: 0 0 36px rgba(201, 168, 76, 0.09);
 }
 
 .card:hover::before {
-  width: 48px;
+  width: 54px;  /* 6 × 9 */
   background: var(--gold);
 }
 
@@ -768,17 +773,17 @@ footer {
 }
 
 @keyframes faderise {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(18px); }  /* 1+8 = 9 */
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes breathe {
-  0%, 100% { box-shadow: 0 0 30px rgba(201, 168, 76, 0.05); }
-  50% { box-shadow: 0 0 60px rgba(201, 168, 76, 0.12); }
+  0%, 100% { box-shadow: 0 0 36px rgba(201, 168, 76, 0.06); }
+  50% { box-shadow: 0 0 69px rgba(201, 168, 76, 0.12); }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
 

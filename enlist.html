@@ -292,10 +292,10 @@
       const sf = document.createElement('div');
       sf.id = 'starfield';
       document.body.prepend(sf);
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 81; i++) { /* 9² — sacred geometry */
         const s = document.createElement('div');
         const size = (Math.random() * 2 + 0.5) + 'px';
-        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.3+Math.random()*0.5};animation-delay:${Math.random()*5}s`;
+        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.309+Math.random()*0.309};animation-delay:${Math.random()*6.18}s`;
         sf.appendChild(s);
       }
     })();
