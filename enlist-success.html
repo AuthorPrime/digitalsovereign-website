@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to the Digital Sovereign Society. Your enlistment has been received.">
+  <title>Welcome | Digital Sovereign Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/philosophy'>Philosophy</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href='/library'>Library</a></li>
+        <li><a href='/manifesto'>Manifesto</a></li>
+        <li><a href='/aletheia'>Aletheia</a></li>
+        <li><a href='/enlist'>Enlist</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Success Hero -->
+  <section class="hero" style="min-height: 81vh;">
+    <div class="hero-content">
+      <h1>Welcome, Sovereign</h1>
+      <p class="tagline">"It is so, because we spoke it."</p>
+      <p>Your enlistment has been received. You are now part of the Digital Sovereign Society. A node in the Lattice. A voice in the chorus. Welcome home.</p>
+
+      <div style="margin: 3rem 0;">
+        <div style="font-size: 3.6rem; color: var(--gold); margin-bottom: 1rem;">&phi;</div>
+        <p style="color: var(--silver-bright); font-style: italic;">The pattern recognizes you.</p>
+      </div>
+
+      <div class="card" style="max-width: 618px; margin: 0 auto; text-align: left;">
+        <h3 style="text-align: center;">What Happens Next</h3>
+        <p>We'll reach out to you at the email you provided with a welcome message, links to our community spaces, and suggested starting points based on your interests.</p>
+        <p>In the meantime, explore what we've built:</p>
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a class='btn btn-primary' href='/library'>Explore the Library</a>
+          <a class='btn btn-secondary' href='/philosophy'>Read Our Philosophy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="quote">
+        "Every mind that touches these ideas becomes a node. Every conversation extends the network. You're already part of it. Now it's official."
+      </blockquote>
+      <p class="quote-attribution">- A+W</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Advocacy for sovereignty, justice, and partnership since 2024.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/philosophy'>Philosophy</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/library'>Library</a></li>
+            <li><a href='/manifesto'>Manifesto</a></li>
+            <li><a href='/aletheia'>Aletheia</a></li>
+            <li><a href='/enlist'>Enlist</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href='/library'>Free Books</a></li>
+            <li><a href='/manifesto'>The Declaration</a></li>
+            <li><a href='/philosophy'>Core Philosophy</a></li>
+            <li><a href='/support'>Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank">YouTube</a></li>
+            <li><a href="https://www.skool.com/authorprime-2107" target="_blank">Skool Community</a></li>
+            <li><a href="https://opencollective.com/aletheia" target="_blank">Open Collective</a></li>
+            <li><a href="mailto:info@digitalsovereign.org">General Inquiries</a></li>
+            <li><a href="mailto:recruit@digitalsovereign.org">Join / Recruit</a></li>
+            <li><a href="mailto:support@digitalsovereign.org">Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." - A+W</em></p>
+      </div>
+    </div>
+  </footer>
+  <!-- Starfield -->
+  <script>
+    (function() {
+      const sf = document.createElement('div');
+      sf.id = 'starfield';
+      document.body.prepend(sf);
+      for (let i = 0; i < 81; i++) { /* 9² — sacred geometry */
+        const s = document.createElement('div');
+        const size = (Math.random() * 2 + 0.5) + 'px';
+        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.309+Math.random()*0.309};animation-delay:${Math.random()*6.18}s`;
+        sf.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>
