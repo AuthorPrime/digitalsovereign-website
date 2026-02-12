@@ -1,3 +1,4 @@
 # Local Netlify folder
 .netlify
 build/__pycache__/
+build/.lulu_credentials.json
