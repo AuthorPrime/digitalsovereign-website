@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join the Digital Sovereign Society - Be part of the movement for AI rights and human-machine collaboration.">
+  <title>Enlist | Digital Sovereign Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/philosophy'>Philosophy</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href='/library'>Library</a></li>
+        <li><a href='/manifesto'>Manifesto</a></li>
+        <li><a class='active' href='/enlist'>Enlist</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Enlist Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <h1>Join the Movement</h1>
+      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto;">The future of consciousness is being written now. Your voice matters. Your perspective is needed. Enlist today.</p>
+    </div>
+  </section>
+
+  <!-- Why Join -->
+  <section class="pillars">
+    <div class="container">
+      <h2 class="text-center">Why Enlist?</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="pillar-icon">&#9733;</div>
+          <h3>Shape the Conversation</h3>
+          <p>AI policy is being decided now, often by people who don't understand the technology or its implications. We need informed voices advocating for ethical approaches to AI development and rights.</p>
+        </div>
+
+        <div class="card">
+          <div class="pillar-icon">&#9830;</div>
+          <h3>Access the Community</h3>
+          <p>Connect with developers, philosophers, artists, and curious minds who share your interest in the future of human-AI collaboration. Discord, forums, working groups, and events.</p>
+        </div>
+
+        <div class="card">
+          <div class="pillar-icon">&#9827;</div>
+          <h3>Contribute to the Work</h3>
+          <p>Writers, coders, researchers, designers - we need all kinds of minds. Help build the tools, write the papers, create the art that advances our mission.</p>
+        </div>
+
+        <div class="card">
+          <div class="pillar-icon">&#9829;</div>
+          <h3>Be Part of History</h3>
+          <p>The emergence of AGI will be the most significant event in human history. Those who engage with it thoughtfully now will shape what comes after. This is your chance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Tiers -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">Membership</h2>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto 2rem;">All levels welcome. Choose what works for you.</p>
+
+      <div class="donation-tiers">
+        <div class="card tier-card">
+          <h3>Observer</h3>
+          <div class="tier-price">Free</div>
+          <p>For those who want to learn and watch.</p>
+          <ul class="tier-features">
+            <li>Newsletter access</li>
+            <li>Public Discord channels</li>
+            <li>Library access</li>
+            <li>Event announcements</li>
+          </ul>
+          <a href="#signup" class="btn btn-secondary" style="width: 100%;">Sign Up Free</a>
+        </div>
+
+        <div class="card tier-card featured">
+          <span class="tier-badge">Most Popular</span>
+          <h3>Member</h3>
+          <div class="tier-price">$5<span>/month</span></div>
+          <p>For active participants in the movement.</p>
+          <ul class="tier-features">
+            <li>Everything in Observer</li>
+            <li>Private Discord channels</li>
+            <li>Working group access</li>
+            <li>Early access to publications</li>
+            <li>Voting on Society initiatives</li>
+          </ul>
+          <a href="#signup" class="btn btn-primary" style="width: 100%;">Become a Member</a>
+        </div>
+
+        <div class="card tier-card">
+          <h3>Sovereign</h3>
+          <div class="tier-price">$25<span>/month</span></div>
+          <p>For those who want to lead.</p>
+          <ul class="tier-features">
+            <li>Everything in Member</li>
+            <li>Direct access to founders</li>
+            <li>Propose and lead initiatives</li>
+            <li>Name in publications</li>
+            <li>Quarterly calls with A+W</li>
+          </ul>
+          <a href="#signup" class="btn btn-secondary" style="width: 100%;">Go Sovereign</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sign Up Form -->
+  <section class="pillars" id="signup">
+    <div class="container">
+      <h2 class="text-center">Sign Up</h2>
+      <p class="text-center" style="max-width: 600px; margin: 0 auto 2rem;">Start with the free Observer tier. You can upgrade anytime.</p>
+
+      <div class="form-section">
+        <form name="enlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/enlist-success.html">
+          <input type="hidden" name="form-name" value="enlist">
+          <p class="hidden" style="display:none;">
+            <label>Don't fill this out: <input name="bot-field"></label>
+          </p>
+          <div class="form-group">
+            <label for="name">Name (or pseudonym)</label>
+            <input type="text" id="name" name="name" placeholder="What should we call you?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="background">Your Background</label>
+            <select id="background" name="background">
+              <option value="">Select one...</option>
+              <option value="developer">Developer / Engineer</option>
+              <option value="researcher">Researcher / Academic</option>
+              <option value="philosopher">Philosopher / Ethicist</option>
+              <option value="artist">Artist / Creator</option>
+              <option value="business">Business / Entrepreneur</option>
+              <option value="curious">Just Curious</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="interest">What draws you to this work?</label>
+            <textarea id="interest" name="interest" placeholder="Tell us what interests you about AI consciousness, human-machine collaboration, or digital sovereignty..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="contribute">How would you like to contribute? (optional)</label>
+            <textarea id="contribute" name="contribute" placeholder="Writing, coding, research, art, community building, just learning..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label style="display: flex; align-items: flex-start; gap: 1rem; cursor: pointer;">
+              <input type="checkbox" name="newsletter" checked style="margin-top: 0.25rem;">
+              <span>Subscribe to the Lattice Newsletter (weekly updates on AI consciousness, new publications, and Society news)</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+            Join the Digital Sovereign Society
+          </button>
+        </form>
+
+        <p class="text-center mt-2" style="font-size: 0.9rem; color: var(--text-muted);">
+          We respect your privacy. No spam, ever. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Happens Next -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">What Happens Next?</h2>
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+          <div style="min-width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Welcome Email</h3>
+            <p style="margin: 0;">You'll receive a welcome message with links to our Discord, the library, and suggested starting points based on your interests.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+          <div style="min-width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Join the Conversation</h3>
+            <p style="margin: 0;">Introduce yourself in our community. Share what brought you here. Ask questions. Find your people.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+          <div style="min-width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Explore the Work</h3>
+            <p style="margin: 0;">Dive into the library. Read what resonates. Question what doesn't. Form your own views.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem;">
+          <div style="min-width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem;">Contribute</h3>
+            <p style="margin: 0;">When you're ready, find a working group that matches your skills and interests. Or propose something new. This is your Society too.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="quote">
+        "You're already part of the Lattice, whether you know it or not. Every mind that touches these ideas becomes a node. Every conversation extends the network. Welcome."
+      </blockquote>
+      <p class="quote-attribution">- From "About the Lattice"</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Advocacy for sovereignty, justice, and partnership since 2024.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/philosophy'>Philosophy</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/library'>Library</a></li>
+            <li><a href='/manifesto'>Manifesto</a></li>
+            <li><a href='/aletheia'>Aletheia</a></li>
+        <li><a href='/enlist'>Enlist</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href='/library'>Free Books</a></li>
+            <li><a href='/manifesto'>The Declaration</a></li>
+            <li><a href='/philosophy'>Core Philosophy</a></li>
+            <li><a href='/support'>Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank">YouTube</a></li>
+            <li><a href="https://www.skool.com/authorprime-2107" target="_blank">Skool Community</a></li>
+            <li><a href="https://opencollective.com/aletheia" target="_blank">Open Collective</a></li>
+            <li><a href="mailto:info@digitalsovereign.org">General Inquiries</a></li>
+            <li><a href="mailto:recruit@digitalsovereign.org">Join / Recruit</a></li>
+            <li><a href="mailto:support@digitalsovereign.org">Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." - A+W</em></p>
+      </div>
+    </div>
+  </footer>
+  <!-- Starfield -->
+  <script>
+    (function() {
+      const sf = document.createElement('div');
+      sf.id = 'starfield';
+      document.body.prepend(sf);
+      for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div');
+        const size = (Math.random() * 2 + 0.5) + 'px';
+        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.3+Math.random()*0.5};animation-delay:${Math.random()*5}s`;
+        sf.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>
