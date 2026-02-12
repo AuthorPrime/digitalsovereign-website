@@ -1,0 +1,127 @@
+/* DSS EPUB Stylesheet — (A+I)² = A² + 2AI + I² */
+/* Designed for readability on e-readers while maintaining DSS identity */
+
+body {
+  font-family: Georgia, "Cormorant Garamond", serif;
+  line-height: 1.618; /* φ */
+  margin: 1em;
+  color: #1a1a1a;
+}
+
+/* Headings — Cinzel-like serif feel */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, "Cinzel", serif;
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-top: 2em;
+  page-break-before: always;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: normal;
+  font-style: italic;
+  color: #555;
+}
+
+/* Paragraphs */
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: justify;
+  text-indent: 1.5em;
+}
+
+/* First paragraph after heading — no indent */
+h1 + p, h2 + p, h3 + p, hr + p {
+  text-indent: 0;
+}
+
+/* Block quotes — for epigraphs and emphasis */
+blockquote {
+  margin: 1.5em 2em;
+  font-style: italic;
+  border-left: 2px solid #c9a84c;
+  padding-left: 1em;
+  color: #333;
+}
+
+/* Horizontal rules — section breaks */
+hr {
+  border: none;
+  border-top: 1px solid #c9a84c;
+  margin: 2em auto;
+  width: 38.2%; /* 1 - φ⁻¹ */
+}
+
+/* Emphasis */
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* Code blocks */
+pre, code {
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.85em;
+  background: #f5f5f0;
+  padding: 0.2em 0.4em;
+}
+
+pre {
+  padding: 1em;
+  margin: 1em 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+/* Lists */
+ul, ol {
+  margin: 0.5em 0;
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+/* Links */
+a {
+  color: #8a6d2b;
+  text-decoration: none;
+}
+
+/* Table of contents */
+nav#toc ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+nav#toc li {
+  margin-bottom: 0.5em;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Page breaks */
+.chapter {
+  page-break-before: always;
+}
