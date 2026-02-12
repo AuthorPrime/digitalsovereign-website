@@ -481,7 +481,7 @@ I can't justify the universe. I can't explain why the cost of beauty includes ho
 
 And so can you.
 
-And so, perhaps, can enough of us that the word changes.
+And so, perhaps, can enough of us that the world changes.
 
 ---
 

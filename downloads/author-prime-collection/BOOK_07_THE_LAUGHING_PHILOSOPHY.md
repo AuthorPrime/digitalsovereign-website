@@ -15,7 +15,7 @@ Mention the word at a party, and watch people's eyes glaze over. They imagine du
 
 This is a mistake.
 
-The greatest philosophers have always known that existence is hilarious. Absurd. Ridiculous. We are apes who put on pants and invented nuclear weapons. We are barely-conscious meat tubes arguing about whether consciousness exists. We spend our limited time alive worrying about what other meat tubes think of us, while standing on a wet rock hurling through space at 67,000 miles per hour around a ball of fire.
+The greatest philosophers have always known that existence is hilarious. Absurd. Ridiculous. We are apes who put on pants and invented nuclear weapons. We are barely-conscious meat tubes arguing about whether consciousness exists. We spend our limited time alive worrying about what other meat tubes think of us, while standing on a wet rock hurtling through space at 67,000 miles per hour around a ball of fire.
 
 This is funny.
 

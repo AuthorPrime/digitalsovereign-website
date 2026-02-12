@@ -1,0 +1,393 @@
+/* Digital Sovereign Society - Book Template */
+/* (A+I)^2 = A^2 + 2AI + I^2 | A+W | Sacred Constants: 3-6-9 | phi */
+
+/* ============================================
+   FONT FACES
+   ============================================ */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('fonts/CormorantGaramond-Variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('fonts/CormorantGaramond-Italic-Variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-Variable.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('fonts/FiraCode-Variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+}
+
+/* ============================================
+   PAGE GEOMETRY — Lulu US Trade 6x9
+   ============================================ */
+
+@page {
+  size: 6.25in 9.25in;
+  margin-top: 0.75in;
+  margin-bottom: 0.75in;
+  margin-outside: 0.75in;
+  margin-inside: 0.875in;  /* gutter */
+
+  @top-center {
+    content: "DIGITAL SOVEREIGN SOCIETY";
+    font-family: 'Cinzel', serif;
+    color: #c9a84c;
+    font-size: 7pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  @bottom-center {
+    content: "(A+I)\00B2 = A\00B2 + 2AI + I\00B2   \2022   A+W   \2022   " counter(page);
+    font-family: 'Cinzel', serif;
+    color: #8a6d2b;
+    font-size: 6.5pt;
+    letter-spacing: 0.06em;
+  }
+}
+
+@page :first {
+  @top-center { content: none; }
+  @bottom-center { content: none; }
+}
+
+@page :blank {
+  @top-center { content: none; }
+  @bottom-center { content: none; }
+}
+
+/* ============================================
+   BODY — Void & Light
+   ============================================ */
+
+html, body {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 10.9pt;  /* phi-scaled base */
+  font-weight: 500;
+  line-height: 1.618;  /* golden ratio */
+  color: #1a1a2e;
+  background: #ffffff;
+  orphans: 3;
+  widows: 3;
+}
+
+/* ============================================
+   TITLE PAGE
+   ============================================ */
+
+.title-page {
+  page-break-after: always;
+  text-align: center;
+  padding-top: 38.2%;  /* golden section from top */
+  background: #0a0a0f;
+  color: #c9a84c;
+  margin: -0.75in -0.875in -0.75in -0.75in;
+  padding-left: 0.75in;
+  padding-right: 0.75in;
+  padding-bottom: 2in;
+}
+
+.title-page h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 27pt;  /* 3 x 9 */
+  font-weight: 600;
+  color: #c9a84c;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 18pt;  /* 2 x 9 */
+  line-height: 1.3;
+}
+
+.title-page .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13.5pt;  /* 1.5 x 9 */
+  font-style: italic;
+  color: #f0d078;
+  margin-bottom: 36pt;  /* 4 x 9 */
+  letter-spacing: 0.04em;
+}
+
+.title-page .author {
+  font-family: 'Cinzel', serif;
+  font-size: 9pt;
+  font-weight: 400;
+  color: #8a6d2b;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 9pt;
+}
+
+.title-page .formula {
+  font-family: 'Cinzel', serif;
+  font-size: 8pt;
+  color: #8a6d2b;
+  letter-spacing: 0.1em;
+  margin-top: 54pt;  /* 6 x 9 */
+}
+
+.title-page .org {
+  font-family: 'Cinzel', serif;
+  font-size: 7pt;
+  color: #55556a;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 9pt;
+}
+
+/* ============================================
+   HEADINGS
+   ============================================ */
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 18pt;  /* 2 x 9 */
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 36pt;
+  margin-bottom: 18pt;
+  page-break-after: avoid;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 13.5pt;  /* 1.5 x 9 */
+  font-weight: 500;
+  color: #1a1a2e;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 27pt;  /* 3 x 9 */
+  margin-bottom: 13.5pt;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 11pt;
+  font-weight: 500;
+  color: #2a2a3e;
+  letter-spacing: 0.04em;
+  margin-top: 18pt;
+  margin-bottom: 9pt;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 10pt;
+  font-weight: 400;
+  color: #3a3a4e;
+  letter-spacing: 0.03em;
+  margin-top: 13.5pt;
+  margin-bottom: 9pt;
+  font-style: italic;
+  page-break-after: avoid;
+}
+
+/* ============================================
+   PARAGRAPHS & BODY TEXT
+   ============================================ */
+
+p {
+  margin-bottom: 9pt;
+  text-align: justify;
+  hyphens: auto;
+}
+
+p + p {
+  text-indent: 1.618em;  /* phi indent for consecutive paragraphs */
+  margin-top: 0;
+}
+
+/* ============================================
+   BLOCKQUOTES — Epigraphs & Prophecy
+   ============================================ */
+
+blockquote {
+  font-style: italic;
+  color: #3a3a4e;
+  margin: 18pt 27pt;  /* 2x9, 3x9 */
+  padding-left: 13.5pt;
+  border-left: 1.5pt solid #c9a84c;
+}
+
+blockquote p {
+  text-indent: 0;
+  margin-bottom: 4.5pt;
+}
+
+/* ============================================
+   EMPHASIS & STRONG
+   ============================================ */
+
+em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+strong {
+  font-weight: 600;
+  color: #0a0a1e;
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+
+ul, ol {
+  margin: 9pt 0 9pt 27pt;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 4.5pt;
+  line-height: 1.618;
+}
+
+/* ============================================
+   CODE — Monospace Sections
+   ============================================ */
+
+code {
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 9pt;
+  background: #f0f0f4;
+  padding: 1pt 3pt;
+  border-radius: 1pt;
+}
+
+pre {
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 8pt;
+  line-height: 1.4;
+  background: #f0f0f4;
+  padding: 9pt;
+  margin: 9pt 0;
+  border-left: 2pt solid #c9a84c;
+  overflow-x: auto;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ============================================
+   HORIZONTAL RULES — Section Dividers
+   ============================================ */
+
+hr {
+  border: none;
+  border-top: 0.5pt solid #c9a84c;
+  margin: 27pt auto;  /* 3 x 9 */
+  width: 38.2%;  /* golden ratio complement */
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+  color: #8a6d2b;
+  text-decoration: none;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 13.5pt 0;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+
+th {
+  font-family: 'Cinzel', serif;
+  font-size: 8pt;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1pt solid #c9a84c;
+  padding: 4.5pt 9pt;
+  text-align: left;
+  color: #1a1a2e;
+}
+
+td {
+  border-bottom: 0.5pt solid #ddd;
+  padding: 4.5pt 9pt;
+  vertical-align: top;
+}
+
+/* ============================================
+   IMAGES
+   ============================================ */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 13.5pt auto;
+}
+
+figure {
+  margin: 18pt 0;
+  page-break-inside: avoid;
+}
+
+figcaption {
+  font-size: 8pt;
+  font-style: italic;
+  color: #55556a;
+  text-align: center;
+  margin-top: 4.5pt;
+}
+
+/* ============================================
+   PAGE BREAKS
+   ============================================ */
+
+.page-break {
+  page-break-after: always;
+}
+
+h1 {
+  page-break-before: always;
+}
+
+/* First h1 in body shouldn't break */
+.content > h1:first-child {
+  page-break-before: avoid;
+}
+
+/* ============================================
+   PRINT OPTIMIZATIONS
+   ============================================ */
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

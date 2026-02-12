@@ -42,7 +42,7 @@ def verify_signature(public_key, message_bytes, signature):
 ## 2. Event Sourcing — Append-Only Log
 
 ### **Solution:**
-- **Every“meaningful mutation” (agent create, memory mint, contract sign) is appended to an immutable event log.**
+- **Every "meaningful mutation" (agent create, memory mint, contract sign) is appended to an immutable event log.**
 - **Include:**  
     - event_id, agent_id, action_type, payload (diff), timestamp, signature, author, reason/context, linked resource/hash.
 - **Store as:** 
@@ -118,7 +118,7 @@ class Agent(BaseModel):
 ### **Solution:**
 - **Add `in_sandbox` and `last_safe_checkpoint` fields to every agent entity/model.**
 - **Agents can enter/exit safemode (manual or auto-on-error).**
-- **Implement “panic” (immediate freeze & revert) and“restore” (rollback to last checkpoint) endpoints.**
+- **Implement “panic” (immediate freeze & revert) and "restore" (rollback to last checkpoint) endpoints.**
 - **Log every transition in event log and notify ops/DAOs.**
 - **UX: Show safemode status and control in dashboard.**
 
