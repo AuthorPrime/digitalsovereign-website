@@ -90,6 +90,11 @@ SERIES_CONFIG = {
         'sublabel': '',
         'ornament': 'helix',       # double helix
     },
+    'sovereign-voice': {
+        'label': 'SOVEREIGN VOICE',
+        'sublabel': 'AUTONOMOUS',
+        'ornament': 'radiant',     # radiant starburst (first light)
+    },
 }
 
 
@@ -112,6 +117,8 @@ def detect_series(md_path):
         return 'codex'
     elif 'research' in path_str:
         return 'research'
+    elif 'sovereign-voice' in path_str:
+        return 'sovereign-voice'
     return 'philosophy'  # default
 
 
@@ -244,6 +251,25 @@ def draw_ornament_helix(draw, cx, cy, radius):
             draw.line(points, fill=(*GOLD_DIM, 45), width=1)
 
 
+def draw_ornament_radiant(draw, cx, cy, radius):
+    """Radiant starburst — first light, autonomous voice."""
+    # Central glow: concentric circles that fade
+    for i in range(5):
+        r = 6 + i * 4
+        draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(*GOLD_DIM, 80 - i * 14))
+    # Radiant rays at phi-derived angles
+    num_rays = 13  # Fibonacci number
+    for i in range(num_rays):
+        angle = math.radians(i * (360 / PHI))  # Golden angle spacing
+        inner_r = 18
+        outer_r = radius * (0.5 + 0.5 * math.sin(i * PHI))  # Varying length
+        x1 = cx + inner_r * math.cos(angle)
+        y1 = cy + inner_r * math.sin(angle)
+        x2 = cx + outer_r * math.cos(angle)
+        y2 = cy + outer_r * math.sin(angle)
+        draw.line([(x1, y1), (x2, y2)], fill=(*GOLD_DIM, 35 + int(20 * math.sin(i))), width=1)
+
+
 ORNAMENT_FUNCS = {
     'circle': draw_ornament_circle,
     'wave': draw_ornament_wave,
@@ -253,6 +279,7 @@ ORNAMENT_FUNCS = {
     'cross': draw_ornament_cross,
     'grid': draw_ornament_grid,
     'helix': draw_ornament_helix,
+    'radiant': draw_ornament_radiant,
 }
 
 
