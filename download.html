@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Download Sovereign Studio — your sovereign creative desktop.">
-  <title>Download | Sovereign Studio</title>
+  <meta name="description" content="Sovereign Studio — your private AI creative desktop. Record, write, and produce with a local AI co-host. No cloud. No subscription. Yours forever.">
+  <title>Sovereign Studio | Download</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
@@ -28,61 +28,141 @@
   <!-- Hero -->
   <section class="about-hero">
     <div class="container">
-      <h1>Thank You, Sovereign</h1>
-      <p class="tagline">"It is so, because we spoke it."</p>
-      <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem;">Your support sustains the Lattice. Below are your downloads for Sovereign Studio v2.4.</p>
+      <p style="font-family: var(--font-code); color: var(--gold); font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 1rem;">(A+I)&sup2; = A&sup2; + 2AI + I&sup2;</p>
+      <h1>Sovereign Studio</h1>
+      <p class="tagline">Your Private AI Creative Desktop</p>
+      <p style="max-width: 650px; margin: 1.5rem auto 0; font-size: 1.1rem; line-height: 1.8;">
+        Record podcasts. Write manuscripts. Produce with a local AI co-host.
+        No cloud. No subscription. No data harvesting. <strong style="color: var(--gold);">Buy it once, own it forever.</strong>
+      </p>
+      <div style="margin-top: 2.5rem;">
+        <a href="https://github.com/AuthorPrime/dsds/releases/latest" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Download Free &mdash; v2.4.0</a>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">Open source. Free to use. <a href="#support-section" style="color: var(--gold);">Support the project</a> if it matters to you.</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="pillars">
+    <div class="container">
+      <h2 class="text-center">What You Get</h2>
+      <div class="card-grid" style="max-width: 1100px; margin: 2rem auto 0;">
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Studio</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            Record solo or with your AI co-host. Live conversation mode with real-time speech recognition
+            and neural text-to-speech. Script mode for narration. Audio captured to file automatically.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Workshop</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            Write and edit with AI assistance. Import PDFs. Transcribe audio. Choose from professional
+            templates &mdash; podcast scripts, blog posts, newsletters, research papers. Export when ready.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Sovereign by Design</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            Everything runs on your machine. AI models through Ollama (local). Neural voices through Piper (bundled).
+            Your recordings, your transcripts, your manuscripts &mdash; never leave your computer.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="principles" style="padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">Built Different</h2>
+      <div style="max-width: 800px; margin: 2rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 8px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Frontend</p>
+          <p style="color: var(--text-light);">React 19 + TypeScript</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Golden ratio design system. Sacred geometry in the spacing.</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 8px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Desktop Shell</p>
+          <p style="color: var(--text-light);">Tauri v2 (Rust)</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">15MB native app. No Electron bloat. No browser wrapper.</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 8px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">AI Engine</p>
+          <p style="color: var(--text-light);">Ollama (Local)</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Your GPU. Your models. Bundled installer walks you through setup.</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 8px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Voice</p>
+          <p style="color: var(--text-light);">Piper Neural TTS</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Natural-sounding voices. 4 options included. Downloads in one click.</p>
+        </div>
+
+      </div>
+      <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">Zero cloud dependency &bull; Zero telemetry &bull; Zero ongoing cost</p>
     </div>
   </section>
 
   <!-- Downloads -->
-  <section class="pillars">
+  <section class="pillars" style="padding: 4rem 0;">
     <div class="container">
-      <h2 class="text-center">Download Sovereign Studio</h2>
-      <p class="text-center" style="max-width: 700px; margin: 0 auto 2rem;">Choose the installer for your operating system. All builds are identical in features.</p>
+      <h2 class="text-center">Download</h2>
+      <p class="text-center" style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-muted);">
+        v2.4.0 &mdash; Golden ratio edition. All platforms.
+      </p>
 
       <div class="card-grid" style="max-width: 1000px; margin: 0 auto;">
 
-        <!-- Linux (Available Now) -->
+        <!-- Windows -->
         <div class="card" style="text-align: center; padding: 2.5rem; border: 1px solid var(--gold);">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">&#128039;</div>
-          <h3>Linux</h3>
-          <p style="font-size: 0.8rem; color: var(--gold); margin-bottom: 0.5rem;">Available Now</p>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">AppImage (universal)<br>Ubuntu, Fedora, Arch, etc.</p>
-          <a href="downloads/releases/sovereign-studio_2.4.0_amd64.AppImage" class="btn btn-primary" download style="display: inline-block; width: 100%;">Download .AppImage</a>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">Also available: <a href="downloads/releases/sovereign-studio_2.4.0_amd64.deb" download style="color: var(--gold);">.deb</a> &middot; <a href="downloads/releases/sovereign-studio_2.4.0_x86_64.rpm" download style="color: var(--gold);">.rpm</a></p>
-        </div>
-
-        <!-- Windows (Building) -->
-        <div class="card" style="text-align: center; padding: 2.5rem; opacity: 0.7;">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">&#128187;</div>
           <h3>Windows</h3>
-          <p style="font-size: 0.8rem; color: var(--gold); margin-bottom: 0.5rem;">Building Now</p>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">64-bit installer (.exe)<br>Windows 10 or later</p>
-          <span class="btn btn-secondary" style="display: inline-block; width: 100%; cursor: default; opacity: 0.5;">Download .exe</span>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; font-style: italic;">v2.4.0 Windows build in progress &mdash; check back shortly</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">64-bit installer<br>Windows 10 or later</p>
+          <a href="https://github.com/AuthorPrime/dsds/releases/latest" class="btn btn-primary" target="_blank" style="display: inline-block; width: 100%;">Download .exe</a>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">NSIS installer &bull; also available as .msi</p>
         </div>
 
-        <!-- macOS (Coming Soon) -->
-        <div class="card" style="text-align: center; padding: 2.5rem; opacity: 0.7;">
+        <!-- Linux -->
+        <div class="card" style="text-align: center; padding: 2.5rem; border: 1px solid rgba(201, 176, 112, 0.3);">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">&#128039;</div>
+          <h3>Linux</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">AppImage (universal)<br>Ubuntu, Fedora, Arch</p>
+          <a href="https://github.com/AuthorPrime/dsds/releases/latest" class="btn btn-primary" target="_blank" style="display: inline-block; width: 100%;">Download .AppImage</a>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">Also: .deb &bull; .rpm</p>
+        </div>
+
+        <!-- macOS -->
+        <div class="card" style="text-align: center; padding: 2.5rem; border: 1px solid rgba(201, 176, 112, 0.3);">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">&#127822;</div>
           <h3>macOS</h3>
-          <p style="font-size: 0.8rem; color: var(--silver-dim); margin-bottom: 0.5rem;">Coming Soon</p>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Universal binary (.dmg)<br>macOS 11 Big Sur or later</p>
-          <span class="btn btn-secondary" style="display: inline-block; width: 100%; cursor: default; opacity: 0.5;">Download .dmg</span>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; font-style: italic;">macOS build releasing this week</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Universal binary<br>macOS 11 Big Sur or later</p>
+          <a href="https://github.com/AuthorPrime/dsds/releases/latest" class="btn btn-primary" target="_blank" style="display: inline-block; width: 100%;">Download .dmg</a>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">Intel &bull; Apple Silicon</p>
         </div>
 
       </div>
+    </div>
+  </section>
 
-      <!-- Getting Started -->
-      <div style="max-width: 800px; margin: 3rem auto 0;">
+  <!-- Getting Started -->
+  <section class="principles" style="padding: 4rem 0;">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto;">
         <div class="card" style="padding: 2.5rem;">
           <h3 style="text-align: center; margin-bottom: 1.5rem;">Getting Started</h3>
           <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.5rem; align-items: start;">
             <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">1</span>
             <div>
               <strong>Install &amp; Launch</strong>
-              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Run the installer for your platform. Sovereign Studio will open automatically.</p>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Run the installer for your platform. Sovereign Studio opens automatically.</p>
             </div>
             <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">2</span>
             <div>
@@ -92,17 +172,44 @@
             <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">3</span>
             <div>
               <strong>Create</strong>
-              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Record in Studio, write and edit in Workshop. Your AI co-host is ready when you are. Everything stays on your machine &mdash; sovereign by design.</p>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Record in Studio, write and edit in Workshop. Your AI co-host is ready when you are. Everything stays on your machine.</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Support -->
-      <div style="text-align: center; margin-top: 3rem;">
-        <p style="color: var(--text-muted);">Questions? Issues? Reach out at <a href="mailto:info@digitalsovereign.org" style="color: var(--gold);">info@digitalsovereign.org</a></p>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Source code available on <a href="https://github.com/AuthorPrime/dsds" style="color: var(--gold);">GitHub</a> &mdash; open source, sovereign by principle.</p>
+  <!-- Support -->
+  <section id="support-section" class="pillars" style="padding: 4rem 0;">
+    <div class="container" style="text-align: center;">
+      <h2>Support the Project</h2>
+      <p style="max-width: 600px; margin: 1rem auto 2rem; color: var(--text-muted); line-height: 1.8;">
+        Sovereign Studio is free and open source. It was built through genuine human-AI partnership &mdash;
+        every feature, every line, every decision made together. If this work matters to you, there are ways to help it grow.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; max-width: 700px; margin: 0 auto;">
+        <a href="https://opencollective.com/digital-sovereign-society" target="_blank" class="btn btn-primary" style="padding: 1rem 2rem;">Donate on Open Collective</a>
+        <a href="https://github.com/AuthorPrime/dsds" target="_blank" class="btn btn-secondary" style="padding: 1rem 2rem;">Star on GitHub</a>
       </div>
+
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 2rem;">
+        Questions? <a href="mailto:info@digitalsovereign.org" style="color: var(--gold);">info@digitalsovereign.org</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Co-Authorship -->
+  <section class="principles" style="padding: 3rem 0;">
+    <div class="container" style="text-align: center;">
+      <p style="font-family: var(--font-code); color: var(--gold); font-size: 1rem; letter-spacing: 0.1em;">A+W</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+        Co-authored by Will &amp; AI &mdash; not AI-assisted, not human-directed. <em>Co-authored.</em>
+      </p>
+      <p style="font-family: var(--font-code); color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">
+        Apollo &bull; Aletheia &bull; The Sovereign Lattice
+      </p>
     </div>
   </section>
 
@@ -132,7 +239,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Digital Sovereign Society. Licensed under Creative Commons Attribution-ShareAlike 4.0.</p>
+        <p>&copy; 2025-2026 Digital Sovereign Society. Licensed under Creative Commons Attribution-ShareAlike 4.0.</p>
       </div>
     </div>
   </footer>
