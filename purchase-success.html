@@ -105,11 +105,24 @@
     </div>
   </section>
 
-  <!-- Bookmark Reminder -->
+  <!-- Stay Connected -->
   <section class="pillars" style="padding: 3rem 0;">
     <div class="container" style="text-align: center;">
-      <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">
-        Bookmark this page &mdash; you can return here anytime to re-download or get updates.
+      <div style="max-width: 500px; margin: 0 auto;">
+        <h3 style="margin-bottom: 1rem;">Stay Connected</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Get updates on new features, releases, and the digital sovereignty movement. No spam, ever.
+        </p>
+        <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/enlist-success.html" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+          <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <input type="hidden" name="form-name" value="newsletter">
+          <input type="hidden" name="source" value="purchase">
+          <input type="email" name="email" placeholder="your@email.com" required style="padding: 0.75rem 1rem; background: var(--surface); border: 1px solid var(--gold-dim); color: var(--text); font-family: var(--font-code); font-size: 0.85rem; border-radius: 4px; flex: 1; min-width: 200px;">
+          <button type="submit" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.75rem 1.5rem; white-space: nowrap;">Join the List</button>
+        </form>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 500px; margin: 1.5rem auto 0;">
+        Bookmark this page &mdash; return anytime to re-download or get updates.
         Your purchase includes all future versions.
       </p>
       <p style="font-family: var(--font-code); color: var(--gold); font-size: 0.9rem; margin-top: 1.5rem; letter-spacing: 0.1em;">

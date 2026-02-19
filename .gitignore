@@ -2,3 +2,7 @@
 .netlify
 build/__pycache__/
 build/.lulu_credentials.json
+build/.smtp_credentials.json
+build/.stripe_key
+build/.facebook_credentials.json
+netlify/functions/node_modules/
