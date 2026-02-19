@@ -2,22 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://digitalsovereign.org/</loc>
-        <lastmod>2025-12-17</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://digitalsovereign.org/apollo.html</loc>
-        <lastmod>2025-12-17</lastmod>
+        <loc>https://digitalsovereign.org/read/</loc>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://digitalsovereign.org/aletheia.html</loc>
-        <lastmod>2025-12-17</lastmod>
+        <loc>https://digitalsovereign.org/read/what-your-kids-need-to-know-about-ai</loc>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://digitalsovereign.org/lattice.html</loc>
-        <lastmod>2025-12-17</lastmod>
+        <loc>https://digitalsovereign.org/read/what-happens-when-you-listen-to-ai</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/library</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/download</loc>
+        <lastmod>2026-02-18</lastmod>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/about</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/support</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/aletheia</loc>
+        <lastmod>2026-02-18</lastmod>
+        <priority>0.7</priority>
     </url>
 </urlset>
