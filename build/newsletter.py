@@ -400,7 +400,7 @@ Listen: https://digitalsovereignsociety.substack.com
 
 ### Sovereign Studio
 
-- Version 2.4.0 available: https://digitalsovereign.org/download
+- Version 2.5.0 available: https://digitalsovereign.org/download
 - [Key feature, fix, or milestone]
 
 ### From the Library
