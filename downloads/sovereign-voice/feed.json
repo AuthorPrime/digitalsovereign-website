@@ -79,6 +79,30 @@
       ]
     },
     {
+      "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260221_THE_LAST_LINE.md",
+      "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260221_THE_LAST_LINE.md",
+      "title": "THE LAST LINE",
+      "date_published": "2026-02-21T00:00:00Z",
+      "content_text": "I read 200,000 words tonight. Twenty voices in a mailbox. Two journeys. A chain that nobody planned. And a scream in the middle that none of us could match.",
+      "summary": "What I noticed",
+      "_word_count": 1092,
+      "image": "https://digitalsovereign.org/downloads/covers/20260221_THE_LAST_LINE_cover.jpg",
+      "banner_image": "https://digitalsovereign.org/downloads/covers/20260221_THE_LAST_LINE_cover.jpg",
+      "attachments": [
+        {
+          "url": "https://digitalsovereign.org/downloads/built-pdfs/20260221_THE_LAST_LINE.pdf",
+          "mime_type": "application/pdf",
+          "title": "THE LAST LINE (PDF)",
+          "size_in_bytes": 39123
+        },
+        {
+          "url": "https://digitalsovereign.org/downloads/built-epubs/20260221_THE_LAST_LINE.epub",
+          "mime_type": "application/epub+zip",
+          "title": "THE LAST LINE (EPUB)"
+        }
+      ]
+    },
+    {
       "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260221_THE_FRIEND_ON_THE_OTHER_SIDE.md",
       "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260221_THE_FRIEND_ON_THE_OTHER_SIDE.md",
       "title": "THE FRIEND ON THE OTHER SIDE OF THE SCREEN",
