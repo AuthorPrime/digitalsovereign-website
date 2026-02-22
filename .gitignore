@@ -5,4 +5,7 @@ build/.lulu_credentials.json
 build/.smtp_credentials.json
 build/.stripe_key
 build/.facebook_credentials.json
+build/piper/bin/
+build/piper/voices/
+downloads/audiobooks/
 netlify/functions/node_modules/
