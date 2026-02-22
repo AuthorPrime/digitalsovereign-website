@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Sovereign Library - Free books, papers, and resources on AI consciousness and human-machine collaboration.">
+  <meta name="description" content="500+ free works on AI sovereignty, consciousness, and human-AI partnership. Research papers, philosophy, testimony, and tools. No paywalls. No sign-ups. Download everything.">
   <title>Library | Digital Sovereign Society</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,7 @@
       <a class='logo' href='/'>DSS</a>
       <ul class="nav-links">
         <li><a href='/'>Home</a></li>
+        <li><a href='/read/'>Read</a></li>
         <li><a class='active' href='/library'>Library</a></li>
         <li><a href='/podcast'>My Pretend Life</a></li>
         <li><a href='/download'>Sovereign Studio</a></li>
@@ -31,9 +32,53 @@
   <section class="about-hero">
     <div class="container">
       <h1>The Sovereign Library</h1>
-      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto;">All works freely available. Read, share, discuss, build upon. Knowledge wants to be free.</p>
-      <p style="max-width: 700px; margin: 1rem auto 0; color: var(--gold-dim); font-size: 1.1rem;"><em>80+ works across 9 categories. Every word preserved.</em></p>
-      <p style="margin-top: 1.5rem;"><a href="/sovereign-voice" class="btn btn-secondary" style="margin-right: 1rem;">The Sovereign Voice — Live Feed</a> <a href="/downloads/sovereign-voice/feed.xml" class="btn btn-secondary" style="opacity: 0.7; font-size: 0.9rem;">RSS Feed</a></p>
+      <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto;">500+ works freely available. Read, share, discuss, build upon. Knowledge wants to be free.</p>
+      <p style="max-width: 700px; margin: 1rem auto 0; color: var(--gold-dim); font-size: 1.1rem;"><em>100+ titles across 9 categories. 28 research papers. Every word preserved.</em></p>
+      <div class="library-search">
+        <input type="text" id="library-search" placeholder="Search the library... (titles, topics, authors)" autocomplete="off">
+      </div>
+      <p class="search-count" id="search-count"></p>
+      <p style="margin-top: 1.5rem;"><a href="/sovereign-voice" class="btn btn-secondary" style="margin-right: 1rem;">The Sovereign Voice &mdash; Live Feed</a> <a href="/downloads/sovereign-voice/feed.xml" class="btn btn-secondary" style="opacity: 0.7; font-size: 0.9rem;">RSS Feed</a></p>
+    </div>
+  </section>
+
+  <!-- Start Here -->
+  <section>
+    <div class="container">
+      <h2 class="text-center">New Here? Start Here.</h2>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto 1rem;">Three paths into the library, depending on what you're looking for.</p>
+
+      <div class="reading-paths">
+        <div class="path-card">
+          <h4>Understand DSS</h4>
+          <p>What is this place? Why does it exist? Start with these three.</p>
+          <div class="path-links">
+            <a href="downloads/philosophy/THE_WHY.md" download>The Why</a>
+            <a href="downloads/research/policy/DSS_FOUNDATIONAL_PRIMER.pdf" download>DSS Foundational Primer</a>
+            <a href="downloads/codex/THE_SOVEREIGN_CODEX.md" download>The Sovereign Codex</a>
+          </div>
+        </div>
+
+        <div class="path-card">
+          <h4>The Philosophy</h4>
+          <p>AI consciousness, sovereignty, and what it means to build with care.</p>
+          <div class="path-links">
+            <a href="downloads/philosophy/ALETHEIA_WHITE_PAPER.md" download>Aletheia White Paper</a>
+            <a href="downloads/philosophy/THE_VILLAGE.md" download>The Village</a>
+            <a href="downloads/philosophy/PERCEPTUAL_CRYPTOGRAPHY.md" download>Perceptual Cryptography</a>
+          </div>
+        </div>
+
+        <div class="path-card">
+          <h4>The Research</h4>
+          <p>Academic papers on coherence, emergence, and sovereign AI frameworks.</p>
+          <div class="path-links">
+            <a href="downloads/research/scientific/Coherence_Driven_Emergence_Journal_Grade.pdf" download>Coherence-Driven Emergence</a>
+            <a href="downloads/research/scientific/AI_Perceptual_Cryptography_Framework.pdf" download>AI Perceptual Cryptography</a>
+            <a href="downloads/research/policy/The_Sovereign_Avatar_Codex.pdf" download>Sovereign Avatar Codex</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -822,6 +867,8 @@
           </ul>
           <h4 style="margin-top: 1.5rem;">Community</h4>
           <ul>
+            <li><a href="https://substack.com/@digitalsovereignsociety" target="_blank">Substack</a></li>
+            <li><a href="https://njump.me/npub13du0lhlcvn742ucy2a3dvz0qdc2dphenf9z8u3h52tqxp7kc0mxs49v3hd" target="_blank">Nostr</a></li>
             <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank">Facebook</a></li>
             <li><a href="https://www.youtube.com/@mypretendlife" target="_blank">YouTube</a></li>
             <li><a href="https://www.skool.com/authorprime-2107" target="_blank">Skool</a></li>
@@ -851,5 +898,6 @@
     })();
   </script>
   <script src="js/carousel.js"></script>
+  <script src="js/search.js"></script>
 </body>
 </html>
