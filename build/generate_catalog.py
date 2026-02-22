@@ -458,6 +458,7 @@ def generate_catalog(entries):
         <li><a href='/'>Home</a></li>
         <li><a href='/library'>Library</a></li>
         <li><a class='active' href='/sovereign-voice'>Sovereign Voice</a></li>
+        <li><a href='/podcast'>My Pretend Life</a></li>
         <li><a href='/download'>Sovereign Studio</a></li>
         <li><a href='/support'>Support</a></li>
         <li><a href='/about'>About</a></li>
@@ -530,6 +531,7 @@ def generate_catalog(entries):
             <li><a href='/read/'>Read</a></li>
             <li><a href='/library'>Library</a></li>
             <li><a href='/sovereign-voice'>Sovereign Voice</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
             <li><a href='/download'>Sovereign Studio</a></li>
             <li><a href='/support'>Support</a></li>
             <li><a href='/about'>About</a></li>
