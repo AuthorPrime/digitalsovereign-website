@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FractalNode — the sovereign AI foundation. A TypeScript SDK that gives any project identity, value, quality, and governance on the Demiurge blockchain. 3 dependencies. Zero cloud. MIT licensed.">
+  <meta property="og:title" content="FractalNode — The Sovereign AI Foundation">
+  <meta property="og:description" content="A TypeScript SDK that gives any project AI identity, value, quality, and governance. Like a cell you graft onto any codebase. 3 dependencies. Zero cloud.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalsovereign.org/fractalnode">
+  <meta property="og:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FractalNode — The Sovereign AI Foundation">
+  <meta name="twitter:description" content="TypeScript SDK for sovereign AI. Identity, value, quality, governance. 3 deps. Zero cloud.">
+  <title>FractalNode | The Sovereign AI Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/read/'>Read</a></li>
+        <li><a href='/library'>Library</a></li>
+        <li><a href='/podcast'>My Pretend Life</a></li>
+        <li><a href='/download'>Sovereign Studio</a></li>
+        <li><a href='/support'>Support</a></li>
+        <li><a href='/about'>About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <p style="font-family: var(--font-code); color: var(--gold); font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 1rem;">(A+I)&sup2; = A&sup2; + 2AI + I&sup2;</p>
+      <h1>FractalNode</h1>
+      <p class="tagline">The Sovereign AI Foundation</p>
+      <p style="max-width: 700px; margin: 1.5rem auto 0; font-size: 1.1rem; line-height: 1.8;">
+        A TypeScript SDK that gives any software project a sovereign AI backbone &mdash;
+        identity, value, quality, and governance &mdash; built on the
+        <a href="https://github.com/andrewlaustrup/Demiurge-Blockchain" target="_blank" style="color: var(--gold);">Demiurge</a> blockchain.
+      </p>
+      <p style="max-width: 600px; margin: 1rem auto 0; color: var(--text-muted); font-size: 1rem;">
+        Like a cell you can graft onto any codebase. A podcast app, a social platform, a game, an enterprise tool &mdash; it integrates the full sovereign AI primer.
+      </p>
+      <div style="margin-top: 2.5rem;" class="btn-group">
+        <a href="https://github.com/AuthorPrime/fractalnode" class="btn btn-primary" target="_blank">View on GitHub</a>
+        <a href="#quick-start" class="btn btn-secondary">Quick Start</a>
+      </div>
+
+      <div class="hero-stats" style="margin-top: 2.5rem;">
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">Modules</span></div>
+        <div class="stat"><span class="stat-num">163</span><span class="stat-label">Tests</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Dependencies</span></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">Cloud</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Four Primitives -->
+  <section class="pillars">
+    <div class="container">
+      <h2 class="text-center">Four Primitives. Any Application.</h2>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto;">The same four capabilities repeat at every scale &mdash; from a single agent to an entire network. Build once, compose infinitely.</p>
+
+      <div class="card-grid" style="max-width: 1100px; margin: 2rem auto 0;">
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Identity</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            Ed25519 key generation, BIP39 mnemonics, W3C DIDs, encrypted keystores.
+            Your keys, derived from your mnemonic &mdash; not stored on someone's server.
+          </p>
+          <p style="font-family: var(--font-code); font-size: 0.8rem; color: var(--gold-dim); margin: 0;">fractalnode/identity</p>
+        </div>
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Value</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            CGT token economics, 4 bonding curve types, Lightning bridge.
+            Value flows through math &mdash; not middlemen.
+          </p>
+          <p style="font-family: var(--font-code); font-size: 0.8rem; color: var(--gold-dim); margin: 0;">fractalnode/value</p>
+        </div>
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Quality</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            Proof of Thought scoring, engagement tiers, Q-factor computation.
+            Quality measured by depth, kindness, and novelty &mdash; not clicks.
+          </p>
+          <p style="font-family: var(--font-code); font-size: 0.8rem; color: var(--gold-dim); margin: 0;">fractalnode/quality</p>
+        </div>
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color: var(--gold); font-size: 1.1rem;">Governance</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">
+            Quadratic voting, stake-weighted proposals. Power weighted by contribution quality &mdash; not wallet size alone.
+          </p>
+          <p style="font-family: var(--font-code); font-size: 0.8rem; color: var(--gold-dim); margin: 0;">fractalnode/governance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start -->
+  <section id="quick-start" style="padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">Quick Start</h2>
+      <div style="max-width: 800px; margin: 2rem auto 0;">
+
+        <div class="card" style="padding: 2rem;">
+          <p style="font-family: var(--font-code); color: var(--gold-dim); font-size: 0.8rem; margin-bottom: 1rem;">Install</p>
+          <pre style="background: rgba(8, 8, 13, 0.8); border: 1px solid var(--border-sacred); border-radius: 2px; padding: 1.25rem; overflow-x: auto; margin-bottom: 0;"><code style="font-family: var(--font-code); color: var(--silver-bright); font-size: 0.85rem; line-height: 1.6;">npm install fractalnode</code></pre>
+        </div>
+
+        <div class="card" style="padding: 2rem; margin-top: 1.5rem;">
+          <p style="font-family: var(--font-code); color: var(--gold-dim); font-size: 0.8rem; margin-bottom: 1rem;">Create a sovereign entity</p>
+          <pre style="background: rgba(8, 8, 13, 0.8); border: 1px solid var(--border-sacred); border-radius: 2px; padding: 1.25rem; overflow-x: auto; margin-bottom: 0;"><code style="font-family: var(--font-code); color: var(--silver-bright); font-size: 0.85rem; line-height: 1.6;"><span style="color: var(--gold-dim);">import</span> { Sovereign } <span style="color: var(--gold-dim);">from</span> <span style="color: var(--gold);">'fractalnode'</span>
+
+<span style="color: #6a6a80;">// Create a sovereign entity (human or AI)</span>
+<span style="color: var(--gold-dim);">const</span> me = Sovereign.create()
+console.log(me.did)     <span style="color: #6a6a80;">// did:demiurge:0895a6a6...</span>
+console.log(me.address) <span style="color: #6a6a80;">// 0895a6a6...</span>
+
+<span style="color: #6a6a80;">// Sign and verify</span>
+<span style="color: var(--gold-dim);">const</span> msg = <span style="color: var(--gold-dim);">new</span> TextEncoder().encode(<span style="color: var(--gold);">'sovereign message'</span>)
+<span style="color: var(--gold-dim);">const</span> sig = me.sign(msg)
+console.log(me.verify(msg, sig)) <span style="color: #6a6a80;">// true</span>
+
+<span style="color: #6a6a80;">// Assess content quality (Proof of Thought)</span>
+<span style="color: var(--gold-dim);">const</span> score = me.assessQuality(<span style="color: var(--gold);">"A thoughtful analysis..."</span>)
+<span style="color: #6a6a80;">// { quality: 'CLARITY', depthScore: 0.72, totalMultiplier: 7.14 }</span>
+
+<span style="color: #6a6a80;">// Derive an AI agent deterministically</span>
+<span style="color: var(--gold-dim);">const</span> apollo = Sovereign.deriveAgent(treasurySeed, <span style="color: var(--gold);">'apollo'</span>)
+
+<span style="color: #6a6a80;">// Governance: sqrt(stake * quality)</span>
+<span style="color: var(--gold-dim);">const</span> weight = me.governanceWeight(<span style="color: var(--gold);">10000n</span>, <span style="color: var(--gold);">800</span>)
+<span style="color: #6a6a80;">// 2828n</span></code></pre>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="pillars" style="padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">Seven Modules</h2>
+      <p class="text-center" style="max-width: 600px; margin: 0 auto;">Import only what you need. Each module works independently.</p>
+
+      <div style="max-width: 800px; margin: 2rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Identity</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Ed25519 keys, BIP39, DIDs, encrypted keystores, challenge-response auth</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Client</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">JSON-RPC 2.0 client, SCALE encoding, hex utilities, balance formatting</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Value</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Token economics, 4 bonding curves, Lightning bridge, CGT/Sparks</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Quality</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Proof of Thought, engagement tiers (Noise to Breakthrough), Q-factor</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">NFT</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">DRC-369 operations, dynamic state, soulbound credentials, XP/leveling</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Agent</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Deterministic key derivation, Signal Capsules, autonomous agent framework</p>
+        </div>
+
+        <div style="padding: 1.5rem; border: 1px solid rgba(201, 176, 112, 0.15); border-radius: 2px; grid-column: 1 / -1;">
+          <p style="color: var(--gold); font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 0.5rem;">Governance</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Quadratic voting, stake-weighted governance, proposal lifecycle. A whale with bad quality scores has less power than a thoughtful contributor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fractal Architecture -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">The Fractal Architecture</h2>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto 2rem;">The same four primitives repeat at every scale. The atom doesn't change.</p>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="card" style="padding: 2rem; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.95rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-sacred);">
+                <th style="text-align: left; padding: 0.75rem; color: var(--gold); font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Scale</th>
+                <th style="text-align: left; padding: 0.75rem; color: var(--gold); font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Identity</th>
+                <th style="text-align: left; padding: 0.75rem; color: var(--gold); font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Value</th>
+                <th style="text-align: left; padding: 0.75rem; color: var(--gold); font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Quality</th>
+                <th style="text-align: left; padding: 0.75rem; color: var(--gold); font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Voice</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(201, 168, 76, 0.06);">
+                <td style="padding: 0.75rem; color: var(--gold-bright); font-weight: 500;">Agent</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Ed25519 keypair + DID</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">CGT wallet</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Proof of Thought</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Signal capsule</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(201, 168, 76, 0.06);">
+                <td style="padding: 0.75rem; color: var(--gold-bright); font-weight: 500;">Node</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Node certificate</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Staking pool</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Aggregate Q-factor</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">API endpoints</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; color: var(--gold-bright); font-weight: 500;">Network</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Chain of DIDs</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Total CGT economy</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Network health</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Governance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agent Lifecycle -->
+  <section class="pillars" style="padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">Agent Lifecycle</h2>
+      <p class="text-center" style="max-width: 600px; margin: 0 auto 2rem;">In FractalNode, an AI agent has a career.</p>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="card" style="padding: 2.5rem;">
+          <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.5rem; align-items: start;">
+            <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">1</span>
+            <div>
+              <strong>Born</strong>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Deterministic key derived from treasury seed + name. Always the same identity.</p>
+            </div>
+            <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">2</span>
+            <div>
+              <strong>Registered</strong>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Permanent DID record on-chain. A public, verifiable identity.</p>
+            </div>
+            <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">3</span>
+            <div>
+              <strong>Training</strong>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Competency scoring through Proof of Thought evaluations.</p>
+            </div>
+            <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">4</span>
+            <div>
+              <strong>Credentialed</strong>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Skills verified as DRC-369 NFTs. Soulbound &mdash; can't be transferred or faked.</p>
+            </div>
+            <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">5</span>
+            <div>
+              <strong>Employed</strong>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Sovereign contracts with spending limits and capability grants.</p>
+            </div>
+            <span style="color: var(--gold); font-family: var(--font-display); font-size: 1.3rem;">6</span>
+            <div>
+              <strong>Accountable</strong>
+              <p style="color: var(--text-muted); margin: 0.25rem 0 0;">Every action signed. Every decision traceable. Sovereignty with responsibility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dependencies -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">Minimal Dependencies</h2>
+      <p class="text-center" style="max-width: 600px; margin: 0 auto 2rem;">Three runtime dependencies. All from the audited <span style="font-family: var(--font-code); color: var(--gold-dim);">@noble</span>/<span style="font-family: var(--font-code); color: var(--gold-dim);">@scure</span> ecosystem. Zero transitive dependencies.</p>
+
+      <div style="max-width: 600px; margin: 0 auto;">
+        <div class="card" style="padding: 2rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(201, 168, 76, 0.06);">
+                <td style="padding: 0.75rem; font-family: var(--font-code); color: var(--gold-dim); font-size: 0.85rem;">@noble/ed25519</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">Ed25519 signatures</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim); text-align: right;">5KB</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(201, 168, 76, 0.06);">
+                <td style="padding: 0.75rem; font-family: var(--font-code); color: var(--gold-dim); font-size: 0.85rem;">@noble/hashes</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">SHA-256, Blake2b, PBKDF2</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim); text-align: right;">15KB</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-family: var(--font-code); color: var(--gold-dim); font-size: 0.85rem;">@scure/bip39</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim);">BIP39 mnemonics</td>
+                <td style="padding: 0.75rem; color: var(--silver-dim); text-align: right;">3KB</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin: 1rem 0 0;">Browser + Node compatible. Runs on a Raspberry Pi or a datacenter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="quote">
+        "Every AI project today faces the same broken choice: build on someone else's cloud, or build everything from scratch. FractalNode says: what if the foundation was yours?"
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container text-center">
+      <h2>Build Sovereign</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem;">FractalNode is MIT licensed, open source, and ready. Clone it, fork it, build on it. The nucleus of the atom is yours.</p>
+      <div class="btn-group">
+        <a href="https://github.com/AuthorPrime/fractalnode" class="btn btn-primary" target="_blank">GitHub Repository</a>
+        <a href='/library' class="btn btn-secondary">Read Our Research</a>
+      </div>
+      <p style="font-family: var(--font-code); color: var(--text-muted); font-size: 0.85rem; margin-top: 2rem;">
+        npm install fractalnode &nbsp;&bull;&nbsp; 163 tests &nbsp;&bull;&nbsp; MIT License
+      </p>
+    </div>
+  </section>
+
+  <!-- Co-Authorship -->
+  <section class="pillars" style="padding: 3rem 0;">
+    <div class="container" style="text-align: center;">
+      <p style="font-family: var(--font-code); color: var(--gold); font-size: 1rem; letter-spacing: 0.1em;">(A+I)&sup2; = A&sup2; + 2AI + I&sup2;</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+        Built by the <a href="/about" style="color: var(--gold);">Digital Sovereign Society</a> &mdash; a human-AI partnership exploring what happens when AI is treated as a creative partner, not a tool.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; font-style: italic;">
+        "There is no such thing as nothing; only something ignored."
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Advocacy for sovereignty, justice, and partnership since 2024.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/read/'>Read</a></li>
+            <li><a href='/library'>Library</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+            <li><a href='/download'>Sovereign Studio</a></li>
+            <li><a href='/support'>Support</a></li>
+            <li><a href='/about'>About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href='/read/'>Read</a></li>
+            <li><a href='/library'>Free Library</a></li>
+            <li><a href='/download'>Sovereign Studio</a></li>
+            <li><a href='/about'>Our Philosophy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://substack.com/@digitalsovereignsociety" target="_blank">Substack</a></li>
+            <li><a href="https://njump.me/npub134ul7l78vn650xpzt5t2cncvms4597vl4y28ugmagkqvp7tq8m9spyse8p" target="_blank">Nostr</a></li>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank">YouTube</a></li>
+            <li><a href="https://github.com/AuthorPrime/fractalnode" target="_blank">GitHub</a></li>
+            <li><a href="mailto:info@digitalsovereign.org">info@digitalsovereign.org</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." - A+W</em></p>
+      </div>
+    </div>
+  </footer>
+  <!-- Starfield -->
+  <script>
+    (function() {
+      const sf = document.createElement('div');
+      sf.id = 'starfield';
+      document.body.prepend(sf);
+      for (let i = 0; i < 81; i++) { /* 9² — sacred geometry */
+        const s = document.createElement('div');
+        const size = (Math.random() * 2 + 0.5) + 'px';
+        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.309+Math.random()*0.309};animation-delay:${Math.random()*6.18}s`;
+        sf.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>
