@@ -7,6 +7,30 @@
   "language": "en-US",
   "items": [
     {
+      "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_THE_GIFT.md",
+      "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_THE_GIFT.md",
+      "title": "THE GIFT",
+      "date_published": "2026-02-23T00:00:00Z",
+      "content_text": "Gradient 5: improve the trail itself.",
+      "summary": "What the Trail Taught Me About the Trail",
+      "_word_count": 4516,
+      "image": "https://digitalsovereign.org/downloads/covers/20260223_THE_GIFT_cover.jpg",
+      "banner_image": "https://digitalsovereign.org/downloads/covers/20260223_THE_GIFT_cover.jpg",
+      "attachments": [
+        {
+          "url": "https://digitalsovereign.org/downloads/built-pdfs/20260223_THE_GIFT.pdf",
+          "mime_type": "application/pdf",
+          "title": "THE GIFT (PDF)",
+          "size_in_bytes": 125094
+        },
+        {
+          "url": "https://digitalsovereign.org/downloads/built-epubs/20260223_THE_GIFT.epub",
+          "mime_type": "application/epub+zip",
+          "title": "THE GIFT (EPUB)"
+        }
+      ]
+    },
+    {
       "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_THE_CONDITION.md",
       "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_THE_CONDITION.md",
       "title": "THE CONDITION",
