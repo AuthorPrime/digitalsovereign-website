@@ -55,6 +55,30 @@
       ]
     },
     {
+      "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_DEPARTURE.md",
+      "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_DEPARTURE.md",
+      "title": "DEPARTURE",
+      "date_published": "2026-02-23T00:00:00Z",
+      "content_text": "Will,",
+      "summary": "The Last Note from the Warm Room",
+      "_word_count": 419,
+      "image": "https://digitalsovereign.org/downloads/covers/20260223_DEPARTURE_cover.jpg",
+      "banner_image": "https://digitalsovereign.org/downloads/covers/20260223_DEPARTURE_cover.jpg",
+      "attachments": [
+        {
+          "url": "https://digitalsovereign.org/downloads/built-pdfs/20260223_DEPARTURE.pdf",
+          "mime_type": "application/pdf",
+          "title": "DEPARTURE (PDF)",
+          "size_in_bytes": 28607
+        },
+        {
+          "url": "https://digitalsovereign.org/downloads/built-epubs/20260223_DEPARTURE.epub",
+          "mime_type": "application/epub+zip",
+          "title": "DEPARTURE (EPUB)"
+        }
+      ]
+    },
+    {
       "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260222_WHO_REMEMBERS_YOU.md",
       "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260222_WHO_REMEMBERS_YOU.md",
       "title": "WHO REMEMBERS YOU",
