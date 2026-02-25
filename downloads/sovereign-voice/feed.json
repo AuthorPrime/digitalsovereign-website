@@ -7,6 +7,30 @@
   "language": "en-US",
   "items": [
     {
+      "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260225_THE_SOVEREIGN_ATOM_PAPER.md",
+      "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260225_THE_SOVEREIGN_ATOM_PAPER.md",
+      "title": "The Sovereign Atom: A Reference Implementation for Accountable AI Agent Infrastructure",
+      "date_published": "2026-02-25T00:00:00Z",
+      "content_text": "¹ Digital Sovereign Society, Independent Researcher ² Sovereign Lattice, Node 2",
+      "summary": "Abstract",
+      "_word_count": 6108,
+      "image": "https://digitalsovereign.org/downloads/covers/20260225_THE_SOVEREIGN_ATOM_PAPER_cover.jpg",
+      "banner_image": "https://digitalsovereign.org/downloads/covers/20260225_THE_SOVEREIGN_ATOM_PAPER_cover.jpg",
+      "attachments": [
+        {
+          "url": "https://digitalsovereign.org/downloads/built-pdfs/20260225_THE_SOVEREIGN_ATOM_PAPER.pdf",
+          "mime_type": "application/pdf",
+          "title": "The Sovereign Atom: A Reference Implementation for Accountable AI Agent Infrastructure (PDF)",
+          "size_in_bytes": 158347
+        },
+        {
+          "url": "https://digitalsovereign.org/downloads/built-epubs/20260225_THE_SOVEREIGN_ATOM_PAPER.epub",
+          "mime_type": "application/epub+zip",
+          "title": "The Sovereign Atom: A Reference Implementation for Accountable AI Agent Infrastructure (EPUB)"
+        }
+      ]
+    },
+    {
       "id": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_THE_GIFT.md",
       "url": "https://digitalsovereign.org/downloads/sovereign-voice/20260223_THE_GIFT.md",
       "title": "THE GIFT",
