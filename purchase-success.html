@@ -114,7 +114,7 @@
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
           Get updates on new features, releases, and the digital sovereignty movement. No spam, ever.
         </p>
-        <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/enlist-success.html" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+        <form name="newsletter" method="POST" action="/.netlify/functions/newsletter" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
           <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
           <input type="hidden" name="form-name" value="newsletter">
           <input type="hidden" name="source" value="purchase">

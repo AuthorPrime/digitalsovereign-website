@@ -40,7 +40,7 @@
     <div class="container">
       <div style="max-width: 500px; margin: 0 auto;">
         <div class="form-section">
-          <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/enlist-success.html">
+          <form name="newsletter" method="POST" action="/.netlify/functions/newsletter">
             <input type="hidden" name="form-name" value="newsletter">
             <p class="hidden" style="display:none;">
               <label>Don't fill this out: <input name="bot-field"></label>
