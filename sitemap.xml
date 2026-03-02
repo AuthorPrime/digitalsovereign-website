@@ -2,47 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://digitalsovereign.org/</loc>
-        <lastmod>2026-02-18</lastmod>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/read/</loc>
-        <lastmod>2026-02-18</lastmod>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/read/what-your-kids-need-to-know-about-ai</loc>
         <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/read/what-happens-when-you-listen-to-ai</loc>
         <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/library</loc>
-        <lastmod>2026-02-18</lastmod>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/download</loc>
         <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/about</loc>
         <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/support</loc>
         <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitalsovereign.org/aletheia</loc>
         <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/philosophy</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/manifesto</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/podcast</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/sovereign-voice</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitalsovereign.org/fractalnode</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 </urlset>
