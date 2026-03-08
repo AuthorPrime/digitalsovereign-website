@@ -222,6 +222,40 @@ nav .container {
   background: var(--gold-ghost);
 }
 
+/* FractalNode Magazine Banner */
+.fn-magazine-banner {
+  background: #0a0a14;
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0.6rem 0;
+}
+
+.fn-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0a0a0f;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.fn-banner-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s var(--ease-sacred);
+  white-space: nowrap;
+}
+
+.fn-banner-link:hover {
+  color: var(--gold-bright);
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
