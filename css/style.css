@@ -81,6 +81,7 @@ body {
   min-height: 100vh;
   font-size: 1.175rem;
   position: relative;
+  padding-top: 60px; /* Clear fixed nav */
 }
 
 /* Starfield */
@@ -263,7 +264,7 @@ nav .container {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 80px;
+  padding-top: 20px;
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -785,6 +786,7 @@ footer {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  padding-right: 2rem; /* Prevent last item clipping */
   scrollbar-width: none;
   padding: 9px 0;
 }
@@ -1021,7 +1023,7 @@ footer {
   }
 
   .hero {
-    padding: 100px 1rem 3rem;
+    padding: 40px 1rem 3rem;
   }
 
   .btn-group {
@@ -1092,6 +1094,13 @@ footer {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(201, 168, 76, 0.3);
+}
+
+/* Search highlight */
+.search-highlight {
+  outline: 1px solid var(--gold-dim);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 /* Selection */

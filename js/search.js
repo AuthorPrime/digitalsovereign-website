@@ -25,6 +25,7 @@
         section.classList.remove('search-hidden');
         section.querySelectorAll('.card, .carousel-card, .book-card').forEach(function(el) {
           el.classList.remove('search-hidden');
+          el.classList.remove('search-highlight');
         });
       });
       countEl.classList.remove('active');
@@ -72,7 +73,21 @@
       }
     });
 
+    // Remove previous highlights
+    document.querySelectorAll('.search-highlight').forEach(function(el) {
+      el.classList.remove('search-highlight');
+    });
+
     countEl.textContent = totalVisible + ' result' + (totalVisible !== 1 ? 's' : '') + ' found';
     countEl.classList.add('active');
+
+    // Scroll to and highlight first visible result
+    if (totalVisible > 0) {
+      var firstMatch = document.querySelector('section:not(.search-hidden) .card:not(.search-hidden), section:not(.search-hidden) .carousel-card:not(.search-hidden), section:not(.search-hidden) .book-card:not(.search-hidden)');
+      if (firstMatch) {
+        firstMatch.classList.add('search-highlight');
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
   }
 })();

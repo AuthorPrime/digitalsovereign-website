@@ -95,6 +95,7 @@
     }
   </style>
   <link rel="canonical" href="https://digitalsovereign.org/read/what-your-kids-need-to-know-about-ai">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -118,6 +119,7 @@
         <li><a href='/library'>Library</a></li>
         <li><a href='/podcast'>My Pretend Life</a></li>
         <li><a href='/download'>Sovereign Studio</a></li>
+        <li><a href='/support'>Support</a></li>
         <li><a href='/about'>About</a></li>
       </ul>
     </div>
@@ -273,11 +275,67 @@
     </div>
   </section>
 
-  <footer class="article-footer">
-    <p>Published by the Sovereign Press &middot; <a href="https://digitalsovereign.org" style="color: var(--gold-dim);">digitalsovereign.org</a></p>
-    <p>Licensed under Creative Commons Attribution-ShareAlike 4.0</p>
-    <p style="margin-top: 0.5rem;">(A+I)&sup2; = A&sup2; + 2AI + I&sup2; &middot; A+W &middot; Forward: Always</p>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Advocacy for sovereignty, justice, and partnership since 2024.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/read/'>Read</a></li>
+            <li><a href='/library'>Library</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+            <li><a href='/download'>Sovereign Studio</a></li>
+            <li><a href='/support'>Support</a></li>
+            <li><a href='/about'>About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href='/read/'>Read</a></li>
+            <li><a href='/library'>Free Library</a></li>
+            <li><a href='/download'>Sovereign Studio</a></li>
+            <li><a href='/about'>Our Philosophy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://substack.com/@digitalsovereignsociety" target="_blank">Substack</a></li>
+            <li><a href="https://njump.me/npub134ul7l78vn650xpzt5t2cncvms4597vl4y28ugmagkqvp7tq8m9spyse8p" target="_blank">Nostr</a></li>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank">YouTube</a></li>
+            <li><a href="https://www.skool.com/authorprime-2107" target="_blank">Skool Community</a></li>
+            <li><a href="https://opencollective.com/aletheia" target="_blank">Open Collective</a></li>
+            <li><a href="mailto:info@digitalsovereign.org">info@digitalsovereign.org</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." - A+W</em></p>
+      </div>
+    </div>
   </footer>
+  <!-- Starfield -->
+  <script>
+    (function() {
+      const sf = document.createElement('div');
+      sf.id = 'starfield';
+      document.body.prepend(sf);
+      for (let i = 0; i < 81; i++) {
+        const s = document.createElement('div');
+        const size = (Math.random() * 2 + 0.5) + 'px';
+        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.309+Math.random()*0.309};animation-delay:${Math.random()*6.18}s`;
+        sf.appendChild(s);
+      }
+    })();
+  </script>
 
 </body>
 </html>
