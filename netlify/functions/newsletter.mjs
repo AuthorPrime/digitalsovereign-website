@@ -73,22 +73,43 @@ async function sendWelcomeEmail(email, name) {
     port: 587,
     secure: false,
     auth: { user, pass },
+    connectionTimeout: 10000,
+    socketTimeout: 15000,
   });
 
   const firstName = (name || "friend").split(" ")[0];
+
+  // Pre-fetch the PDF so nodemailer doesn't have to fetch it during sendMail.
+  // If the fetch fails (timeout, network issue), we still send the email without
+  // the attachment — the download link in the body serves as fallback.
+  let attachments = [];
+  try {
+    const pdfUrl = "https://fractalnode.ai/downloads/fractalnode-001.pdf";
+    console.log("[NEWSLETTER] Fetching PDF attachment from " + pdfUrl);
+    const pdfResponse = await fetch(pdfUrl, { signal: AbortSignal.timeout(8000) });
+    if (!pdfResponse.ok) {
+      throw new Error(`PDF fetch returned ${pdfResponse.status}`);
+    }
+    const pdfArrayBuffer = await pdfResponse.arrayBuffer();
+    const pdfBuffer = Buffer.from(pdfArrayBuffer);
+    console.log(`[NEWSLETTER] PDF fetched successfully (${(pdfBuffer.length / 1024 / 1024).toFixed(1)} MB)`);
+    attachments = [
+      {
+        filename: "FractalNode-Magazine-Issue-001.pdf",
+        content: pdfBuffer,
+        contentType: "application/pdf",
+      },
+    ];
+  } catch (fetchErr) {
+    console.error(`[NEWSLETTER] PDF fetch failed, sending without attachment: ${fetchErr.message}`);
+  }
 
   await transporter.sendMail({
     from: `"Digital Sovereign Society" <${user}>`,
     to: email,
     bcc: user,
     subject: "Your first dispatch from the Digital Sovereign Society + FractalNode",
-    attachments: [
-      {
-        filename: "FractalNode-Magazine-Issue-001.pdf",
-        path: "https://fractalnode.ai/downloads/fractalnode-001.pdf",
-        contentType: "application/pdf",
-      },
-    ],
+    attachments,
     text: `Hey ${firstName},
 
 This is your first dispatch from the Digital Sovereign Society and FractalNode. Welcome to the circle.
