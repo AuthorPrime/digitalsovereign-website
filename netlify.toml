@@ -5,6 +5,9 @@
 [functions]
   node_bundler = "esbuild"
 
+[functions.newsletter]
+  timeout = 26
+
 [build.processing.html]
   pretty_urls = true
 
