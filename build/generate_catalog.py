@@ -551,7 +551,7 @@ def generate_catalog(entries):
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:info@digitalsovereign.org">info@digitalsovereign.org</a></li>
+            <li><a href="mailto:authorprime@fractalnode.ai">authorprime@fractalnode.ai</a></li>
           </ul>
           <h4 style="margin-top: 1.5rem;">Community</h4>
           <ul>

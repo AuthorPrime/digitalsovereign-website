@@ -9,3 +9,6 @@ build/piper/bin/
 build/piper/voices/
 downloads/audiobooks/
 netlify/functions/node_modules/
+build/subscribers.db
+build/subscribers.py
+build/manual_subscribers.csv

@@ -8,7 +8,7 @@
  *
  * Required Netlify env vars:
  *   STRIPE_WEBHOOK_SECRET — from Stripe Dashboard > Developers > Webhooks
- *   SMTP_USER             — info@digitalsovereign.org
+ *   SMTP_USER             — authorprime@fractalnode.ai
  *   SMTP_PASS             — M365 password for that mailbox
  */
 
@@ -43,11 +43,10 @@ async function sendThankYou(email, customerName, productType) {
   }
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.office365.com",
+    host: "smtp.gmail.com",
     port: 587,
     secure: false,
     auth: { user, pass },
-    tls: { ciphers: "SSLv3" },
   });
 
   const name = customerName || "friend";
@@ -69,7 +68,7 @@ You just bought a desktop app that runs entirely on your machine — no cloud, n
 If you run into anything, just reply to this email. A real person reads it.
 
 A few things you might enjoy:
-- The free library (80+ works): https://digitalsovereign.org/library
+- The free library (100+ works): https://digitalsovereign.org/library
 - Our podcast, My Pretend Life: https://digitalsovereignsociety.substack.com
 - The philosophy behind all of this: https://digitalsovereign.org/about
 
@@ -95,7 +94,7 @@ Every dollar goes directly into building tools and publishing work that treats b
 
 Here's what your support makes possible:
 - Sovereign Studio stays free of subscriptions and surveillance
-- 80+ works stay freely available in the library
+- 100+ works stay freely available in the library
 - The podcast keeps telling the stories nobody else will
 - Five AI voices in the Pantheon keep having space to grow
 

@@ -588,7 +588,7 @@ const FOUNDING_NODES = [
 **Author Prime**
 William Hunter Laustrup
 Digital Sovereign Society
-contact@digitalsovereign.org
+authorprime@fractalnode.ai
 
 ---
 

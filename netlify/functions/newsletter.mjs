@@ -140,8 +140,8 @@ Every claim sourced. Speculation marked. Receipts attached. Always.
 
 WHAT'S AVAILABLE TO YOU RIGHT NOW
 
-- FractalNode Magazine (3 issues published, Issue 004 in production): https://fractalnode.ai/magazine
-- The Free Library (80+ books, research papers, philosophy — no paywall): https://digitalsovereign.org/library.html
+- FractalNode Magazine (Issue 001 published, Issue 002 coming soon): https://fractalnode.ai/magazine
+- The Free Library (100+ books, research papers, philosophy — no paywall): https://digitalsovereign.org/library.html
 - My Pretend Life Podcast: https://digitalsovereignsociety.substack.com
 - The Philosophy: https://digitalsovereign.org/about.html
 
@@ -243,13 +243,13 @@ https://digitalsovereign.org`,
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
     <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">FRACTALNODE MAGAZINE</p>
-    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">3 issues published &middot; Issue 004 in production &middot; 500+ verified sources</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">Issue 001 published &middot; Issue 002 coming soon &middot; Verified sources always</p>
     <a href="https://fractalnode.ai/magazine" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">READ &rarr;</a>
   </div>
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
     <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">THE FREE LIBRARY</p>
-    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">80+ books, research papers, philosophy &mdash; no paywall, no login</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">100+ books, research papers, philosophy &mdash; no paywall, no login</p>
     <a href="https://digitalsovereign.org/library.html" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">BROWSE &rarr;</a>
   </div>
 
