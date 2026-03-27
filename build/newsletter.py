@@ -520,7 +520,21 @@ def send_newsletter(draft_path, test_only=False):
 
         sent = 0
         failed = 0
-        for email_addr in recipients:
+        total = len(recipients)
+
+        # Rate limiting to avoid Gmail lockdown
+        # Gmail Workspace limits: 2,000/day, but bursts trigger temp lockout
+        # Safe pace: ~6 emails/minute with attachment, ~10/min without
+        delay_per_email = 10 if pdf_data else 6  # seconds between sends
+        batch_pause_every = 25  # pause longer every N emails
+        batch_pause_seconds = 60  # how long to pause between batches
+
+        print(f"  Rate limiting: {delay_per_email}s between emails, "
+              f"{batch_pause_seconds}s pause every {batch_pause_every} emails")
+        print(f"  Estimated time: ~{(total * delay_per_email + (total // batch_pause_every) * batch_pause_seconds) // 60} minutes")
+        print()
+
+        for i, email_addr in enumerate(recipients):
             msg = MIMEMultipart("mixed")
             msg["Subject"] = subject
             msg["From"] = f"Digital Sovereign Society <{creds['user']}>"
@@ -544,10 +558,19 @@ def send_newsletter(draft_path, test_only=False):
             try:
                 server.sendmail(creds["user"], email_addr, msg.as_string())
                 sent += 1
-                print(f"  Sent: {email_addr}")
+                print(f"  [{sent}/{total}] Sent: {email_addr}")
             except Exception as e:
                 failed += 1
-                print(f"  FAILED: {email_addr} — {e}")
+                print(f"  [{sent}/{total}] FAILED: {email_addr} — {e}")
+
+            # Rate limiting
+            import time
+            if (i + 1) < total:  # don't sleep after the last email
+                if (i + 1) % batch_pause_every == 0:
+                    print(f"  --- Batch pause ({batch_pause_seconds}s) to stay under Gmail limits ---")
+                    time.sleep(batch_pause_seconds)
+                else:
+                    time.sleep(delay_per_email)
 
         server.quit()
         print(f"\nDone. Sent: {sent}, Failed: {failed}")
