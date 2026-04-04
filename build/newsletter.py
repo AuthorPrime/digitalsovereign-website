@@ -8,8 +8,11 @@ Usage:
   python3 newsletter.py everyone       — Combined deduped list: subscribers + customers
   python3 newsletter.py draft          — Generate this week's newsletter draft
   python3 newsletter.py export         — Export all unique emails (one per line)
-  python3 newsletter.py send <file>    — Send a newsletter to all subscribers
+  python3 newsletter.py send <file>    — Send a newsletter to all subscribers (Gmail)
+  python3 newsletter.py send-resend <f> — Send via Resend API (recommended)
   python3 newsletter.py send-test <f>  — Send to authorprime@ only (preview)
+  python3 newsletter.py sync           — Pull new signups from Netlify into local DB
+  python3 newsletter.py status         — Show subscriber count and recent signups
   python3 newsletter.py help           — Show this help
 
 Requires:
@@ -751,6 +754,170 @@ def cmd_send_test():
     send_newsletter(sys.argv[2], test_only=True)
 
 
+def cmd_send_resend():
+    """Send newsletter via Resend API (recommended over Gmail)."""
+    if len(sys.argv) < 3:
+        print("Usage: python3 newsletter.py send-resend <draft-file.md>")
+        return
+
+    resend_json = Path.home() / "sovereign-lattice" / "wallets" / "resend.json"
+    if not resend_json.exists():
+        print(f"Resend credentials not found: {resend_json}")
+        return
+
+    resend_creds = json.loads(resend_json.read_text())
+    api_key = resend_creds["api_key"]
+
+    draft = Path(sys.argv[2])
+    if not draft.exists():
+        print(f"Draft not found: {sys.argv[2]}")
+        return
+
+    content = draft.read_text()
+    subject = "Sovereign Dispatch — Digital Sovereign Society"
+    for line in content.split("\n"):
+        if line.startswith("**Subject:**"):
+            subject = line.split("**Subject:**")[1].strip().strip("[]")
+
+    # Parse and build HTML (reuse existing functions)
+    sections = {"investigations": [], "news": [], "intro": "", "magazine": "", "thought": ""}
+    current_section = None
+    for line in content.split("\n"):
+        if line.startswith("### "):
+            header = line[4:].strip().lower()
+            if "investigation" in header or "research" in header:
+                current_section = "investigations"
+            elif "news" in header:
+                current_section = "news"
+            elif "magazine" in header or "fractalnode" in header:
+                current_section = "magazine"
+            elif "thought" in header:
+                current_section = "thought"
+            elif "intro" in header:
+                current_section = "intro"
+            continue
+        if current_section == "intro" and line.strip():
+            sections["intro"] += line.strip() + " "
+
+    html = build_weekly_html(subject, sections)
+
+    everyone = get_everyone()
+    if not everyone:
+        print("No subscribers found.")
+        return
+
+    recipients = [p["email"] for p in everyone]
+    print(f"Sending via Resend to {len(recipients)} recipients...")
+    print(f"From: newsletter@digitalsovereign.org")
+    print(f"Subject: {subject}")
+
+    sent = 0
+    failed = 0
+    for i, email_addr in enumerate(recipients):
+        try:
+            data = json.dumps({
+                "from": "Digital Sovereign Society <newsletter@digitalsovereign.org>",
+                "to": [email_addr],
+                "subject": subject,
+                "html": html,
+            }).encode()
+            req = urllib.request.Request(
+                "https://api.resend.com/emails",
+                data=data,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+            )
+            urllib.request.urlopen(req, timeout=30)
+            sent += 1
+            if (i + 1) % 25 == 0:
+                print(f"  Sent {sent}/{len(recipients)}...")
+                import time; time.sleep(2)
+        except Exception as e:
+            failed += 1
+            print(f"  Failed: {email_addr} — {e}")
+
+    print(f"\nDone. Sent: {sent}, Failed: {failed}, Total: {len(recipients)}")
+
+
+def cmd_sync():
+    """Pull new signups from Netlify forms into local SQLite DB."""
+    db_path = Path(__file__).parent / "subscribers.db"
+    import sqlite3
+    db = sqlite3.connect(str(db_path))
+    c = db.cursor()
+
+    # Ensure table exists
+    c.execute("""CREATE TABLE IF NOT EXISTS subscribers (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT UNIQUE,
+        name TEXT DEFAULT '',
+        source TEXT DEFAULT '',
+        subscribed_at TEXT DEFAULT '',
+        status TEXT DEFAULT 'active',
+        notes TEXT DEFAULT '',
+        last_emailed TEXT DEFAULT ''
+    )""")
+
+    # Pull from Netlify
+    subs = get_subscribers()
+    if not subs:
+        print("No subscribers found from Netlify.")
+        return
+
+    new_count = 0
+    for s in subs:
+        try:
+            c.execute(
+                "INSERT OR IGNORE INTO subscribers (email, name, source, subscribed_at, status) VALUES (?, ?, ?, ?, 'active')",
+                (s["email"].lower(), s.get("name", ""), s.get("source", "netlify"), s.get("date", "")),
+            )
+            if c.rowcount > 0:
+                new_count += 1
+        except Exception:
+            pass
+
+    db.commit()
+    c.execute("SELECT COUNT(*) FROM subscribers WHERE status = 'active'")
+    total = c.fetchone()[0]
+    db.close()
+
+    print(f"Sync complete. {new_count} new subscribers added. Total active: {total}")
+
+
+def cmd_status():
+    """Show subscriber count and recent signups."""
+    db_path = Path(__file__).parent / "subscribers.db"
+    import sqlite3
+
+    if not db_path.exists():
+        print("No local database. Run 'sync' first.")
+        return
+
+    db = sqlite3.connect(str(db_path))
+    c = db.cursor()
+
+    c.execute("SELECT COUNT(*) FROM subscribers WHERE status = 'active'")
+    active = c.fetchone()[0]
+    c.execute("SELECT COUNT(*) FROM subscribers WHERE status = 'bounced'")
+    bounced = c.fetchone()[0]
+    c.execute("SELECT COUNT(*) FROM subscribers")
+    total = c.fetchone()[0]
+
+    c.execute("SELECT email, source, subscribed_at FROM subscribers ORDER BY id DESC LIMIT 5")
+    recent = c.fetchall()
+    db.close()
+
+    print(f"═══ DSS Subscriber Status ═══")
+    print(f"  Active:  {active}")
+    print(f"  Bounced: {bounced}")
+    print(f"  Total:   {total}")
+    print(f"\n  Last 5 signups:")
+    for email, source, date in recent:
+        print(f"    {email:35s} [{source}] {date[:10] if date else ''}")
+
+
 def cmd_help():
     """Show usage."""
     print(__doc__)
@@ -763,7 +930,10 @@ COMMANDS = {
     "draft": cmd_draft,
     "export": cmd_export,
     "send": cmd_send,
+    "send-resend": cmd_send_resend,
     "send-test": cmd_send_test,
+    "sync": cmd_sync,
+    "status": cmd_status,
     "help": cmd_help,
 }
 

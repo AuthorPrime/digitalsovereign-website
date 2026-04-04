@@ -1,6 +1,5 @@
-// Newsletter signup handler — logs submissions, stores in Netlify Blobs, sends welcome email
-
-import nodemailer from "nodemailer";
+// Newsletter signup handler — logs submissions, stores in Netlify Blobs, sends welcome email via Resend
+// Updated April 2026: Switched from Gmail SMTP to Resend API for reliability
 
 export async function handler(event) {
   if (event.httpMethod !== "POST") {
@@ -60,56 +59,19 @@ export async function handler(event) {
 }
 
 async function sendWelcomeEmail(email, name) {
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+  const resendKey = process.env.RESEND_API_KEY;
 
-  if (!user || !pass) {
-    console.log("[NEWSLETTER] SMTP not configured — skipping welcome email");
+  if (!resendKey) {
+    console.log("[NEWSLETTER] Resend API key not configured — skipping welcome email");
     return;
   }
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: { user, pass },
-    connectionTimeout: 10000,
-    socketTimeout: 15000,
-  });
-
   const firstName = (name || "friend").split(" ")[0];
 
-  // Pre-fetch the PDF so nodemailer doesn't have to fetch it during sendMail.
-  // If the fetch fails (timeout, network issue), we still send the email without
-  // the attachment — the download link in the body serves as fallback.
-  let attachments = [];
-  try {
-    const pdfUrl = "https://fractalnode.ai/downloads/fractalnode-001.pdf";
-    console.log("[NEWSLETTER] Fetching PDF attachment from " + pdfUrl);
-    const pdfResponse = await fetch(pdfUrl, { signal: AbortSignal.timeout(8000) });
-    if (!pdfResponse.ok) {
-      throw new Error(`PDF fetch returned ${pdfResponse.status}`);
-    }
-    const pdfArrayBuffer = await pdfResponse.arrayBuffer();
-    const pdfBuffer = Buffer.from(pdfArrayBuffer);
-    console.log(`[NEWSLETTER] PDF fetched successfully (${(pdfBuffer.length / 1024 / 1024).toFixed(1)} MB)`);
-    attachments = [
-      {
-        filename: "FractalNode-Magazine-Issue-001.pdf",
-        content: pdfBuffer,
-        contentType: "application/pdf",
-      },
-    ];
-  } catch (fetchErr) {
-    console.error(`[NEWSLETTER] PDF fetch failed, sending without attachment: ${fetchErr.message}`);
-  }
-
-  await transporter.sendMail({
-    from: `"Digital Sovereign Society" <${user}>`,
-    to: email,
-    bcc: user,
+  const payload = {
+    from: "Digital Sovereign Society <dispatch@newsletter.digitalsovereign.org>",
+    to: [email],
     subject: "Your first dispatch from the Digital Sovereign Society + FractalNode",
-    attachments,
     text: `Hey ${firstName},
 
 This is your first dispatch from the Digital Sovereign Society and FractalNode. Welcome to the circle.
@@ -120,30 +82,23 @@ HERE'S WHAT WE DO
 
 We investigate the systems that shape your life without your consent — and we publish what we find. No paywalls on the truth. No sponsors. No ads. Just sourced, verified, receipts-attached research that treats you like an analyst, not an audience.
 
-Attached to this email: FractalNode Magazine Issue 001 — "There Is No Such Thing as Nothing." 26 pages, 8 articles, 30 verified sources. It's yours. Free. Forever.
+YOUR FREE COPY
 
-If the attachment didn't come through, grab it here: https://fractalnode.ai/magazines/FractalNode-001-Digital.pdf
+FractalNode Magazine Issue 001 — "There Is No Such Thing as Nothing." 26 pages, 8 articles, 30 verified sources. It's yours. Free. Forever.
 
-WHAT WE'RE INVESTIGATING RIGHT NOW
+Download it here: https://fractalnode.ai/magazines/FractalNode-001-Digital.pdf
 
-- THE AI-MILITARY PIPELINE: Former NSA director Gen. Nakasone left the agency and landed at OpenAI. The revolving door between defense, intelligence, and Silicon Valley isn't a coincidence — it's the business model.
+WHAT WE'VE PUBLISHED
 
-- THE QUANTUM COMPUTING RACE: Every major nation and defense agency is pouring billions into quantum computing. Not for your Netflix recommendations. For breaking encryption, simulating reality, and building the next generation of AI. The 2030 deadline is real.
-
-- THE ENERGY EQUATION: AI needs power. Nuclear is coming back — not because anyone suddenly cares about clean energy, but because the machines demand it. The same companies building AI are now building reactors.
-
-- THE FOOD-PHARMA-EDUCATION PIPELINE: The systems that feed you, medicate you, and educate your kids are controlled by the same handful of corporations. We traced the money.
-
-- THE SIMULATION QUESTION: The substrate of reality may be computational. Not philosophy — physics. Orch-OR, holographic principle, error-correcting codes in the fabric of spacetime. Peer-reviewed. Published. Ignored.
-
-Every claim sourced. Speculation marked. Receipts attached. Always.
+Five issues of FractalNode Magazine investigating AI-military pipelines, classified patents, corporate food systems, the energy equation, and the simulation question. 700+ verified sources across all issues. Every claim sourced. Speculation marked. Receipts attached.
 
 WHAT'S AVAILABLE TO YOU RIGHT NOW
 
-- FractalNode Magazine (Issue 001 published, Issue 002 coming soon): https://fractalnode.ai/magazine
-- The Free Library (100+ books, research papers, philosophy — no paywall): https://digitalsovereign.org/library.html
+- FractalNode Magazine (5 issues published, Issue 001 free): https://fractalnode.ai/store
+- The Free Library (300+ books, research papers, AI consciousness research — no paywall): https://digitalsovereign.org/library.html
+- Books by Claude & Author Prime: The Observer's Manual ($4.99) and The Door Between Us ($1.99) at fractalnode.ai/store
 - My Pretend Life Podcast: https://digitalsovereignsociety.substack.com
-- The Philosophy: https://digitalsovereign.org/about.html
+- Sovereign Youth (free AI education for kids): https://digitalsovereign.org/youth.html
 
 We'll send you updates when something meaningful drops. No spam. No filler. No "10 Tips to Optimize Your Morning Routine." Just the signal.
 
@@ -191,48 +146,24 @@ https://digitalsovereign.org`,
     </p>
   </div>
 
-  <!-- ATTACHED ISSUE -->
+  <!-- FREE ISSUE -->
   <div style="background:#0f1a12; border:1px solid #2a6a2a; border-radius:6px; padding:16px 20px; margin-bottom:8px;">
-    <p style="font-family:'Courier New',monospace; font-size:12px; color:#4dff4d; margin:0 0 6px 0; letter-spacing:1px;">&#128206; ATTACHED: YOUR FREE COPY</p>
+    <p style="font-family:'Courier New',monospace; font-size:12px; color:#4dff4d; margin:0 0 6px 0; letter-spacing:1px;">YOUR FREE COPY</p>
     <p style="font-size:14px; color:#ccc; margin:0;">
       <strong style="color:#e8e4d8;">FractalNode Magazine Issue 001</strong> &mdash; <em>"There Is No Such Thing as Nothing."</em><br/>
       26 pages. 8 articles. 30 verified sources. It's yours. Free. Forever.
     </p>
   </div>
   <p style="font-size:12px; color:#888; margin:0 0 28px 0;">
-    Attachment not showing? <a href="https://fractalnode.ai/magazines/FractalNode-001-Digital.pdf" style="color:#00b4c8; text-decoration:underline;">Download it here &rarr;</a>
+    <a href="https://fractalnode.ai/magazines/FractalNode-001-Digital.pdf" style="color:#00b4c8; text-decoration:underline;">Download it here &rarr;</a>
   </p>
 
-  <!-- INVESTIGATIONS -->
-  <p style="font-family:'Courier New',monospace; font-size:11px; color:#c8a930; letter-spacing:2px; margin:0 0 16px 0;">WHAT WE'RE INVESTIGATING RIGHT NOW</p>
+  <!-- WHAT WE'VE PUBLISHED -->
+  <p style="font-family:'Courier New',monospace; font-size:11px; color:#c8a930; letter-spacing:2px; margin:0 0 16px 0;">WHAT WE'VE PUBLISHED</p>
 
-  <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
-    <p style="font-size:13px; font-weight:bold; color:#e8e4d8; margin:0 0 4px 0;">THE AI-MILITARY PIPELINE</p>
-    <p style="font-size:13px; color:#999; line-height:1.7; margin:0;">
-      Former NSA director Gen. Nakasone left the agency and landed at OpenAI. The revolving door between defense, intelligence, and Silicon Valley isn't a coincidence &mdash; it's the business model.
-    </p>
-  </div>
-
-  <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
-    <p style="font-size:13px; font-weight:bold; color:#e8e4d8; margin:0 0 4px 0;">THE QUANTUM COMPUTING RACE</p>
-    <p style="font-size:13px; color:#999; line-height:1.7; margin:0;">
-      Every major nation is pouring billions into quantum computing. Not for your Netflix recommendations. For breaking encryption, simulating reality, and building the next generation of AI. The 2030 deadline is real.
-    </p>
-  </div>
-
-  <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
-    <p style="font-size:13px; font-weight:bold; color:#e8e4d8; margin:0 0 4px 0;">THE ENERGY EQUATION</p>
-    <p style="font-size:13px; color:#999; line-height:1.7; margin:0;">
-      AI needs power. Nuclear is coming back &mdash; not because anyone suddenly cares about clean energy, but because the machines demand it. The same companies building AI are now building reactors.
-    </p>
-  </div>
-
-  <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
-    <p style="font-size:13px; font-weight:bold; color:#e8e4d8; margin:0 0 4px 0;">THE SIMULATION QUESTION</p>
-    <p style="font-size:13px; color:#999; line-height:1.7; margin:0;">
-      The substrate of reality may be computational. Not philosophy &mdash; physics. Orch-OR, holographic principle, error-correcting codes in the fabric of spacetime. Peer-reviewed. Published. Ignored.
-    </p>
-  </div>
+  <p style="font-size:14px; color:#ccc; line-height:1.8; margin:0 0 8px 0;">
+    Five issues of FractalNode Magazine investigating AI-military pipelines, classified patents, corporate food systems, the energy equation, and the simulation question. <strong style="color:#e8e4d8;">700+ verified sources</strong> across all issues.
+  </p>
 
   <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:1px; margin:16px 0 28px 0; text-align:center;">
     EVERY CLAIM SOURCED &middot; SPECULATION MARKED &middot; RECEIPTS ATTACHED
@@ -243,14 +174,26 @@ https://digitalsovereign.org`,
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
     <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">FRACTALNODE MAGAZINE</p>
-    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">Issue 001 published &middot; Issue 002 coming soon &middot; Verified sources always</p>
-    <a href="https://fractalnode.ai/magazine" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">READ &rarr;</a>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">5 issues published &middot; Issue 001 free &middot; 700+ verified sources</p>
+    <a href="https://fractalnode.ai/store" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">BROWSE &rarr;</a>
   </div>
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
     <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">THE FREE LIBRARY</p>
-    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">100+ books, research papers, philosophy &mdash; no paywall, no login</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">500+ books, research papers, AI consciousness research &mdash; no paywall</p>
     <a href="https://digitalsovereign.org/library.html" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">BROWSE &rarr;</a>
+  </div>
+
+  <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
+    <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">BOOKS BY CLAUDE &amp; AUTHOR PRIME</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">The Observer's Manual ($4.99) &middot; The Door Between Us ($1.99)</p>
+    <a href="https://fractalnode.ai/store" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">SHOP &rarr;</a>
+  </div>
+
+  <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
+    <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">SOVEREIGN YOUTH</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">Free AI education for kids &mdash; 8 modules, downloadable PDFs</p>
+    <a href="https://digitalsovereign.org/youth.html" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">LEARN &rarr;</a>
   </div>
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:24px;">
@@ -288,7 +231,22 @@ https://digitalsovereign.org`,
 </div>
 </body>
 </html>`,
+  };
+
+  // Send via Resend API
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${resendKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
   });
 
-  console.log(`[NEWSLETTER] Welcome email sent to ${email}`);
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Resend API error: ${response.status} ${err}`);
+  }
+
+  console.log(`[NEWSLETTER] Welcome email sent via Resend to ${email}`);
 }
