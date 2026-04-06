@@ -185,17 +185,89 @@ def get_site_form_subscribers(site_id, form_name, source_label):
     return subscribers
 
 
-def get_subscribers():
-    """Get all newsletter subscribers from both sites."""
-    print("  Pulling DSS newsletter subscribers...")
-    dss_subs = get_site_form_subscribers(DSS_SITE_ID, "newsletter", "dss-newsletter")
+def get_blob_subscribers(site_id, store_name="newsletter-subscribers"):
+    """Get subscribers stored in Netlify Blobs (where the serverless function writes them)."""
+    token = get_netlify_token()
+    if not token:
+        return []
 
-    print("  Pulling FractalNode subscribers...")
+    subscribers = []
+    try:
+        # List all blobs in the store
+        url = f"https://api.netlify.com/api/v1/blobs/{site_id}/{store_name}"
+        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read())
+
+        blobs = data.get("blobs", [])
+        for blob in blobs:
+            key = blob.get("key", "")
+            # Fetch each blob's content
+            try:
+                blob_url = f"https://api.netlify.com/api/v1/blobs/{site_id}/{store_name}/{key}"
+                req2 = urllib.request.Request(blob_url, headers={"Authorization": f"Bearer {token}"})
+                with urllib.request.urlopen(req2) as resp2:
+                    entry = json.loads(resp2.read())
+                    email = entry.get("email", "").strip()
+                    if email:
+                        subscribers.append({
+                            "email": email,
+                            "name": entry.get("name", ""),
+                            "date": entry.get("subscribed_at", "")[:10],
+                            "source": f"blob-{entry.get('source', 'website')}",
+                        })
+            except Exception as e:
+                print(f"    Blob read error for {key}: {e}")
+                continue
+
+        print(f"  Found {len(subscribers)} subscribers in Blobs store '{store_name}'")
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            print(f"  Blobs store '{store_name}' not found (no signups yet via function)")
+        else:
+            print(f"  Blobs API error: {e.code} {e.reason}")
+    except Exception as e:
+        print(f"  Blobs sync error: {e}")
+
+    return subscribers
+
+
+def get_subscribers():
+    """Get all newsletter subscribers from Netlify Blobs + Forms + Stripe."""
+    # Primary source: Netlify Blobs (where the serverless function stores signups)
+    print("  Pulling from Netlify Blobs (primary)...")
+    blob_subs = get_blob_subscribers(DSS_SITE_ID, "newsletter-subscribers")
+
+    # Legacy source: Netlify Forms (older signups may be here)
+    print("  Pulling from Netlify Forms (legacy)...")
+    dss_subs = get_site_form_subscribers(DSS_SITE_ID, "newsletter", "dss-newsletter")
     fn_subs = get_site_form_subscribers(FN_SITE_ID, "subscribe", "fractalnode")
 
-    all_subs = dss_subs + fn_subs
-    print(f"  Found {len(dss_subs)} DSS + {len(fn_subs)} FractalNode = {len(all_subs)} total")
-    return all_subs
+    # Also pull Stripe customers (people who bought but may not have signed up)
+    print("  Pulling from Stripe customers...")
+    stripe_subs = get_stripe_customers()
+
+    all_subs = blob_subs + dss_subs + fn_subs
+    # Add Stripe customers as subscribers too
+    for sc in stripe_subs:
+        all_subs.append({
+            "email": sc.get("email", ""),
+            "name": sc.get("name", ""),
+            "date": sc.get("date", ""),
+            "source": "stripe-customer",
+        })
+
+    # Deduplicate by email
+    seen = set()
+    deduped = []
+    for s in all_subs:
+        email = s.get("email", "").lower().strip()
+        if email and email not in seen:
+            seen.add(email)
+            deduped.append(s)
+
+    print(f"  Total: {len(blob_subs)} blobs + {len(dss_subs)} DSS forms + {len(fn_subs)} FN forms + {len(stripe_subs)} Stripe = {len(deduped)} unique")
+    return deduped
 
 
 def get_stripe_customers():

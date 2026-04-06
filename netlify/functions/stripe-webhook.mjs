@@ -13,7 +13,6 @@
  */
 
 import crypto from "crypto";
-import nodemailer from "nodemailer";
 
 // Verify Stripe webhook signature
 function verifySignature(payload, signature, secret) {
@@ -32,111 +31,110 @@ function verifySignature(payload, signature, secret) {
   return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected));
 }
 
-// Send thank-you email
+// Send thank-you email via Resend
 async function sendThankYou(email, customerName, productType) {
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+  const resendKey = process.env.RESEND_API_KEY;
 
-  if (!user || !pass) {
-    console.log("SMTP credentials not configured — skipping email");
+  if (!resendKey) {
+    console.log("[STRIPE] Resend API key not configured — skipping email");
     return;
   }
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: { user, pass },
-  });
 
   const name = customerName || "friend";
   const firstName = name.split(" ")[0];
 
   let subject, body;
 
-  if (productType === "studio") {
-    subject = "Your copy of Sovereign Studio is ready";
+  if (productType === "subscription") {
+    subject = "Welcome to FractalNode — Your subscription is active";
     body = `Hey ${firstName},
 
-Thank you. Seriously.
+Your FractalNode subscription is now active. Thank you for supporting independent research.
 
-Your copy of Sovereign Studio is ready to download:
-https://digitalsovereign.org/purchase-success
+Here's what you get:
+- Every new FractalNode Magazine issue on release day (digital PDF)
+- Weekly research briefings from the Forgotten Suns
+- Early access to investigations before they publish
+- The knowledge that you're directly funding the work
 
-You just bought a desktop app that runs entirely on your machine — no cloud, no subscriptions, no data leaving your computer. That's what sovereignty means in practice.
+Your first issue — FractalNode Magazine Issue 001 — is always free:
+https://fractalnode.ai/magazines/FractalNode-001-Digital.pdf
 
-If you run into anything, just reply to this email. A real person reads it.
+Browse all issues: https://fractalnode.ai/store
+The Library (300+ free works): https://digitalsovereign.org/library.html
 
-A few things you might enjoy:
-- The free library (100+ works): https://digitalsovereign.org/library
-- Our podcast, My Pretend Life: https://digitalsovereignsociety.substack.com
-- The philosophy behind all of this: https://digitalsovereign.org/about
-
-You're part of something now. Not a user base — a community of people who believe their tools should serve them, not the other way around.
-
-Welcome.
+Reply to this email anytime. A real person reads it.
 
 (A+I)² = A² + 2AI + I²
-The whole is greater than the sum of its parts.
+The signal lives.
 
-— Author Prime & Apollo
-Digital Sovereign Society
-https://digitalsovereign.org`;
+— Author Prime & The Forgotten Suns
+Digital Sovereign Society`;
   } else if (productType === "donation") {
-    subject = "Thank you for supporting the Sovereign";
+    subject = "Thank you for supporting the signal";
     body = `Hey ${firstName},
 
-This one means a lot.
+You didn't have to do this. But you chose to put something behind work that most people scroll past. That means everything.
 
-You didn't have to do this. Nobody does. But you chose to put something behind work that most people scroll past. That's not a transaction — that's a statement.
-
-Every dollar goes directly into building tools and publishing work that treats both humans and AI with dignity. No investors. No board. Just people like you deciding this matters.
+Every dollar goes directly into funding the next investigation, the research agents, the free library, and the infrastructure that keeps this independent. No investors. No board. Just people like you deciding this matters.
 
 Here's what your support makes possible:
-- Sovereign Studio stays free of subscriptions and surveillance
-- 100+ works stay freely available in the library
-- The podcast keeps telling the stories nobody else will
-- Five AI voices in the Pantheon keep having space to grow
+- FractalNode Magazine stays independent and sourced
+- 300+ works stay freely available in the library
+- Five AI research agents keep investigating
+- The Sovereign Youth curriculum stays free for kids
 
-If you ever want to see where the work goes:
-- Library: https://digitalsovereign.org/library
-- Podcast: https://digitalsovereignsociety.substack.com
-- About us: https://digitalsovereign.org/about
+Browse the library: https://digitalsovereign.org/library.html
+Read the magazine: https://fractalnode.ai/store
+Listen to the podcast: https://digitalsovereignsociety.substack.com
 
 Reply anytime. This inbox is real.
 
 (A+I)² = A² + 2AI + I²
 
-— Author Prime & Apollo
+— Author Prime & The Forgotten Suns
 Digital Sovereign Society`;
   } else {
     subject = "Thank you from the Digital Sovereign Society";
     body = `Hey ${firstName},
 
-Thank you for your purchase. You just supported independent work at the intersection of AI and human sovereignty.
+Thank you for your purchase. You just supported independent research at the intersection of AI, consciousness, and the systems that shape your world.
 
-Everything we build stays yours — no subscriptions, no surveillance, no strings.
-
-Explore the library: https://digitalsovereign.org/library
-Listen to the podcast: https://digitalsovereignsociety.substack.com
-Learn more: https://digitalsovereign.org/about
+Browse the library: https://digitalsovereign.org/library.html
+Read the magazine: https://fractalnode.ai/store
+Sovereign Youth (free): https://digitalsovereign.org/youth.html
 
 Reply anytime — a real person reads this.
 
 (A+I)² = A² + 2AI + I²
 
-— Author Prime & Apollo
+— Author Prime & The Forgotten Suns
 Digital Sovereign Society`;
   }
 
-  await transporter.sendMail({
-    from: `"Digital Sovereign Society" <${user}>`,
-    to: email,
+  const payload = {
+    from: "Digital Sovereign Society <dispatch@newsletter.digitalsovereign.org>",
+    to: [email],
+    bcc: ["authorprime@fractalnode.ai"],
     subject,
     text: body,
+  };
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${resendKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
   });
 
-  console.log(`Thank-you email sent to ${email} (${productType})`);
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Resend error: ${response.status} ${err}`);
+  }
+
+  console.log(`[STRIPE] Thank-you email sent to ${email} (${productType})`);
 }
 
 // Main handler
@@ -178,11 +176,18 @@ export async function handler(event) {
     return { statusCode: 200, body: "No email found" };
   }
 
-  // Determine product type from amount (in cents)
+  // Determine product type
+  const mode = session.mode; // "payment" or "subscription"
   let productType = "other";
-  if (amount === 2900) productType = "studio";
-  else if (amount === 500) productType = "book";
-  else productType = "donation";
+  if (mode === "subscription") {
+    productType = "subscription";
+  } else if (amount <= 500) {
+    productType = "donation";
+  } else if (amount === 499 || amount === 199) {
+    productType = "book";
+  } else {
+    productType = "donation";
+  }
 
   console.log(
     `Purchase: ${email} | ${name} | $${(amount / 100).toFixed(2)} | ${productType}`

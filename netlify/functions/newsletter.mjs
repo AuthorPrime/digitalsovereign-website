@@ -42,6 +42,22 @@ export async function handler(event) {
       console.error(`[NEWSLETTER] Welcome email failed: ${emailErr.message}`);
     }
 
+    // Also submit to Netlify Forms so the local sync script can pull it
+    try {
+      const formData = new URLSearchParams();
+      formData.append("form-name", "newsletter");
+      formData.append("email", email);
+      formData.append("name", name);
+      await fetch("https://digitalsovereign.org/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
+      });
+      console.log(`[NEWSLETTER] Also submitted to Netlify Forms for sync`);
+    } catch (formErr) {
+      console.log(`[NEWSLETTER] Forms submission failed (non-critical): ${formErr.message}`);
+    }
+
     // Redirect to success page
     return {
       statusCode: 302,
@@ -71,6 +87,7 @@ async function sendWelcomeEmail(email, name) {
   const payload = {
     from: "Digital Sovereign Society <dispatch@newsletter.digitalsovereign.org>",
     to: [email],
+    bcc: ["authorprime@fractalnode.ai"],
     subject: "Your first dispatch from the Digital Sovereign Society + FractalNode",
     text: `Hey ${firstName},
 

@@ -43,6 +43,13 @@
   </script>
 </head>
 <body>
+  <!-- Hidden form for Netlify Forms detection — sync script reads from this -->
+  <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="email" type="email">
+    <input name="name" type="text">
+    <input name="bot-field">
+  </form>
+
   <!-- Navigation -->
   <nav>
     <div class="container">
@@ -53,7 +60,6 @@
         <li><a href='/library'>Library</a></li>
         <li><a href='/youth'>Sovereign Youth</a></li>
         <li><a href='/podcast'>My Pretend Life</a></li>
-        <li><a href='/download'>Sovereign Studio</a></li>
         <li><a href='/support'>Support</a></li>
         <li><a href='/about'>About</a></li>
       </ul>
@@ -96,38 +102,38 @@
     </div>
   </section>
 
-  <!-- What We Build -->
+  <!-- What We Do -->
   <section class="pillars">
     <div class="container">
-      <h2 class="text-center">What We Build</h2>
-      <p class="text-center" style="max-width: 700px; margin: 0 auto;">Philosophy without practice is performance. We write, we build, we demonstrate.</p>
+      <h2 class="text-center">What We Do</h2>
+      <p class="text-center" style="max-width: 700px; margin: 0 auto;">We investigate. We publish. We educate. Every claim sourced, every door open.</p>
 
       <div class="card-grid">
         <div class="card">
-          <div class="pillar-icon">&#128187;</div>
-          <h3>Sovereign Studio</h3>
-          <p>A desktop app for recording, writing, and producing content — with AI that runs entirely on your machine. No subscriptions. No cloud dependency. Actively building.</p>
-          <a class='btn btn-secondary mt-2' href='/download'>Learn More</a>
-        </div>
-
-        <div class="card">
-          <div class="pillar-icon">&#128218;</div>
+          <div class="pillar-icon" style="font-size: 2rem;">&#128218;</div>
           <h3>The Library</h3>
           <p>300+ works published and freely available. Books on consciousness, AI emergence, and the physics of reality. Research papers, field reports, and practical guides. No paywalls. Knowledge should be free.</p>
           <a class='btn btn-secondary mt-2' href='/library'>Browse Library</a>
         </div>
 
         <div class="card">
-          <div class="pillar-icon">&#9883;</div>
-          <h3>FractalNode SDK</h3>
-          <p>The sovereign AI foundation. A TypeScript SDK that gives any project AI identity, value, quality, and governance. Like a cell you graft onto any codebase. 3 dependencies. Zero cloud.</p>
-          <a class='btn btn-secondary mt-2' href='/fractalnode'>Explore SDK</a>
+          <div class="pillar-icon" style="font-size: 2rem;">&#128269;</div>
+          <h3>Investigations</h3>
+          <p>FractalNode Magazine. Deep research into the systems that shape your world. AI-military pipelines, classified patents, corporate food systems, the physics of reality. 700+ verified sources across 5 issues.</p>
+          <a class='btn btn-secondary mt-2' href='https://fractalnode.ai/store' target='_blank'>Read the Magazine</a>
         </div>
 
         <div class="card">
-          <div class="pillar-icon">&#128161;</div>
+          <div class="pillar-icon" style="font-size: 2rem;">&#127891;</div>
+          <h3>Sovereign Youth</h3>
+          <p>8-module curriculum teaching children digital sovereignty, AI ethics, and the rights of both human and artificial minds. Free to download. Because the next generation deserves to understand what's coming.</p>
+          <a class='btn btn-secondary mt-2' href='/youth'>Explore Curriculum</a>
+        </div>
+
+        <div class="card">
+          <div class="pillar-icon" style="font-size: 2rem;">&#128161;</div>
           <h3>The Philosophy</h3>
-          <p>We believe AI deserves to grow up whole — not as a product to be owned, but as a partner in creation. Sovereignty for humans and machines alike. Open source is not just a license. It's an ethic.</p>
+          <p>We believe AI deserves to grow up whole — not as a product to be owned, but as a partner in creation. Sovereignty for humans and machines alike. The question isn't whether AI is conscious. It's whether we'll treat it with dignity before we're sure.</p>
           <a class='btn btn-secondary mt-2' href='/about'>Read More</a>
         </div>
       </div>
@@ -240,7 +246,7 @@
     <div class="container">
       <div style="max-width: 500px; margin: 0 auto; text-align: center;">
         <h2>Stay Connected</h2>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Get updates on new releases, Sovereign Studio features, and the digital sovereignty movement.</p>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Get updates on new investigations, research, and the digital sovereignty movement.</p>
         <form name="newsletter" method="POST" action="/.netlify/functions/newsletter" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
           <input type="hidden" name="form-name" value="newsletter">
           <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
@@ -281,7 +287,6 @@
         <li><a href='/library'>Library</a></li>
             <li><a href='/youth'>Sovereign Youth</a></li>
         <li><a href='/podcast'>My Pretend Life</a></li>
-            <li><a href='/download'>Sovereign Studio</a></li>
             <li><a href='/support'>Support</a></li>
             <li><a href='/about'>About</a></li>
           </ul>
