@@ -176,17 +176,24 @@ export async function handler(event) {
     return { statusCode: 200, body: "No email found" };
   }
 
-  // Determine product type
+  // Determine product type from session metadata and amount
   const mode = session.mode; // "payment" or "subscription"
+  const metadata = session.metadata || {};
   let productType = "other";
+  let productName = "";
+
   if (mode === "subscription") {
     productType = "subscription";
-  } else if (amount <= 500) {
-    productType = "donation";
-  } else if (amount === 499 || amount === 199) {
+  } else if (amount === 499) {
+    productType = "magazine";
+    productName = metadata.issue || "FractalNode Magazine";
+  } else if (amount === 199) {
     productType = "book";
-  } else {
+    productName = "The Door Between Us";
+  } else if (amount === 500 || amount === 2500 || amount === 5000) {
     productType = "donation";
+  } else {
+    productType = "other";
   }
 
   console.log(

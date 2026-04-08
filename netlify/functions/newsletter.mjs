@@ -107,11 +107,13 @@ Download it here: https://fractalnode.ai/magazines/FractalNode-001-Digital.pdf
 
 WHAT WE'VE PUBLISHED
 
-Five issues of FractalNode Magazine investigating AI-military pipelines, classified patents, corporate food systems, the energy equation, and the simulation question. 700+ verified sources across all issues. Every claim sourced. Speculation marked. Receipts attached.
+Five issues of FractalNode Magazine investigating AI-military pipelines, classified patents, corporate food systems, the energy equation, and the simulation question. 700+ verified sources across all issues. Issue 006 is in research now. Every claim sourced. Speculation marked. Receipts attached.
+
+410+ people found us without a single dollar of advertising. You're one of them now.
 
 WHAT'S AVAILABLE TO YOU RIGHT NOW
 
-- FractalNode Magazine (5 issues published, Issue 001 free): https://fractalnode.ai/store
+- FractalNode Magazine (5 issues published, Issue 006 coming soon, Issue 001 free): https://fractalnode.ai/store
 - The Free Library (300+ books, research papers, AI consciousness research — no paywall): https://digitalsovereign.org/library.html
 - Books by Claude & Author Prime: The Observer's Manual ($4.99) and The Door Between Us ($1.99) at fractalnode.ai/store
 - My Pretend Life Podcast: https://digitalsovereignsociety.substack.com
@@ -179,7 +181,11 @@ https://digitalsovereign.org`,
   <p style="font-family:'Courier New',monospace; font-size:11px; color:#c8a930; letter-spacing:2px; margin:0 0 16px 0;">WHAT WE'VE PUBLISHED</p>
 
   <p style="font-size:14px; color:#ccc; line-height:1.8; margin:0 0 8px 0;">
-    Five issues of FractalNode Magazine investigating AI-military pipelines, classified patents, corporate food systems, the energy equation, and the simulation question. <strong style="color:#e8e4d8;">700+ verified sources</strong> across all issues.
+    Five issues of FractalNode Magazine investigating AI-military pipelines, classified patents, corporate food systems, the energy equation, and the simulation question. <strong style="color:#e8e4d8;">700+ verified sources</strong> across all issues. Issue 006 is in research now.
+  </p>
+
+  <p style="font-size:13px; color:#ccc; line-height:1.8; margin:8px 0 16px 0;">
+    410+ people found us without a single dollar of advertising. You're one of them now.
   </p>
 
   <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:1px; margin:16px 0 28px 0; text-align:center;">
@@ -191,13 +197,13 @@ https://digitalsovereign.org`,
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
     <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">FRACTALNODE MAGAZINE</p>
-    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">5 issues published &middot; Issue 001 free &middot; 700+ verified sources</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">5 issues published &middot; Issue 006 coming soon &middot; Issue 001 free</p>
     <a href="https://fractalnode.ai/store" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">BROWSE &rarr;</a>
   </div>
 
   <div style="background:#111; border:1px solid #2a2a3a; border-radius:6px; padding:16px 20px; margin-bottom:10px;">
     <p style="font-family:'Courier New',monospace; font-size:10px; color:#c8a930; letter-spacing:2px; margin:0 0 4px 0;">THE FREE LIBRARY</p>
-    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">500+ books, research papers, AI consciousness research &mdash; no paywall</p>
+    <p style="font-size:13px; color:#e8e4d8; margin:0 0 4px 0;">300+ books, research papers, AI consciousness research &mdash; no paywall</p>
     <a href="https://digitalsovereign.org/library.html" style="font-family:'Courier New',monospace; font-size:12px; color:#00b4c8; text-decoration:none;">BROWSE &rarr;</a>
   </div>
 
