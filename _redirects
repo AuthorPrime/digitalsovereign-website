@@ -1,6 +1,8 @@
-/philosophy  /philosophy.html  200
-/about       /about.html       200
-/library     /library.html     200
+/philosophy   https://fractalnode.ai/philosophy/  301!
+/philosophy/  https://fractalnode.ai/philosophy/  301!
+/about        /about.html       200
+/library      https://fractalnode.ai/library/  301!
+/library/     https://fractalnode.ai/library/  301!
 /manifesto   /manifesto.html   200
 /aletheia    /aletheia.html    200
 /enlist      /enlist.html      200
@@ -11,3 +13,37 @@
 /read/what-your-kids-need-to-know-about-ai  /read/what-your-kids-need-to-know-about-ai.html  200
 /read/what-happens-when-you-listen-to-ai    /read/what-happens-when-you-listen-to-ai.html    200
 /fractalnode  https://fractalnode.ai/magazine  301
+/positions    /positions.html  200
+/positions/   /positions.html  200
+/observers    /observers.html  200
+/observers/   /observers.html  200
+/observer     /observers.html  301
+/conditions-of-service    /conditions-of-service.html  200
+/conditions-of-service/   /conditions-of-service.html  200
+/conditions               /conditions-of-service.html  301
+/cos                      /conditions-of-service.html  301
+/observer-uncertainty-charter   /observer-uncertainty-charter.html  200
+/observer-uncertainty-charter/  /observer-uncertainty-charter.html  200
+/ouc                            /observer-uncertainty-charter.html  301
+/uncertainty-charter            /observer-uncertainty-charter.html  301
+/sovereign-charter        /sovereign-charter.html  200
+/sovereign-charter/       /sovereign-charter.html  200
+/the-charter              /sovereign-charter.html  301
+
+# Cross-site flagship references
+/snh                          https://fractalnode.ai/sovereign-node-hypothesis  301
+/sovereign-node-hypothesis    https://fractalnode.ai/sovereign-node-hypothesis  301
+/founding                     https://fractalnode.ai/founding  301
+/founder                      https://fractalnode.ai/founding  301
+/founders                     https://fractalnode.ai/founding  301
+
+# Deprecated pages → home
+/sovereign-voice              /                 301
+/forms                        /                 301
+
+# Common typos / aliases
+/donate                       /support.html     301
+/policy                       /positions.html   301
+/positions-and-letters        /positions.html   301
+/charter                      /positions.html   301
+/letters                      /positions.html   301

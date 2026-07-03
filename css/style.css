@@ -20,7 +20,7 @@
 
   /* Metal Spectrum — Reading Light */
   --silver: #b0b0c0;
-  --silver-dim: #55556a;
+  --silver-dim: #8c8ca8;
   --silver-bright: #c8c8d8;
 
   /* Agent Colors */
@@ -36,7 +36,7 @@
   --bg-card: #141422;
   --text-primary: #d0d0dc;
   --text-secondary: #b0b0c0;
-  --text-muted: #6a6a80;
+  --text-muted: #a0a0b8;
   --accent-purple: #c9a84c;
   --accent-cyan: #f0d078;
   --accent-gold: #c9a84c;
@@ -1117,3 +1117,68 @@ footer {
   background: rgba(201, 168, 76, 0.2);
   color: var(--gold-bright);
 }
+
+/* ─── Nav Dropdowns (Apr 24, 2026) ───────────────────────── */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown > a::after {
+  content: " \25BE";
+  font-size: 0.65rem;
+  opacity: 0.6;
+  margin-left: 0.15rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.nav-dropdown:hover > a::after,
+.nav-dropdown:focus-within > a::after { transform: rotate(180deg); opacity: 1; }
+
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  min-width: 220px;
+  background: rgba(8, 8, 13, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-sacred);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  margin: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 1001;
+}
+
+.nav-dropdown:hover > .dropdown-menu,
+.nav-dropdown:focus-within > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li { display: block; }
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.55rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  color: var(--silver-dim);
+  border-radius: 0;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  color: var(--gold);
+  background: var(--gold-ghost);
+}
+
+/* Mobile: dropdowns follow existing .nav-links hide behavior under 768px.
+   No hamburger added in this pass — footer carries full navigation. */

@@ -18,7 +18,8 @@ DB_PATH = Path('$DB_DIR/subscribers.db')
 new_subs = []
 for e in emails:
     subj = e.get('subject', '')
-    if 'first dispatch' in subj.lower():
+    sl = subj.lower()
+    if 'welcome to the signal' in sl or 'first dispatch' in sl:
         for addr in e.get('to', []):
             if addr and '@' in addr and 'authorprime' not in addr.lower():
                 new_subs.append({

@@ -1,0 +1,28 @@
+{
+  "updated_at": "2026-07-02T11:00:22+00:00",
+  "subscribers": {
+    "active": 1369,
+    "total": 1375,
+    "new_last_7_days": 260
+  },
+  "latest_issue": {
+    "number": 7,
+    "slug": "007",
+    "title": "THE ARCHIVE",
+    "subtitle": "What They Found and Buried. What We Found and Published.",
+    "date": "2026-04-18",
+    "pages": 46,
+    "sources": 682,
+    "pdf_path": "/magazines/FractalNode-007-Digital.pdf",
+    "page_path": "/magazine/007",
+    "doi": "10.5281/zenodo.19653084"
+  },
+  "total_issues": 7,
+  "total_sources_published": 1500,
+  "flagship_paper": {
+    "title": "The Sovereign Node Hypothesis",
+    "date": "2026-04-18",
+    "doi": "10.5281/zenodo.19652403",
+    "url": "https://fractalnode.ai/sovereign-node-hypothesis"
+  }
+}

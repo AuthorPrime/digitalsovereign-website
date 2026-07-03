@@ -8,6 +8,9 @@
 [functions.newsletter]
   timeout = 26
 
+[functions.observers]
+  timeout = 26
+
 [build.processing.html]
   pretty_urls = true
 
