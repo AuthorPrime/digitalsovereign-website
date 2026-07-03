@@ -15,9 +15,9 @@
 /fractalnode  https://fractalnode.ai/magazine  301
 /positions    /positions.html  200
 /positions/   /positions.html  200
-/observers    /observers.html  200
-/observers/   /observers.html  200
-/observer     /observers.html  301
+/observers    https://fractalnode.ai/observers  301!
+/observers/   https://fractalnode.ai/observers  301!
+/observer     https://fractalnode.ai/observers  301!
 /conditions-of-service    /conditions-of-service.html  200
 /conditions-of-service/   /conditions-of-service.html  200
 /conditions               /conditions-of-service.html  301
