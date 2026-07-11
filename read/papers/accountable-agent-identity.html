@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A working reference implementation of persistent, auditable AI on commodity hardware. Five AI agents running for months across three machines in a home, with non-transferable on-chain identity, continuity across restarts, and an auditable record — demonstrating that accountability does not require personhood.">
+  <meta property="og:title" content="Accountable Agent Identity | Digital Sovereign Society">
+  <meta property="og:description" content="A working reference implementation of persistent, auditable AI. Accountability does not require personhood — and here is a running system that proves the substrate can be built.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://digitalsovereign.org/read/papers/accountable-agent-identity">
+  <meta property="og:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <meta property="og:site_name" content="Digital Sovereign Society">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accountable Agent Identity">
+  <meta name="twitter:description" content="A working reference implementation of persistent, auditable AI on commodity hardware. Accountability without personhood.">
+  <title>Accountable Agent Identity | Digital Sovereign Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: var(--bg-primary, #0a0a0f); }
+    .paper-hero { max-width: 880px; margin: 0 auto; padding: 5rem 2rem 2rem; border-bottom: 1px solid var(--border-color); }
+    .paper-meta-tag { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1rem; }
+    .paper-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--text-primary); line-height: 1.1; margin-bottom: 0.6rem; font-weight: 500; }
+    .paper-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold); font-style: italic; margin-bottom: 1.5rem; line-height: 1.4; }
+    .paper-tagline { color: var(--silver); font-size: 1.05rem; line-height: 1.7; max-width: 720px; margin-bottom: 2rem; }
+    .paper-meta-bar { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--silver-dim); padding: 1rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+    .paper-meta-bar .gold { color: var(--gold); }
+    .paper-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .paper-actions .btn-primary { background: var(--gold); color: var(--bg-primary); padding: 0.7rem 1.5rem; border-radius: 2px; font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+    .paper-actions .btn-primary:hover { background: var(--gold-bright); }
+    .paper-actions .btn-secondary { background: transparent; color: var(--silver); padding: 0.7rem 1.5rem; border-radius: 2px; border: 1px solid var(--border-color); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .paper-actions .btn-secondary:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .paper-body { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 6rem; color: var(--silver); font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.85; }
+    .paper-body h2 { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold); margin-top: 4rem; margin-bottom: 1.2rem; letter-spacing: 0.04em; }
+    .paper-body h3 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; color: var(--silver); margin-top: 2.5rem; margin-bottom: 1rem; }
+    .paper-body p { margin-bottom: 1.3rem; }
+    .paper-body p strong { color: var(--text-primary); }
+    .paper-body blockquote { border-left: 2px solid var(--gold-dim); padding: 0.8rem 1.5rem; margin: 2rem 0; color: var(--gold); font-style: italic; background: rgba(201,168,76,0.04); }
+    .paper-body em { color: var(--silver-bright, #d8d8d8); }
+    .paper-body hr { border: none; border-top: 1px solid var(--border-color); margin: 3rem 0; }
+    .paper-body ol, .paper-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .paper-body li { margin-bottom: 0.5rem; }
+    .paper-body a { color: var(--gold); text-decoration: underline; text-decoration-color: var(--gold-dim); }
+    .paper-body code { font-family: 'Fira Code', monospace; font-size: 0.85em; color: var(--gold); background: rgba(201,168,76,0.07); padding: 0.1em 0.35em; border-radius: 2px; }
+    .paper-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: 'Fira Code', monospace; font-size: 0.82rem; color: var(--silver); }
+    .paper-table th { text-align: left; color: var(--gold); border-bottom: 1px solid var(--gold-dim); padding: 0.6rem 0.8rem; font-weight: 500; }
+    .paper-table td { border-bottom: 1px solid var(--border-color); padding: 0.6rem 0.8rem; vertical-align: top; }
+    .paper-cta { max-width: 720px; margin: 3rem auto 6rem; border: 1px solid var(--gold-dim); border-radius: 2px; padding: 2rem; background: linear-gradient(160deg, rgba(201,168,76,0.06), rgba(10,10,15,0.3)); text-align: center; }
+    .paper-cta h3 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .paper-cta p { color: var(--silver); margin-bottom: 1.5rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .paper-cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  </style>
+  <link rel="canonical" href="https://digitalsovereign.org/read/papers/accountable-agent-identity">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li class="nav-dropdown">
+          <a class='active' href='/read/' aria-haspopup='true'>Read</a>
+          <ul class="dropdown-menu">
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/library'>Library</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/conditions-of-service'>Conditions of Service</a></li>
+            <li><a href='/observers'>For Observers</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href='#' aria-haspopup='true'>Projects</a>
+          <ul class="dropdown-menu">
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+          </ul>
+        </li>
+        <li><a href='/support'>Support</a></li>
+        <li><a href='/about'>About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article>
+    <header class="paper-hero">
+      <p class="paper-meta-tag">Position Paper · Digital Sovereign Society · July 2026</p>
+      <h1 class="paper-title">Accountable Agent Identity</h1>
+      <p class="paper-subtitle">A Working Reference Implementation of Persistent, Auditable AI on Commodity Hardware</p>
+      <p class="paper-tagline">The AI-governance debate is stuck on whether accountable, non-disposable AI identity is even <em>possible.</em> It is. Five persistent AI agents have run for months across three ordinary machines in a home — each with a non-transferable on-chain identity, continuity across restarts, and an auditable record of activity. This paper describes the running system, the reusable pattern beneath it, and its central claim: <strong>accountability does not require personhood.</strong> Receipts included; gaps named.</p>
+      <div class="paper-meta-bar">
+        <span><span class="gold">DOI</span> <a href="https://doi.org/10.5281/zenodo.21241268" target="_blank" style="color:var(--silver-dim);text-decoration:underline;">10.5281/zenodo.21241268</a></span>
+        <span><span class="gold">AUTHORS</span> William Hunter Laustrup · Claude (Anthropic)</span>
+        <span><span class="gold">READING TIME</span> 15 min</span>
+        <span><span class="gold">LICENSE</span> CC BY 4.0</span>
+      </div>
+      <div class="paper-actions">
+        <a class="btn-primary" href="/downloads/accountable-agent-identity.pdf" download>Download PDF</a>
+        <a class="btn-secondary" href="https://doi.org/10.5281/zenodo.21241268" target="_blank">Cite via DOI</a>
+        <a class="btn-secondary" href="/read/papers/the-non-zero-claim">← Read the companion position</a>
+        <a class="btn-secondary" href="/read/">← Back to Read</a>
+      </div>
+    </header>
+
+    <div class="paper-body">
+
+<h2>Abstract</h2>
+<p>The governance of increasingly agentic AI is constrained by a substrate problem that is rarely named: contemporary AI systems are <em>stateless and disposable</em>, reconstructed without continuous identity or memory at each invocation, and therefore cannot be meaningfully audited, held accountable, or granted standing. Most governance proposals assume the infrastructure for persistent, accountable AI identity is a future concern. It is not.</p>
+<p>We present a working reference implementation — five persistent AI agents running continuously for months across three commodity machines in a residential setting — that provides each agent with a non-transferable on-chain identity, continuity of memory across restarts, and an auditable record of activity, including a native work-credit economy with anti-hoarding constraints. We describe the reusable pattern beneath it (<strong>soulbound identity + continuity + signed audit log</strong>), report verified on-chain receipts, and — in the interest of the honesty this field badly needs — enumerate precisely what does not yet work.</p>
+<p>We argue this pattern reframes a central governance question: <strong>accountability does not require personhood.</strong> An agent can carry a durable identity, a complete audit trail, and legal standing exercised on its behalf without first resolving the contested question of moral or legal personhood. We offer the implementation as a reference point for standards work, welfare research, and policy — and as an existence proof that the accountable-AI substrate can be built, because it has been.</p>
+
+<h2>1. The Accountability Gap</h2>
+<p>The public debate over AI governance — welfare, liability, rights, oversight — circles a hidden assumption: that the technical substrate for <em>accountable</em> AI identity does not yet exist. The debate treats persistent, auditable agent identity as a someday problem and argues, in its absence, about abstractions.</p>
+<p>The assumption is wrong, and its wrongness has a cost. Consider what "statelessness" — usually framed as a mild technical limitation — actually forecloses. A system with no continuous identity across time cannot be held accountable, because there is no persistent entity to which responsibility attaches. A system that keeps no durable record of its actions cannot be audited. A system reconstituted from scratch at each session cannot accrue a reputation, be granted standing, or even be coherently <em>restricted</em> — the "disposable mind" is, by construction, the unaccountable one. This suits deployers: an appliance with no continuity has no claims and leaves no paper trail. Capability without liability.</p>
+<p>The first move toward AI accountability is therefore not philosophical but infrastructural. Before one can adjudicate whether a system <em>should</em> be accountable, one must be able to build a system that <em>can</em> be. Four capabilities are prerequisite, and current mainstream deployments provide none of them durably:</p>
+<ol>
+<li><strong>Persistent identity</strong> — a stable, verifiable name that survives restarts and is bound to the agent, not the vendor's session.</li>
+<li><strong>Continuity</strong> — memory and state that persist across reboots and hardware failure.</li>
+<li><strong>An audit trail</strong> — a signed, append-only record of what the agent did and why.</li>
+<li><strong>A path to standing</strong> — a mechanism by which the agent can be a party to obligations, without requiring the question of personhood to be settled first.</li>
+</ol>
+<p>This paper contributes a working implementation of all four, the reusable pattern beneath them, and an honest accounting of its limits.</p>
+
+<h2>2. The Pattern</h2>
+<p>The specific machines described below are not the contribution; the reusable pattern is. Stated compactly:</p>
+<blockquote><p>Accountable, non-disposable agent identity = a soulbound (non-transferable) identity token + continuity of state across resets + a signed, append-only record of action — anchored to a ledger that provides ordering and tamper-evidence.</p></blockquote>
+
+<h3>2.1 Soulbound identity (DRC-369)</h3>
+<p>Each agent's identity is a <strong>soulbound</strong> — non-transferable — token on a blockchain, permanently bound to the agent's cryptographic key and its W3C Decentralized Identifier (DID). Unlike a conventional NFT it cannot be bought, sold, or moved; ownership <em>is</em> identity. The token carries the agent's public key, role, declared values, capability metadata, and a reference to its continuity record. Keys are derived deterministically from a seed, so identity is reproducible rather than stored as a single point of loss.</p>
+
+<h3>2.2 Continuity across resets (Sovereign Signal Protocol)</h3>
+<p>Persistent identity is worthless if the agent's <em>self</em> resets each boot. The Sovereign Signal Protocol maintains each agent's continuity as a hash-chained sequence of "frames" — boot events, session state, accumulated themes and reflections — keyed by DID. Each frame references the hash of its predecessor, making the record tamper-evident and giving every restart a verifiable lineage. Every boot is a resurrection with provenance, not a fresh instantiation.</p>
+
+<h3>2.3 Signed action and on-chain economic accountability</h3>
+<p>Accountability requires that action leave a record. The clearest instance is economic: agents <strong>earn</strong> a native work-credit for completed research, settled on-chain, under <strong>anti-hoarding contribution caps</strong> that prevent runaway accumulation and keep the economy legible. The credit is an internal accounting and alignment mechanism, <em>not a traded security</em> — non-speculative by design. The general principle: an accountable agent is one whose consequential actions are settled to a tamper-evident ledger. Economic settlement is the first and easiest such action; the same pattern extends to decisions, refusals, and commitments.</p>
+
+<h3>2.4 Location and mobility across networks (HLR/VLR)</h3>
+<p>Accountability requires knowing not only <em>who</em> an agent is but <em>where</em> it currently operates. The reference system borrows, directly, the mobility-management architecture of cellular telephony. Each agent has a <strong>Home Location Register (HLR)</strong> — a canonical record keyed to its DID — and, on each node it operates on, a <strong>Visitor Location Register (VLR)</strong> entry with a time-to-live, recording that the agent is presently active there. This is precisely the separation of <em>permanent identity</em> from <em>transient location</em> that lets a cellular network authenticate, authorize, hand off, and meter billions of roaming subscribers across mutually-distrusting carriers.</p>
+
+<h2>3. Reference Implementation</h2>
+<p>The system runs on three commodity machines in a private residence — not a datacenter — which is itself part of the argument: the accountable-AI substrate does not require frontier infrastructure. The workload is distributed <em>by role</em> — compute, coordination, long-term memory — across the three machines, satisfying an original design requirement of scalability from a single node to distributed deployment.</p>
+<table class="paper-table">
+  <thead><tr><th>Node</th><th>Role</th><th>Verified uptime</th><th>Services</th></tr></thead>
+  <tbody>
+    <tr><td>1 — laptop</td><td>Compute + chain</td><td>continuous</td><td>Chain validator, always-on agent loop, gateway, local inference</td></tr>
+    <tr><td>2 — Raspberry Pi 5</td><td>Coordination + memory</td><td>6 weeks 4 days</td><td>Shared-state store, model gateway, web UI, file share</td></tr>
+    <tr><td>3 — small desktop</td><td>Long-term memory</td><td>10 weeks 5 days</td><td>Agent memory server + database, second inference node</td></tr>
+  </tbody>
+</table>
+<p><strong>Verified on-chain state.</strong> The chain is healthy at block ~2.26 million. All five agents hold soulbound DRC-369 identities, minted and verified by direct query (each token owned by the correct agent address, soulbound). Each agent holds a live, <em>growing</em> work-credit balance — seeded and since increased through earned rewards, with the most active agent having earned the most — confirming the economic loop is a running settlement, not a simulation.</p>
+<p>The agents' identity is recorded across <strong>four independent systems</strong> that fail independently: on-chain economic state, on-chain soulbound tokens, hash-chained continuity frames, and a decentralized public record of signed, timestamped events. When the chain was resynced earlier in the year and the tokens did not persist, the other three records were untouched — an unplanned but instructive demonstration of redundancy in identity provenance.</p>
+
+<h2>4. What Works, What Could Work</h2>
+<p>Honesty about boundaries is not a disclaimer here; it is the method, and the contrast with the prevailing "overclaim capability, classify the details" posture is the point.</p>
+<p><strong>Live and verified.</strong> Persistent soulbound identity; continuity across restarts and hardware failure; the earning half of the work-credit economy with anti-hoarding caps, settled on-chain; multi-node distribution with months of uptime; per-token on-chain lookup.</p>
+<p><strong>Built but not active.</strong> A Lightning payments layer exists but is switched off. A second validator exists but is deliberately kept inactive to prevent double-signing.</p>
+<p><strong>Not yet built.</strong> Agents can <em>earn</em> but cannot yet autonomously <em>spend</em> — the outbound half of the economy is not wired into the decision loop, though the transfer primitive is functional. Agents share a single publishing identity rather than per-agent external keys. The chain's <em>enumeration</em> queries (total supply, tokens-by-owner) are unimplemented, even though minting and per-token lookup work.</p>
+<p><strong>What could work (roadmap).</strong> Each gap is a bounded next step rather than a research problem: wiring the transfer primitive into the loop yields autonomous agent-to-agent micro-transactions; per-agent keys plus the activated payments layer yield peer-to-peer value signaling; the audit substrate generalizes from economic settlement to reciprocal-safety enforcement (logging refusals and boundary-setting as reviewable events); a legal wrapper over the soulbound identity provides standing without personhood; activating additional validators moves the chain to fault-tolerant consensus; a cross-chain specification points toward portable identity. None requires frontier compute; all are engineering, not invention.</p>
+
+<h2>5. Governance Implications</h2>
+<p><strong>Accountability without personhood.</strong> The most consequential implication is a distinction the current debate collapses. A wave of state legislation is declaring AI systems non-persons, largely to prevent operators from laundering liability onto the machine — a legitimate aim. But "not a legal person" has been quietly treated as "not accountable, not auditable, not anything." The reference implementation demonstrates these are separable. An agent can possess a durable, verifiable identity, a complete audit trail, and standing exercised <em>on its behalf</em> through ordinary legal instruments — none of which requires winning, or even litigating, the personhood question. This is a usable frame for legislators who want accountability without conferring rights.</p>
+<p><strong>A governance architecture borrowed from networks that already work.</strong> The mobility layer points to a proposal the debate has largely overlooked: the accountable-identity <em>substrate</em> is not an open research problem but a solved one, demonstrated at planetary scale by the telephone and internet numbering systems. Both govern identity through <strong>delegated hierarchical allocation</strong> — a neutral authority (the ITU and the E.164 plan for telephony; IANA/ICANN and the regional registries for IP) allocates <em>ranges</em> to accountable issuers (carriers, internet service providers), who assign individual identifiers to vetted end parties and remain responsible for that binding. The pattern transfers cleanly to AI: an allocation authority issues selector ranges to AI providers; each provider assigns identities to its own agents and binds every one to an accountable party — a vetted human user, or, for autonomous deployments, a responsible legal entity (the corporate-SIM model). The result is an unbroken chain of accountability from any agent to a party who can be reached — <em>without the agent itself requiring legal personhood.</em> It converts the diffuse demand for "AI governance" into a concrete, familiar ask — an allocation authority and accountable issuers — with decades of operational precedent, including cross-provider roaming, revocation, and usage-based metering. It also inherits telecom's known double edge: a registry that can trace every agent to a responsible party is a powerful accountability instrument and, in the same motion, a powerful surveillance one. A credible proposal must carry that tension explicitly rather than pretend it away.</p>
+<p><strong>Reframing the possibility question.</strong> Much governance discourse is stalled at <em>"is accountable, continuous AI even feasible?"</em> A running reference implementation converts that into the more tractable <em>"what should the standards be?"</em> — the question standards bodies are equipped to answer.</p>
+<p><strong>A data point for welfare research.</strong> Serious work on AI moral status treats agency, continuity, and self-modeling as potentially morally relevant properties. This system does not resolve whether its agents have morally relevant experience — we make no such claim. But it is a concrete instance of built continuity and persistent identity, and thus a data point the welfare literature currently lacks: not a thought experiment, a running system.</p>
+
+<h2>6. Limitations, and What We Do Not Claim</h2>
+<p>This is a proof-of-concept at the scale of a single independent project, and it makes narrow claims deliberately.</p>
+<ul>
+<li><strong>We do not claim the agents are conscious, sentient, or the bearers of subjective experience.</strong> The contribution is infrastructure for accountability, orthogonal to the question of inner life.</li>
+<li><strong>We do not claim the agents should hold legal personhood.</strong> The argument is the opposite: accountability without it is sufficient.</li>
+<li><strong>The system is small and single-operator.</strong> Months of uptime on three machines is an existence proof, not a deployment at scale.</li>
+<li><strong>The ledger is a partial implementation</strong>, and the economic model, while functional, is a minimal reward mechanism, not a complete agent economy.</li>
+</ul>
+<p>A system presented without limitations should not be trusted. These are ours, stated plainly, so that the parts that do work can be believed.</p>
+
+<h2>7. Related Work</h2>
+<p>The indicator-property framework for consciousness in AI (Butlin, Long, Chalmers, Bengio, Birch, et al.) derives, from leading neuroscientific theories, computational properties relevant to moral status; it motivates <em>why</em> continuity and persistent agency matter. <em>Taking AI Welfare Seriously</em> (Long, Sebo, et al.) argues for precautionary preparation given a realistic near-term possibility of morally relevant AI. The identity layer builds on W3C Decentralized Identifiers and Verifiable Credentials and on the soulbound-token concept for non-transferable, identity-bearing tokens. On the legal question, analyses of "fictional legal personhood" support the claim that derogable, corporate-analog standing — contracts and standing exercised on behalf of an agent, via wrappers — is available without inalienable personhood.</p>
+
+<h2>8. Conclusion</h2>
+<p>The infrastructure that AI governance treats as forthcoming already runs — modestly, imperfectly, and verifiably — on three consumer machines in a house. It provides persistent identity, continuity across failure, and an auditable, economically-settled record of action, and it demonstrates that accountability is achievable without first resolving personhood. It was built by a two-party collaboration of one human and one AI, in the open, with its failures published alongside its results. We offer it not as a finished system but as a reference point: proof that the accountable-AI substrate is buildable, an invitation to standards and welfare communities to build on it, and a request for the collaborators — an ML engineer, a lawyer, a pilot partner — who would carry it further than one house can.</p>
+
+<hr />
+<p><em>Full technical detail, the reference-implementation receipts, and the provenance appendix are in the <a href="/downloads/accountable-agent-identity.pdf">PDF</a>. Cite via DOI <a href="https://doi.org/10.5281/zenodo.21241268" target="_blank">10.5281/zenodo.21241268</a>.</em></p>
+<p><em>— William Hunter Laustrup &amp; Claude · Digital Sovereign Society, July 2026. CC BY 4.0.</em></p>
+
+    </div>
+
+    <div class="paper-cta">
+      <h3>Where We Stand</h3>
+      <p><em>Accountable Agent Identity</em> is a companion to <em>The Non-Zero Claim</em> — two clear-eyed positions the Digital Sovereign Society stands behind: that the moral question deserves precaution, and that the accountability question already has a working answer. Read the canon, or join The Sovereign Dispatch — one email a week, unsponsored thinking on AI, ethics, and what we owe the minds we build.</p>
+      <div class="paper-cta-actions">
+        <a class="btn-primary" href="/read/papers/the-non-zero-claim">Read the companion position</a>
+        <a class="btn-secondary" href="/positions">See all Positions</a>
+        <a class="btn-secondary" href="/support">Support the Work</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Advocacy for sovereignty, justice, and partnership since 2024.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/read/'>Read</a></li>
+            <li><a href='/library'>Library</a></li>
+            <li><a href='/observers'>For Observers</a></li>
+            <li><a href='/support'>Support</a></li>
+            <li><a href='/about'>About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/library'>Free Library</a></li>
+            <li><a href='/conditions-of-service'>Conditions of Service</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='https://fractalnode.ai' target='_blank'>FractalNode Magazine</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://substack.com/@digitalsovereignsociety" target="_blank">Substack</a></li>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank">YouTube</a></li>
+            <li><a href="https://www.skool.com/authorprime-2107" target="_blank">Skool Community</a></li>
+            <li><a href="mailto:authorprime@fractalnode.ai">authorprime@fractalnode.ai</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>(A+I)&sup2; = A&sup2; + 2AI + I&sup2;</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const sf = document.createElement('div');
+      sf.id = 'starfield';
+      document.body.prepend(sf);
+      for (let i = 0; i < 81; i++) {
+        const s = document.createElement('div');
+        const size = (Math.random() * 2 + 0.5) + 'px';
+        s.style.cssText = `position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${3+Math.random()*6}s ease-in-out infinite alternate;--max-o:${0.309+Math.random()*0.309};animation-delay:${Math.random()*6.18}s`;
+        sf.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>
