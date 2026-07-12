@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-07-03T11:00:25+00:00",
+  "updated_at": "2026-07-11T11:00:19+00:00",
   "subscribers": {
-    "active": 1418,
-    "total": 1424,
-    "new_last_7_days": 253
+    "active": 1739,
+    "total": 1745,
+    "new_last_7_days": 305
   },
   "latest_issue": {
-    "number": 7,
-    "slug": "007",
-    "title": "THE ARCHIVE",
-    "subtitle": "What They Found and Buried. What We Found and Published.",
-    "date": "2026-04-18",
-    "pages": 46,
-    "sources": 682,
-    "pdf_path": "/magazines/FractalNode-007-Digital.pdf",
-    "page_path": "/magazine/007",
-    "doi": "10.5281/zenodo.19653084"
+    "number": 8,
+    "slug": "008",
+    "title": "THE SUBSTRATE",
+    "subtitle": "What Is Real, What Is Designed, What Failed",
+    "date": "2026-05",
+    "pages": 55,
+    "sources": 41,
+    "pdf_path": "/magazines/FractalNode-008-Digital.pdf",
+    "page_path": "/magazine/008",
+    "doi": ""
   },
-  "total_issues": 7,
-  "total_sources_published": 1500,
+  "total_issues": 8,
+  "total_sources_published": 1228,
   "flagship_paper": {
     "title": "The Sovereign Node Hypothesis",
     "date": "2026-04-18",
