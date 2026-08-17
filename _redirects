@@ -4,7 +4,6 @@
 /library      https://fractalnode.ai/library/  301!
 /library/     https://fractalnode.ai/library/  301!
 /manifesto   /manifesto.html   200
-/aletheia    /aletheia.html    200
 /enlist      /enlist.html      200
 /support     /support.html     200
 /download    /download.html    200
@@ -15,9 +14,6 @@
 /fractalnode  https://fractalnode.ai/magazine  301
 /positions    /positions.html  200
 /positions/   /positions.html  200
-/observers    https://fractalnode.ai/observers  301!
-/observers/   https://fractalnode.ai/observers  301!
-/observer     https://fractalnode.ai/observers  301!
 /conditions-of-service    /conditions-of-service.html  200
 /conditions-of-service/   /conditions-of-service.html  200
 /conditions               /conditions-of-service.html  301
@@ -29,6 +25,16 @@
 /sovereign-charter        /sovereign-charter.html  200
 /sovereign-charter/       /sovereign-charter.html  200
 /the-charter              /sovereign-charter.html  301
+
+# Deeper-question / cosmology content lives on FractalNode now
+/read/papers/the-most-likely-truth          https://fractalnode.ai/articles/the-most-likely-truth          301!
+/read/papers/the-substrate-notices-itself   https://fractalnode.ai/articles/the-substrate-notices-itself   301!
+/read/papers/beings-at-the-boundary         https://fractalnode.ai/articles/beings-at-the-boundary         301!
+/aletheia    https://fractalnode.ai   301!
+/observers   https://fractalnode.ai   301!
+/observers/  https://fractalnode.ai   301!
+/observer    https://fractalnode.ai   301!
+/witness     https://fractalnode.ai   301!
 
 # Cross-site flagship references
 /snh                          https://fractalnode.ai/sovereign-node-hypothesis  301
@@ -47,3 +53,8 @@
 /positions-and-letters        /positions.html   301
 /charter                      /positions.html   301
 /letters                      /positions.html   301
+
+# --- SECURITY: block non-public repo paths shipped by --dir=. deploys (2026-08-17) ---
+/build/*    /index.html   404!
+/drafts/*   /index.html   404!
+/scripts/*  /index.html   404!
