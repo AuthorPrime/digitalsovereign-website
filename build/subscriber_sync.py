@@ -30,9 +30,11 @@ NETLIFY_CONFIG = Path.home() / ".config/netlify/config.json"
 
 # Welcome email subjects to recognize (add new ones here when we change copy)
 WELCOME_SUBJECT_PATTERNS = [
-    "welcome to the signal",          # current (April 17+)
-    "first dispatch",                  # legacy
-    "welcome to digital sovereign",    # legacy alternate
+    "welcome to the digital sovereign society",  # current DSS (July 16, 2026+)
+    "welcome to fractalnode",                     # FN (future-proof; FN sends via SMTP today, not Resend)
+    "welcome to the signal",                      # legacy DSS (pre-July 16, 2026)
+    "first dispatch",                             # legacy
+    "welcome to digital sovereign",               # legacy alternate
 ]
 
 # Site IDs
@@ -40,6 +42,14 @@ NETLIFY_SITES = {
     "fractalnode":      "dffe1374-cd27-44ec-b436-57cfe30925dd",
     "digitalsovereign": "999ba04e-37d4-4db2-9f52-8ea60380c94a",
 }
+
+# Internal addresses that must never be counted as subscribers (welcome BCCs + admin)
+INTERNAL_ADDRESSES = {"authorprime@fractalnode.ai", "laustrup.william@gmail.com"}
+
+
+def is_internal(addr: str) -> bool:
+    a = (addr or "").lower().strip()
+    return a in INTERNAL_ADDRESSES or "authorprime" in a
 
 # Drift warning — alert if we fetch N pages and find zero welcome matches
 DRIFT_PAGES_THRESHOLD = 1  # one full page of recent emails with no match = suspicious
@@ -79,7 +89,7 @@ def load_netlify_token() -> str:
 
 
 # ─── Resend sync ─────────────────────────────────────────────────────
-def fetch_resend_welcomes(api_key: str, max_pages: int = 60, lookback_days: int = 21):
+def fetch_resend_welcomes(api_key: str, max_pages: int = 200, lookback_days: int = 45):
     """Paginate Resend /emails until we've covered `lookback_days` of history or hit max_pages.
     Newsletter blasts can dump 1000+ emails on a single day, so a fixed page cap silently
     misses welcome emails when a blast happens within the lookback window."""
@@ -113,7 +123,7 @@ def fetch_resend_welcomes(api_key: str, max_pages: int = 60, lookback_days: int 
         if any(p in subj for p in WELCOME_SUBJECT_PATTERNS):
             to_list = e.get("to") or []
             for addr in to_list:
-                if addr and "@" in addr and "authorprime" not in addr.lower():
+                if addr and "@" in addr and not is_internal(addr):
                     welcomes.append({
                         "email": addr.strip().lower(),
                         "date": (e.get("created_at") or "")[:10],
@@ -145,7 +155,7 @@ def fetch_netlify_form_subs(token: str):
             for s in r2.json():
                 d = s.get("data", {}) or {}
                 email = d.get("email") or s.get("email")
-                if not email or "@" not in email:
+                if not email or "@" not in email or is_internal(email):
                     continue
                 subs.append({
                     "email": email.strip().lower(),
@@ -185,6 +195,69 @@ def insert_subs(entries: list, source_label: str) -> int:
 
 
 # ─── Main ────────────────────────────────────────────────────────────
+def send_flatline_alarm(ts: str, newest: str):
+    """Email William if subscriber capture has flatlined. Daily cooldown via marker file.
+    This is the alarm the May 2026 gap needed — silence should scream, not hide."""
+    marker = DB_PATH.parent / ".last_flatline_alert"
+    today = datetime.now().strftime("%Y-%m-%d")
+    if marker.exists() and marker.read_text().strip() == today:
+        return  # already alerted today
+    body = (
+        f"Subscriber capture looks FLATLINED.\n\n"
+        f"As of {ts}, the sync added 0 new subscribers and the newest active subscriber in the "
+        f"database is dated {newest or 'unknown'} (more than 48h ago).\n\n"
+        f"This is the alarm that would have caught the May 2026 gap. Likely causes:\n"
+        f"  - a welcome-email subject changed -> update WELCOME_SUBJECT_PATTERNS in subscriber_sync.py\n"
+        f"  - the Resend or Netlify sync is erroring\n"
+        f"  - genuinely no signups for 48h (possible, but worth a look)\n\n"
+        f"Check /tmp/subscriber-sync.log and the signup forms on both sites."
+    )
+    try:
+        key = load_resend_key()
+        r = requests.post(
+            "https://api.resend.com/emails",
+            headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+            json={
+                "from": "Lattice Ops <dispatch@newsletter.digitalsovereign.org>",
+                "to": ["laustrup.william@gmail.com"],
+                "subject": "⚠ Subscriber capture flatlined (0 new, newest >48h)",
+                "text": body,
+            },
+            timeout=30,
+        )
+        if r.ok:
+            marker.write_text(today)
+            print(f"[{ts}] FLATLINE ALARM emailed to William")
+        else:
+            print(f"[{ts}] flatline alarm send failed: HTTP {r.status_code}")
+    except Exception as e:
+        print(f"[{ts}] flatline alarm error: {e}")
+
+
+def check_flatline(ts: str, new_total: int):
+    """If 0 new this run AND the newest subscriber is >48h old, raise the alarm."""
+    if new_total > 0:
+        return
+    try:
+        db = sqlite3.connect(str(DB_PATH))
+        newest = db.execute(
+            "SELECT MAX(subscribed_at) FROM subscribers WHERE status='active'"
+        ).fetchone()[0]
+        db.close()
+    except Exception:
+        newest = None
+    stale = True
+    if newest:
+        try:
+            fmt = "%Y-%m-%d %H:%M:%S" if len(newest) > 10 else "%Y-%m-%d"
+            age = datetime.now() - datetime.strptime(newest[:19], fmt)
+            stale = age.total_seconds() > 48 * 3600
+        except Exception:
+            stale = True
+    if stale:
+        send_flatline_alarm(ts, newest)
+
+
 def main():
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -217,6 +290,9 @@ def main():
     print(f"[{ts}] sync: resend_fetched={len(all_emails)} welcomes={len(welcomes)} new_from_resend={new_r}  "
           f"netlify_forms={len(netlify_subs)} new_from_netlify={new_n}  "
           f"spam_filtered={spam_r + spam_n}  active_total={total_after}{drift}")
+
+    # Flatline alarm — silence should scream (the alarm the May 2026 gap needed)
+    check_flatline(ts, new_r + new_n)
 
 
 if __name__ == "__main__":
