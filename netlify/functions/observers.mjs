@@ -171,7 +171,7 @@ and will appear in aggregate pattern analysis as the record grows.
 
   await resendSend(resendKey, {
     from: "Observers <dispatch@newsletter.digitalsovereign.org>",
-    to: ["authorprime@fractalnode.ai"],
+    to: ["hello@digitalsovereign.org"], bcc: ["laustrup.william@gmail.com"],
     reply_to: s.email ? [s.email] : undefined,
     subject,
     text: textBody,

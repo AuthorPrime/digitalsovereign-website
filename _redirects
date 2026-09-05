@@ -4,7 +4,10 @@
 /library      https://fractalnode.ai/library/  301!
 /library/     https://fractalnode.ai/library/  301!
 /manifesto   /manifesto.html   200
-/enlist      /enlist.html      200
+/get-involved   /get-involved.html   200
+/get-involved/  /get-involved.html   200
+/enlist      /get-involved.html   301
+/join        /get-involved.html   301
 /support     /support.html     200
 /download    /download.html    200
 /newsletter-success  /enlist-success.html  200

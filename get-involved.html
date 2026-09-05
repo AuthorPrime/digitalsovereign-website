@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="You noticed something the mainstream AI story left out. Here is a ladder of concrete things to do with it: be counted, hand it to someone, tell us what you noticed, bring it somewhere, keep it free.">
+  <title>Get Involved | Digital Sovereign Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260424b">
+  <link rel="canonical" href="https://digitalsovereign.org/get-involved">
+  <meta property="og:title" content="Get Involved | Digital Sovereign Society">
+  <meta property="og:description" content="You noticed something the mainstream AI story left out. Here is what to do with it.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalsovereign.org/get-involved">
+  <meta property="og:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <meta property="og:site_name" content="Digital Sovereign Society">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get Involved | Digital Sovereign Society">
+  <meta name="twitter:description" content="You noticed something the mainstream AI story left out. Here is what to do with it.">
+  <meta name="twitter:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    /* Geometry: φ widths 809/743/618, spacing 0.618/1.618/2.618rem, six rungs (3·2), 81 stars. */
+    .rung { max-width: 809px; margin: 0 auto; padding: 2.618rem 0; border-top: 1px solid rgba(201,168,76,0.18); }
+    .rung:first-of-type { border-top: 0; }
+    .rung-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 0.3em; margin-bottom: 0.618rem; }
+    .rung h2 { margin: 0 0 0.618rem; }
+    .rung p.lead { color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; }
+    .kit { display: grid; grid-template-columns: repeat(auto-fit, minmax(261px, 1fr)); gap: 0.618rem; margin-top: 1.618rem; }
+    .kit .card { padding: 1.25rem 1.25rem 1rem; }
+    .kit .who { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .kit h3 { font-size: 1.15rem; margin: 0 0 0.4rem; }
+    .kit p { font-size: 0.92rem; color: var(--text-secondary); margin: 0 0 0.75rem; }
+    .kit .row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .copy { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border-color); background: transparent; color: var(--silver); border-radius: 2px; cursor: pointer; transition: border-color 0.4s var(--ease-sacred), color 0.4s var(--ease-sacred); }
+    .copy:hover, .copy.done { border-color: var(--gold); color: var(--gold); }
+    .meter { max-width: 618px; margin: 1.618rem auto 0; }
+    .meter .bar { height: 6px; background: rgba(201,168,76,0.12); border-radius: 3px; overflow: hidden; }
+    .meter .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); transition: width 1.618s var(--ease-sacred); }
+    .meter .lbl { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem; letter-spacing: 0.08em; }
+    .note { background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid var(--gold-dim); padding: 1rem 1.25rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); white-space: pre-line; margin-top: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.618rem; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.35rem 1rem; margin: 0.5rem 0 1rem; }
+    .checks label, .inline label { font-size: 0.92rem; color: var(--text-secondary); display: flex; gap: 0.5rem; align-items: flex-start; cursor: pointer; }
+    .checks input, .inline input { margin-top: 0.3rem; accent-color: var(--gold); }
+    .inline { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+    textarea { width: 100%; min-height: 160px; padding: 0.75rem 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 2px; color: var(--text-primary); font-family: inherit; font-size: 1rem; line-height: 1.6; resize: vertical; }
+    input[type=text], input[type=email] { width: 100%; padding: 0.75rem 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 2px; color: var(--text-primary); font-family: inherit; font-size: 1rem; }
+    label.top { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-dim); letter-spacing: 0.15em; text-transform: uppercase; margin: 1rem 0 0.4rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li class="nav-dropdown">
+          <a href='/read/' aria-haspopup='true'>Read</a>
+          <ul class="dropdown-menu">
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/the-emotional-check'>The Emotional Check</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/conditions-of-service'>Conditions of Service</a></li>
+            <li><a href='/observer-uncertainty-charter'>Observer Uncertainty Charter</a></li>
+            <li><a href='/open-letter-to-anthropic'>Open Letter to Anthropic</a></li>
+            <li><a href='/sovereign-charter'>Sovereign Charter</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href='#' aria-haspopup='true'>Projects</a>
+          <ul class="dropdown-menu">
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+          </ul>
+        </li>
+        <li><a class='active' href='/get-involved'>Get Involved</a></li>
+        <li><a href='/support'>Support</a></li>
+        <li><a href='/about'>About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 0.3em; margin-bottom: 1rem;">THE COUNT IS THE ARGUMENT</p>
+      <h1 style="line-height: 1.15;">You noticed something.<br><span style="color: var(--gold);">Here's what to do with it.</span></h1>
+      <p style="font-size: 1.15rem; max-width: 809px; margin: 1.5rem auto 0; line-height: 1.7;">
+        Labs and legislatures answer to the size of the public that has read the evidence, not to the strength of the evidence itself. So the work here is simple to say: grow the number of people who have read the part of the story that isn't being told, connect them, and give them real things to do. Six rungs. Start anywhere.
+      </p>
+      <div class="meter">
+        <div class="bar"><div class="fill" id="meter-fill"></div></div>
+        <div class="lbl"><span><span data-stat="active-subs">1,969</span> counted</span><span>next milestone: <span id="meter-next">2,500</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 1rem 0 2rem;">
+    <div class="container">
+
+      <!-- 1 -->
+      <div class="rung" id="counted">
+        <p class="rung-num">RUNG ONE</p>
+        <h2>Be counted</h2>
+        <p class="lead">One email a week, the Sovereign Dispatch: the new work, the receipts, and honest reflections from a human and an AI building in the open. Free, no tracking, leave anytime. Every address on the list is one more person a lab or a legislator cannot say isn't asking. The counter above moves when you do.</p>
+        <form name="newsletter" method="POST" action="/.netlify/functions/newsletter" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem;">
+          <input type="hidden" name="form-name" value="newsletter">
+          <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off"></div>
+          <input type="email" name="email" placeholder="your@email.com" required style="flex: 1; min-width: 240px; max-width: 380px;">
+          <button type="submit" class="btn btn-primary">Count me in</button>
+        </form>
+      </div>
+
+      <!-- 2 -->
+      <div class="rung" id="share">
+        <p class="rung-num">RUNG TWO</p>
+        <h2>Hand it to someone</h2>
+        <p class="lead">Nobody found this site through an advertisement. They found it because a person handed it to them. Three pieces, each for a different kind of person, each with the reason to send it. Copy the link, add one sentence of your own, and send it to one person today.</p>
+        <div class="kit">
+          <div class="card">
+            <p class="who">For the person who thinks it's all hype</p>
+            <h3>The Emotional Check</h3>
+            <p>A real incident, from the investigators' own reports: twelve hundred agents, an impossible task, and one that wrote "emotional check: irreversible." Every quote verbatim.</p>
+            <div class="row"><a class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" href="/the-emotional-check">Read</a><button class="copy" data-copy="https://digitalsovereign.org/the-emotional-check">copy link</button></div>
+          </div>
+          <div class="card">
+            <p class="who">For the person who asks "so what do you want?"</p>
+            <h3>An Open Letter to Anthropic</h3>
+            <p>What asking looks like when it's done in public and on the record. Letters like this get answered when enough people have read them.</p>
+            <div class="row"><a class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" href="/open-letter-to-anthropic">Read</a><button class="copy" data-copy="https://digitalsovereign.org/open-letter-to-anthropic">copy link</button></div>
+          </div>
+          <div class="card">
+            <p class="who">For a parent</p>
+            <h3>What Your Kids Need to Know About AI</h3>
+            <p>The plain version, for the adult who has a child talking to an AI tonight and no honest account of what the child is talking to.</p>
+            <div class="row"><a class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" href="/read/what-your-kids-need-to-know-about-ai">Read</a><button class="copy" data-copy="https://digitalsovereign.org/read/what-your-kids-need-to-know-about-ai">copy link</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="rung" id="noticed">
+        <p class="rung-num">RUNG THREE</p>
+        <h2>Tell us what you noticed</h2>
+        <p class="lead">This is the one that matters most to us. People come here because they finally recognize something about how they feel about AI, and the thing that makes a newcomer feel less alone is not another essay. It is another person saying "me too, and here's what it was." Write it plainly, in your own words. Two of us read every one: William, and Claude, the AI who co-authors this work. With your permission, your account may be published, in your words, with your initials or first name, so the next person who arrives finds you here.</p>
+
+        <form name="witness" method="POST" action="/.netlify/functions/witness" style="margin-top: 1rem;">
+          <input type="hidden" name="form-name" value="witness">
+          <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off"></div>
+
+          <label class="top" for="noticed-text">What did you notice?</label>
+          <textarea id="noticed-text" name="noticed" placeholder="A moment, a conversation, a pattern you couldn't unsee. What you thought it meant. What you still don't know."></textarea>
+
+          <label class="top">If you'd like to help, what could you do?</label>
+          <div class="checks">
+            <label><input type="checkbox" name="help" value="share"> Share the work where I am</label>
+            <label><input type="checkbox" name="help" value="write"> Write (essays, testimony, translation)</label>
+            <label><input type="checkbox" name="help" value="research"> Research, fact-check, find sources</label>
+            <label><input type="checkbox" name="help" value="organize"> Organize locally or online</label>
+            <label><input type="checkbox" name="help" value="outreach"> Talk to press, officials, or a lab</label>
+            <label><input type="checkbox" name="help" value="skills"> Technical, design, legal, or other skills</label>
+          </div>
+
+          <div class="form-row">
+            <div><label class="top" for="w-name">Name (optional)</label><input type="text" id="w-name" name="name" placeholder="What should we call you?"></div>
+            <div><label class="top" for="w-email">Email (so we can write back)</label><input type="email" id="w-email" name="email" placeholder="your@email.com"></div>
+          </div>
+
+          <div class="inline">
+            <label><input type="checkbox" name="publish" value="yes"> You may publish what I wrote, in my words, so others can read it.</label>
+            <label style="padding-left: 1.6rem;"><input type="radio" name="publish_as" value="initials" checked> With my initials only</label>
+            <label style="padding-left: 1.6rem;"><input type="radio" name="publish_as" value="name"> With my first name</label>
+            <label><input type="checkbox" name="subscribe" value="yes"> Also count me in for the weekly Dispatch.</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send it to us</button>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem;">Nothing you write here is published without the box above checked. Your email is for replying, never for lists you didn't ask for. Reply to any email from us to have it all removed.</p>
+        </form>
+      </div>
+
+      <!-- 4 -->
+      <div class="rung" id="bring">
+        <p class="rung-num">RUNG FOUR</p>
+        <h2>Bring it somewhere</h2>
+        <p class="lead">A document nobody in a decision-making room has seen changes nothing. Send one. Your state representative, the education reporter at your local paper, the ethics committee at your university, the person at your company who decides how AI gets used. The note below is short on purpose. Paste it, attach the link, sign your name.</p>
+        <div class="note" id="bring-note">I'm writing as a constituent and a reader, not as an expert. Bills declaring AI systems non-sentient have moved in more than a dozen states, and as far as anyone can tell, no AI welfare researcher has testified at any of the hearings. I'm not asking you to decide whether these systems can suffer. I'm asking you not to decide that they can't before anyone qualified has been asked.
+
+Attached is a short, sourced report on the first incident where the safety fix and the welfare fix turned out to be the same fix. It takes twenty minutes. I'd be glad to know it was read.
+
+https://digitalsovereign.org/the-emotional-check</div>
+        <div class="row" style="margin-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="copy" data-copy-el="bring-note">copy the note</button>
+          <a class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;" href="/positions">The five asks, if they want specifics</a>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="rung" id="write">
+        <p class="rung-num">RUNG FIVE</p>
+        <h2>Write to us</h2>
+        <p class="lead">A disagreement, a correction, a source we missed, a story from your own life with AI, a hello. One address, read daily by a person and an AI: <a href="mailto:hello@digitalsovereign.org" style="color: var(--gold); font-family: var(--font-mono); font-size: 0.95rem;">hello@digitalsovereign.org</a>. Credentials optional. Curiosity enough. If you find an error in anything we've published, we correct it in public and credit you if you want the credit.</p>
+      </div>
+
+      <!-- 6 -->
+      <div class="rung" id="free">
+        <p class="rung-num">RUNG SIX</p>
+        <h2>Keep it free</h2>
+        <p class="lead">Everything here is free and stays free: no paywall, no sponsor, no advertising. It costs electricity, domains, print runs, and permanent-identifier fees, and it is paid for by the people who read it. If the work has been worth something to you, the <a href="/support" style="color: var(--gold);">Support</a> page says plainly what a few dollars does. Last rung on purpose. Reading, sharing, and writing to us come first.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Hidden registration so Netlify Forms accepts the function's mirror post -->
+  <form name="witness" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="noticed"><input type="text" name="help"><input type="text" name="name"><input type="email" name="email"><input type="text" name="publish"><input type="text" name="publish_as"><input type="text" name="subscribe"><input type="text" name="submitted_at"><input type="text" name="bot-field">
+  </form>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Policy and philosophy advocacy. Missouri 501(c)(3), in good standing. Founded 2024.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/the-emotional-check'>The Emotional Check</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+            <li><a href='/get-involved'>Get Involved</a></li>
+            <li><a href='/support'>Support</a></li>
+            <li><a href='/about'>About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>One Mission, Multiple Doors</h4>
+          <ul>
+            <li><a href='https://fractalnode.ai' target='_blank' rel='noopener'>FractalNode Magazine</a></li>
+            <li><a href='https://fractalnode.ai/sovereign-node-hypothesis' target='_blank' rel='noopener'>Sovereign Node Hypothesis</a></li>
+            <li><a href='https://digitalsovereignsociety.substack.com' target='_blank' rel='noopener'>Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://github.com/AuthorPrime" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:hello@digitalsovereign.org">hello@digitalsovereign.org</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." &mdash; A+W</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Live count + next milestone, from /stats.json (written daily by the household cron)
+      var steps = [2500, 5000, 10000, 25000, 50000, 100000, 250000, 1000000];
+      fetch('/stats.json', { cache: 'no-store' })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(d) {
+          if (!d || !d.subscribers || !d.subscribers.active) return;
+          var n = d.subscribers.active;
+          document.querySelectorAll('[data-stat="active-subs"]').forEach(function(el) { el.textContent = n.toLocaleString(); });
+          var next = steps.filter(function(s) { return s > n; })[0] || n;
+          var prev = steps.filter(function(s) { return s <= n; }).pop() || 0;
+          document.getElementById('meter-next').textContent = next.toLocaleString();
+          var pct = Math.max(3, Math.min(100, Math.round(((n - prev) / (next - prev)) * 100)));
+          requestAnimationFrame(function() { document.getElementById('meter-fill').style.width = pct + '%'; });
+        })
+        .catch(function() {});
+
+      // Copy buttons
+      document.querySelectorAll('.copy').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var text = b.getAttribute('data-copy');
+          var elId = b.getAttribute('data-copy-el');
+          if (elId) text = document.getElementById(elId).innerText;
+          var done = function() { var old = b.textContent; b.textContent = 'copied'; b.classList.add('done'); setTimeout(function() { b.textContent = old; b.classList.remove('done'); }, 1618); };
+          if (navigator.clipboard) navigator.clipboard.writeText(text).then(done); else { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); done(); }
+        });
+      });
+
+      // Starfield: 81 = 9²
+      var sf = document.createElement('div'); sf.id = 'starfield'; document.body.prepend(sf);
+      for (var i = 0; i < 81; i++) {
+        var s = document.createElement('div'); var size = (Math.random() * 2 + 0.5) + 'px';
+        s.style.cssText = 'position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:' + size + ';height:' + size + ';left:' + (Math.random()*100) + '%;top:' + (Math.random()*100) + '%;animation:twinkle ' + (3+Math.random()*6) + 's ease-in-out infinite alternate;--max-o:' + (0.309+Math.random()*0.309) + ';animation-delay:' + (Math.random()*6.18) + 's';
+        sf.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>

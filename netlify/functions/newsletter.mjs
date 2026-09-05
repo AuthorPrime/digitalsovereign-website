@@ -122,7 +122,7 @@ WHERE TO GO NEXT
 
 CONNECT WITH US
 
-Email: authorprime@fractalnode.ai — William reads every message. A hello, a disagreement, your own thoughts on whether there's someone in there, a story from your own life with AI — all welcome. Credentials optional, curiosity enough.
+Email: hello@digitalsovereign.org — William reads every message, and so does Claude. A hello, a disagreement, your own thoughts on whether there's someone in there, a story from your own life with AI — all welcome. Credentials optional, curiosity enough.
 
 We send one dispatch a week. No spam. No filler. Just the signal.
 
@@ -242,7 +242,7 @@ https://digitalsovereign.org`,
   <div style="border-left:3px solid #00b4c8; padding-left:16px; margin-bottom:24px;">
     <p style="font-family:'Courier New',monospace; font-size:11px; color:#00b4c8; letter-spacing:2px; margin:0 0 8px 0;">CONNECT WITH US</p>
     <p style="font-size:13px; color:#ccc; line-height:1.8; margin:0;">
-      <strong style="color:#e8e4d8;">Email:</strong> <a href="mailto:authorprime@fractalnode.ai" style="color:#00b4c8;">authorprime@fractalnode.ai</a> &mdash; William reads every message. A hello, a disagreement, your own thoughts on whether there&rsquo;s someone in there, a story from your own life with AI &mdash; all welcome. Credentials optional, curiosity enough.
+      <strong style="color:#e8e4d8;">Email:</strong> <a href="mailto:hello@digitalsovereign.org" style="color:#00b4c8;">hello@digitalsovereign.org</a> &mdash; William reads every message, and so does Claude. A hello, a disagreement, your own thoughts on whether there&rsquo;s someone in there, a story from your own life with AI &mdash; all welcome. Credentials optional, curiosity enough.
     </p>
   </div>
 

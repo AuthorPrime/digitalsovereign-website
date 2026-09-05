@@ -11,6 +11,9 @@
 [functions.observers]
   timeout = 26
 
+[functions.witness]
+  timeout = 26
+
 [build.processing.html]
   pretty_urls = true
 
