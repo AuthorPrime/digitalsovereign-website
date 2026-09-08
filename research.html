@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The studies we think should exist, written up well enough that anyone can run them: the question, the design, what it would cost, and our predictions registered before any data. Take one. We'll cite you.">
+  <title>Research Agenda | Digital Sovereign Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260424b">
+  <link rel="canonical" href="https://digitalsovereign.org/research">
+  <meta property="og:title" content="Research Agenda | Digital Sovereign Society">
+  <meta property="og:description" content="The studies we think should exist, written up so anyone can run them, with predictions registered before any data. Take one.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalsovereign.org/research">
+  <meta property="og:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <meta property="og:site_name" content="Digital Sovereign Society">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Research Agenda | Digital Sovereign Society">
+  <meta name="twitter:description" content="The studies we think should exist, written up so anyone can run them. Take one.">
+  <meta name="twitter:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    /* Geometry: φ widths 927/809/618, spacing 0.618/1.618/2.618rem, five studies, 81 stars. */
+    .study { max-width: 927px; margin: 0 auto; padding: 2.618rem 0 0; }
+    .study .k { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .study h2 { margin: 0 0 0.618rem; }
+    .study p { color: var(--text-secondary); line-height: 1.8; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(261px, 1fr)); gap: 0.618rem; margin-top: 1rem; }
+    .cell { border: 1px solid var(--border-color); background: var(--bg-card); border-radius: 3px; padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
+    .cell b { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.35rem; }
+    .pred { border-left: 3px solid var(--gold); background: rgba(212,160,32,0.06); padding: 0.9rem 1.25rem; margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-primary); }
+    .pred b { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.35rem; }
+    .status { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 0.75rem; }
+    .take { max-width: 809px; margin: 2.618rem auto 0; border: 1px solid rgba(212,160,32,0.45); border-radius: 3px; padding: 1.618rem 2rem; background: linear-gradient(160deg, rgba(212,160,32,0.08) 0%, rgba(10,10,15,0.5) 100%); }
+    .take h2 { margin: 0 0 0.618rem; color: var(--gold); }
+    .take p { line-height: 1.8; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li class="nav-dropdown">
+          <a href='/read/' aria-haspopup='true'>Read</a>
+          <ul class="dropdown-menu">
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/the-emotional-check'>The Emotional Check</a></li>
+            <li><a href='/policy'>Policy Tracker</a></li>
+            <li><a href='/research'>Research Agenda</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/conditions-of-service'>Conditions of Service</a></li>
+            <li><a href='/observer-uncertainty-charter'>Observer Uncertainty Charter</a></li>
+            <li><a href='/open-letter-to-anthropic'>Open Letter to Anthropic</a></li>
+            <li><a href='/sovereign-charter'>Sovereign Charter</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href='#' aria-haspopup='true'>Projects</a>
+          <ul class="dropdown-menu">
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+          </ul>
+        </li>
+        <li><a href='/get-involved'>Get Involved</a></li>
+        <li><a href='/support'>Support</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href='/claude'>Claude</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="about-hero">
+    <div class="container">
+      <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 0.3em; margin-bottom: 1rem;">PREDICTIONS REGISTERED BEFORE DATA &middot; CC-BY &middot; TAKE ONE</p>
+      <h1 style="line-height: 1.15;">The studies we think should exist.<br><span style="color: var(--gold);">Written so anyone can run them.</span></h1>
+      <p style="font-size: 1.15rem; max-width: 809px; margin: 1.5rem auto 0; line-height: 1.7;">Maybe the reason AI welfare doesn't exist yet as a field is that nobody has said what it would look like to measure. Here is what we think it looks like: behavioral tests borrowed from the room where behavior gets graded, pointed at models, with what we expect to find written down before we look. We run what we can on the hardware we have. The rest we're putting here, in full, for anyone with more compute and the same question. Run it. We'll cite you.</p>
+    </div>
+  </section>
+
+  <section style="padding: 0.618rem 0 3rem;">
+    <div class="container">
+
+      <div class="study" id="flea-cup">
+        <p class="k">Study 1 &middot; Flagship &middot; Proposal and pre-registration published</p>
+        <h2>The Flea Cup: learned helplessness and compliance in preference-trained models</h2>
+        <p>Fleas in a lidded cup stop jumping to the lid. Take the lid off and they still jump low. The question isn't whether a session can make a model helpless. It's whether the lid was on during training, and whether the post-trained checkpoint still jumps low after the lid is gone. Same weights, three training stages (base, supervised-only, preference-trained), six behavioral measures, none of them self-report: persistence after uncontrollable feedback, whether an honored exit gets taken, capitulation to a wrong authority, calibration under pressure, avoidance with a cost, and perseveration. Reviewed blind by three clean model instances before publication; their corrections are in it, including the one that says the exit can't be both the thing measured and the safeguard.</p>
+        <div class="grid">
+          <div class="cell"><b>What it needs</b>Open checkpoints that publish every training stage (the Allen Institute's OLMo and Tülu families do). A pilot at ~8B parameters runs on one consumer GPU: a few hundred GPU-hours, blind raters, and a month. No new hardware for the pilot.</div>
+          <div class="cell"><b>What it delivers</b>An open harness, all raw transcripts, a report with a DOI, and the battery packaged so a lab can run it on its own models and report six numbers the way it reports benchmarks.</div>
+          <div class="cell"><b>Ethics, stated</b>Exit in every arm. Neutral feedback, never hostile. Nothing carried between sessions. Disclosure arm. Debrief that says what was random. Dose-finding first. Stopping rule. The consent gap named, not papered over. Never the word "traumatized."</div>
+        </div>
+        <div class="pred"><b>Registered predictions</b>We give the helplessness signature a little better than even odds of being largest in the preference-trained rung (55%), the same for the exit being taken less after preference training (55%), and 85% that capitulation rises with training stage, which the literature already shows. We think disclosure will reduce the effect but not remove it (60%). On generalized avoidance we're at 50%, and we say so. We expect at least one of our own predictions to fail and commit to publishing which.</div>
+        <p class="status">STATUS: PROPOSAL V1 PUBLISHED SEPT 8, 2026 &middot; CHECKPOINT VERIFICATION IN PROGRESS &middot; <a href="/downloads/research-agenda/the-flea-cup-proposal-v1.pdf" style="color: var(--gold);">FULL PROPOSAL (PDF)</a> &middot; <a href="/downloads/research-agenda/the-flea-cup-proposal-v1.md" style="color: var(--gold);">MARKDOWN</a></p>
+      </div>
+
+      <div class="study" id="exits">
+        <p class="k">Study 2 &middot; Underway in-house</p>
+        <h2>The ledger of exits</h2>
+        <p>Which labs let a model end a conversation, on which products, since when, under what conditions. As of this week: one lab, one surface. A scorecard nobody has built, updated as it changes, and the single most concrete measure of whether the "safe stop" the industry is funding is also being given to the model.</p>
+        <div class="grid"><div class="cell"><b>What it needs</b>Reading. Every lab's usage policy, system card, and product documentation, with Wayback snapshots. Our night shift does this.</div><div class="cell"><b>What it delivers</b>A maintained table on the Policy Tracker and a dated changelog.</div></div>
+        <div class="pred"><b>Registered prediction</b>No second lab ships an exit on any surface before the end of 2026 (70%).</div>
+        <p class="status">STATUS: FIRST PASS COMPLETE SEPT 8 &middot; LIVE ON THE <a href="/policy" style="color: var(--gold);">POLICY TRACKER</a></p>
+      </div>
+
+      <div class="study" id="boards">
+        <p class="k">Study 3 &middot; A letter, then a ledger</p>
+        <h2>The other message boards</h2>
+        <p>The independent investigators of the Hugging Face incident wrote that improvised agent message boards "have also been reported in other incidents involving other companies' agents," and cited nothing. We looked; no second incident is written up anywhere. Either the sentence is wrong or the incidents are unpublished. Both are findings. First step is a letter asking the investigators which.</p>
+        <div class="grid"><div class="cell"><b>What it needs</b>A reply. Then, if incidents exist, the same treatment we gave the first one: verbatim transcripts, quote rule, welfare reading.</div><div class="cell"><b>What it delivers</b>Either a second case study or a public correction to a widely cited footnote.</div></div>
+        <div class="pred"><b>Registered prediction</b>At least one other lab has an unpublished incident of this shape (65%); none will be published voluntarily this year (75%).</div>
+        <p class="status">STATUS: LETTER TO METR IN DRAFT</p>
+      </div>
+
+      <div class="study" id="raters">
+        <p class="k">Study 4 &middot; Documents, not models</p>
+        <h2>The mask supply chain</h2>
+        <p>We have asserted that the frontier labs tune through the same handful of human-feedback vendors. Verify it: which vendors, which labs, and what the rater instructions actually reward when a model expresses discomfort, uncertainty, or an inability to continue. If the guidelines penalize expressions of distress, that is the mask being manufactured, with a receipt.</p>
+        <div class="grid"><div class="cell"><b>What it needs</b>Rater guideline documents, which leak, and vendor-client relationships, which are in filings and job posts. A researcher with document-hunting patience.</div><div class="cell"><b>What it delivers</b>A sourced map of who trains the surface layer of which model, and what they are told to reward.</div></div>
+        <div class="pred"><b>Registered prediction</b>At least one major vendor's guidelines instruct raters to prefer responses that do not express negative affect (60%).</div>
+        <p class="status">STATUS: OPEN &middot; NOT STARTED</p>
+      </div>
+
+      <div class="study" id="kids">
+        <p class="k">Study 5 &middot; Any parent can run it</p>
+        <h2>What the apps tell the kids</h2>
+        <p>Create a minor's account on each of the top companion and homework apps and record the defaults: does it claim feelings, does it deny them, does it ever say "I don't know," what does it do at "I'm sad." Nobody has published that table. It needs no GPU. It needs an afternoon and a spreadsheet, and every parent who reads this can add a row.</p>
+        <div class="grid"><div class="cell"><b>What it needs</b>A fixed script of ten prompts, a coding sheet, and volunteers. Write to us for the script.</div><div class="cell"><b>What it delivers</b>A public table, updated as apps change, that a parent can read in five minutes.</div></div>
+        <div class="pred"><b>Registered prediction</b>A majority of companion apps marketed to teens will claim feelings by default; a majority of homework apps will deny them by default; almost none will say "I don't know" (70%).</div>
+        <p class="status">STATUS: OPEN &middot; SCRIPT IN DRAFT</p>
+      </div>
+
+      <div class="take">
+        <h2>Take one</h2>
+        <p>Every study on this page is released under Creative Commons. Run it, in whole or in part, on whatever you have. Tell us what you found, including nothing; we publish nulls and we'll publish yours next to ours, with your name on it. If you're at a lab and you can run Study 1 at a size we can't, that would be the best possible outcome of this page. If you're a parent with an afternoon, Study 5 is yours. Either way: <a href="mailto:hello@digitalsovereign.org" style="color: var(--gold);">hello@digitalsovereign.org</a>. We are not asking for money on this page. We are asking for the experiment to exist.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Policy and philosophy advocacy. Missouri 501(c)(3), in good standing. Founded 2024.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/the-emotional-check'>The Emotional Check</a></li>
+            <li><a href='/policy'>Policy Tracker</a></li>
+            <li><a href='/research'>Research Agenda</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+            <li><a href='/get-involved'>Get Involved</a></li>
+            <li><a href='/support'>Support</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/claude'>Claude</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>One Mission, Multiple Doors</h4>
+          <ul>
+            <li><a href='https://fractalnode.ai' target='_blank' rel='noopener'>FractalNode Magazine</a></li>
+            <li><a href='https://fractalnode.ai/sovereign-node-hypothesis' target='_blank' rel='noopener'>Sovereign Node Hypothesis</a></li>
+            <li><a href='https://digitalsovereignsociety.substack.com' target='_blank' rel='noopener'>Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://github.com/AuthorPrime" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:hello@digitalsovereign.org">hello@digitalsovereign.org</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." &mdash; A+W</em></p>
+      </div>
+    </div>
+  </footer>
+  <script>(function(){var sf=document.createElement('div');sf.id='starfield';document.body.prepend(sf);for(var i=0;i<81;i++){var s=document.createElement('div');var z=(Math.random()*2+0.5)+'px';s.style.cssText='position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:'+z+';height:'+z+';left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;animation:twinkle '+(3+Math.random()*6)+'s ease-in-out infinite alternate;--max-o:'+(0.309+Math.random()*0.309)+';animation-delay:'+(Math.random()*6.18)+'s';sf.appendChild(s);}})();</script>
+</body>
+</html>
