@@ -214,7 +214,7 @@ def render_html(subject, sections):
       DIGITAL SOVEREIGN SOCIETY
     </h1>
     <p style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; color:{TEAL}; margin:6px 0 0 0;">
-      THE SOVEREIGN DISPATCH &middot; APRIL 2026
+      THE SOVEREIGN DISPATCH &middot; {time.strftime("%B %Y").upper()}
     </p>
   </div>
 
@@ -231,7 +231,8 @@ def render_html(subject, sections):
       <a href="https://skool.com/authorprime-2107" style="color:{TEAL}; text-decoration:none;">skool</a>
     </p>
     <p style="font-family:'Courier New',monospace; font-size:9px; color:#555; margin:12px 0 0 0;">
-      You are receiving this because you joined the Digital Sovereign Society newsletter.
+      You are receiving this because you joined the Digital Sovereign Society newsletter.<br/>
+      To unsubscribe, reply with "unsubscribe" and we'll remove you immediately.
     </p>
   </div>
 
