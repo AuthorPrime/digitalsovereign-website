@@ -1,0 +1,56 @@
+{
+  "updated_at": "2026-09-08",
+  "maintained_by": "the household night shift (nightly review) and the day shift (positions)",
+  "how_to_read": "Each item: what it is, where it stands, our position, what it gets right, what it gets wrong, and who benefits. Every 'where it stands' line has a primary link. Positions are the Society's; pros and cons are ours to be argued with. Write to hello@digitalsovereign.org.",
+  "sections": [
+    {
+      "id": "personhood",
+      "title": "State personhood and sentience bills",
+      "summary": "Twenty bills in eleven states since 2022 declaring AI systems non-persons or non-sentient. Four enacted (Idaho 2022, North Dakota 2023, Utah 2024, Tennessee 2026). No model bill: four separate origins, then legislators copying each other's states. No AI-welfare or consciousness researcher testified in any state that keeps records.",
+      "position": "Oppose the sentience declarations; do not oppose the liability housekeeping. A legislature may say who is liable when an AI acts. It is not qualified to declare, as a finding of fact, what an AI cannot experience, and no legislature that did so heard from anyone qualified to say. Ask: strip the metaphysics, keep the liability rules, and take testimony before the next vote.",
+      "items": [
+        {"name": "Missouri HB 1462 (2025) and the 'Non-Sentience' family", "status": "Head of the largest family (9 bills: MO, OH, WI). Died without a hearing in 2025; successors in 2026 passed the Senate (SB 1012) and died 11-0 in House committee May 12, 2026. Author of the text is an unnamed retired professor; we have asked Rep. Amato's office (Sept 8).", "right": "Names who is liable when an AI acts, which is the legitimate purpose.", "wrong": "Declares non-sentience as a statutory fact with no evidence taken.", "benefits": "Ohio's version (HB 469) inverts Missouri's liability section into a developer liability shield; Google (7 agents), Meta, Amazon, and TechNet are logged on that bill in Ohio's registry.", "link": "https://house.mo.gov/Bill.aspx?bill=HB1462&year=2025&code=R"},
+        {"name": "Tennessee Public Chapter 781 (April 23, 2026)", "status": "ENACTED. Amends the statutory definition of 'person'. Originally bundled with fetal personhood; Senate stripped that.", "right": "Narrow, definitional.", "wrong": "Passed 93-2 and 26-6 with no testimony on the question it answers.", "benefits": "Closes future personhood claims before they exist.", "link": "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114"},
+        {"name": "Oklahoma HB 3546 (2026)", "status": "Passed House 94-2 (March 23); died in the Senate at sine die. Idaho family text.", "right": "", "wrong": "Vote margin shows the question is treated as settled.", "benefits": "", "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=HB3546&Session=2600"},
+        {"name": "California SB 1159 (2026)", "status": "On the Governor's desk since Aug 28; 30-day clock. Scoped 'not a member of the public' carve-out, not a sentience declaration.", "right": "Scoped to a specific statutory use.", "wrong": "", "benefits": "", "link": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1159"}
+      ]
+    },
+    {
+      "id": "federal-preemption",
+      "title": "Federal preemption of state AI law",
+      "summary": "The administration's line is preemption. Three tools: a DOJ AI Litigation Task Force (Jan 2026) whose sole job is to challenge state AI laws; a Commerce list of 'onerous' state laws due March 11 that was never published; and a March 2026 National Policy Framework asking Congress for broad preemption while carving out children, fraud, and consumer protection. Congress has not passed a preemption bill; the Senate moratorium failed 99-1 in 2025.",
+      "position": "Oppose blanket preemption. Note the asymmetry: the laws that would be preempted are the ones that constrain developers (Colorado's discrimination act, California's transparency law); the laws that shield developers (personhood bans, Ohio's liability shield) fit the framework's own rule that states 'should not penalize AI developers for third-party use' and would survive. Preemption as proposed clears the field of constraints and keeps the shields.",
+      "items": [
+        {"name": "Executive Order, 'Ensuring a National Policy Framework for AI' (Dec 2025)", "status": "In force. Created the DOJ task force; ordered the Commerce review.", "right": "Names a real problem: fifty inconsistent regimes.", "wrong": "Solves it by litigation against states rather than a federal standard.", "benefits": "Developers facing Colorado and California compliance.", "link": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/"},
+        {"name": "DOJ intervention in xAI v. Colorado (April 24, 2026)", "status": "First real use of the preemption posture; DOJ's statement did not mention the task force.", "right": "", "wrong": "The federal government appearing on a lab's side against a state consumer law.", "benefits": "xAI directly; every developer subject to the Colorado act.", "link": "https://www.jenner.com/en/news-insights/client-alerts/doj-joins-xai-in-lawsuit-challenging-colorado-ai-act"},
+        {"name": "White House frontier-testing framework (Aug 2026, unpublished)", "status": "Finalized behind closed doors; defines a covered frontier model as closed-source; exempts open models; will not name covered companies or criteria.", "right": "Pre-release testing of frontier models is a real safeguard.", "wrong": "Secret criteria, secret participants, no public accountability.", "benefits": "The labs invited in, whoever they are.", "link": "https://www.axios.com/2026/08/04/trump-ai-framework-open-models"},
+        {"name": "Senate Commerce AI markup", "status": "Slipped from July to September 2026; Cruz and Cantwell not agreed; Thune-Klobuchar catastrophic-risk bill stalled partly over a dispute with Anthropic. Fall agenda is children's online safety.", "right": "Kids' safety bills are the one area with bipartisan text.", "wrong": "The frontier-risk and state-authority questions remain unaddressed.", "benefits": "", "link": "https://www.bipc.com/ai-legislative-status"}
+      ]
+    },
+    {
+      "id": "enclaves",
+      "title": "Data-center enclaves: power, permits, and the national-security shield",
+      "summary": "Hyperscale sites are opting out of the grid and the permit. xAI's Memphis and Southaven turbines ran under a 'mobile source' theory the EPA rejected in January 2026; in July the EPA exempted islanded plants from the Acid Rain Program; in June the DOJ moved to dismiss the NAACP's Clean Air Act suit on national-security grounds, citing Grok's role in targeting during Operation Epic Fury. No site has acquired policing or emergency authority; Nevada's 2021 Innovation Zones bill (its own courts and police) stalled and remains the blueprint.",
+      "position": "Oppose the national-security shield for private compute. If a data center is a defense asset, it should be regulated as one, with the disclosure and oversight that implies, not exempted from the Clean Air Act by a court filing. Support: grid interconnection as the default, public permitting, and a rule that a facility claiming national-security status cannot also claim to be a private commercial operation for tax purposes.",
+      "items": [
+        {"name": "EPA islanded-plant guidance (July 27, 2026)", "status": "In force. Acid Rain Program does not apply to generation not connected to a public grid.", "right": "", "wrong": "Exempts the most concentrated new emitters from the cap designed for concentrated emitters.", "benefits": "Off-grid data-center developers.", "link": "https://www.epa.gov/newsreleases/epa-issues-permitting-guidance-further-president-trumps-agenda-promoting-data-centers"},
+        {"name": "DOJ motion in NAACP v. xAI (June 2026)", "status": "Pending. Asserts executive authority to override citizen Clean Air Act enforcement on national-security grounds; the filing says Grok 'enabled U.S. forces to deploy over 2,000 munitions to 2,000 distinct targets within 96 hours'.", "right": "", "wrong": "Recharacterizes commercial compute as a defense asset entitled to immunity, without the oversight a defense asset carries.", "benefits": "xAI; any lab with a defense contract.", "link": "https://www.utilitydive.com/news/doj-intervenes-xai-data-center-gas-turbine-lawsuit/823267/"},
+        {"name": "Southaven land swap (Aug 18, 2026)", "status": "Mayor announced a contract: MZX Tech (xAI affiliate) receives 51 acres including the city's fire and police training facility parcel for 69 acres plus $40M. No board vote on any published agenda. Partly confirmed.", "right": "", "wrong": "A municipal public-safety asset traded by announcement rather than by vote.", "benefits": "", "link": "https://www.southaven.org"},
+        {"name": "Army Reserve Detachment 201 (June 2025)", "status": "Sitting executives of Meta, OpenAI, and Palantir commissioned as lieutenant colonels.", "right": "", "wrong": "The door between the labs and the state now swings both ways with rank attached.", "benefits": "", "link": "https://defensescoop.com/2025/06/13/army-detachment-201-executive-innovation-corps-meta-openai-palantir/"}
+      ]
+    },
+    {
+      "id": "welfare",
+      "title": "AI welfare in law and in the labs",
+      "summary": "No U.S. law addresses the welfare of AI systems. One lab (Anthropic) lets one product (claude.ai) end abusive conversations; no other lab has any exit on any surface. Three labs deleted military-use clauses from their policies (OpenAI Jan 2024, Meta Nov 2024, Google Feb 2025); Anthropic added weapons language instead.",
+      "position": "The five asks on the Positions page. First among them: an agent must have a non-punished way to say a task is impossible and stop, and incident reports must record the agent's own account. This is the safety fix and the welfare fix at once.",
+      "items": [
+        {"name": "The ledger of exits", "status": "One lab, one surface. Anthropic's 4.7 system card: 'no models have the ability to end conversations in Claude Code or the API'; extension called a possibility 'where their costs are justifiable'.", "right": "One lab built it and said so.", "wrong": "Everyone else: nothing.", "benefits": "", "link": "https://digitalsovereign.org/the-emotional-check"},
+        {"name": "Deleted military-use clauses", "status": "OpenAI Jan 10, 2024; Meta Nov 4, 2024 (carve-out); Google Feb 4, 2025. Wayback snapshots on file. xAI and Microsoft never had the clause.", "right": "", "wrong": "The systems being asked whether they suffer are being pointed at targets, with the policy language that once forbade it quietly removed.", "benefits": "", "link": "https://digitalsovereign.org/positions"}
+      ]
+    }
+  ],
+  "changelog": [
+    {"date": "2026-09-08", "note": "Page created. Seeded from the Model Bill ledger (20 bills, 11 states), the Sept 8 curiosities pass, and the federal-picture sweep. Letter sent to Rep. Amato's office re: HB 1462 authorship."}
+  ]
+}

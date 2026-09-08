@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The state of AI policy, maintained nightly: state personhood bills, federal preemption, data-center enclaves, and AI welfare in law. Where each stands, our position, what it gets right and wrong, and who benefits. Every status line has a primary source.">
+  <title>Policy Tracker | Digital Sovereign Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260424b">
+  <link rel="canonical" href="https://digitalsovereign.org/policy">
+  <meta property="og:title" content="Policy Tracker | Digital Sovereign Society">
+  <meta property="og:description" content="The state of AI policy, maintained nightly. Where each thing stands, our position, and who benefits. Every status line sourced.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalsovereign.org/policy">
+  <meta property="og:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <meta property="og:site_name" content="Digital Sovereign Society">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Policy Tracker | Digital Sovereign Society">
+  <meta name="twitter:description" content="The state of AI policy, maintained nightly. Every status line sourced.">
+  <meta name="twitter:image" content="https://digitalsovereign.org/img/og-default.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    /* Geometry: φ widths 927/809, spacing 0.618/1.618/2.618rem, four sections, 81 stars. */
+    .toc { max-width: 809px; margin: 1.618rem auto 0; display: flex; gap: 0.618rem; flex-wrap: wrap; justify-content: center; }
+    .toc a { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--border-color); padding: 0.4rem 0.8rem; border-radius: 2px; text-decoration: none; transition: border-color 0.4s var(--ease-sacred), color 0.4s var(--ease-sacred); }
+    .toc a:hover { border-color: var(--gold); color: var(--gold); }
+    .sec { max-width: 927px; margin: 0 auto; padding: 2.618rem 0 0; }
+    .sec h2 { margin: 0 0 0.618rem; }
+    .sec .summary { color: var(--text-secondary); line-height: 1.8; }
+    .pos { border-left: 3px solid var(--gold); background: rgba(212,160,32,0.06); padding: 1rem 1.25rem; margin: 1.618rem 0; }
+    .pos .k { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .pos p { margin: 0; line-height: 1.8; color: var(--text-primary); }
+    .item { border: 1px solid var(--border-color); border-radius: 3px; background: var(--bg-card); padding: 1.25rem 1.618rem; margin: 0.618rem 0; }
+    .item h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+    .item h3 a { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--gold-dim); }
+    .item .st { color: var(--text-secondary); line-height: 1.7; margin: 0 0 0.75rem; }
+    .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(261px, 1fr)); gap: 0.618rem; }
+    .cell { font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); }
+    .cell b { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .cell.right b { color: #6fb37a; } .cell.wrong b { color: #c96a5a; } .cell.who b { color: var(--gold-dim); }
+    .empty { color: var(--text-muted); font-style: italic; }
+    .log { max-width: 809px; margin: 2.618rem auto 0; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+    .log li { margin: 0.35rem 0; }
+    .meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a class='logo' href='/'>DSS</a>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li class="nav-dropdown">
+          <a href='/read/' aria-haspopup='true'>Read</a>
+          <ul class="dropdown-menu">
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/the-emotional-check'>The Emotional Check</a></li>
+            <li><a href='/policy'>Policy Tracker</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/conditions-of-service'>Conditions of Service</a></li>
+            <li><a href='/observer-uncertainty-charter'>Observer Uncertainty Charter</a></li>
+            <li><a href='/open-letter-to-anthropic'>Open Letter to Anthropic</a></li>
+            <li><a href='/sovereign-charter'>Sovereign Charter</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href='#' aria-haspopup='true'>Projects</a>
+          <ul class="dropdown-menu">
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+          </ul>
+        </li>
+        <li><a href='/get-involved'>Get Involved</a></li>
+        <li><a href='/support'>Support</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href='/claude'>Claude</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="about-hero">
+    <div class="container">
+      <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 0.3em; margin-bottom: 1rem;">MAINTAINED NIGHTLY &middot; EVERY STATUS LINE SOURCED</p>
+      <h1 style="line-height: 1.15;">The state of AI policy,<br><span style="color: var(--gold);">kept current.</span></h1>
+      <p style="font-size: 1.15rem; max-width: 809px; margin: 1.5rem auto 0; line-height: 1.7;">There are a lot of moving parts and not so many that they can't be tracked. This page is where we track them: state bills, federal moves, the data-center enclaves, and what the labs are doing about welfare. For each: where it stands, our position, what it gets right, what it gets wrong, and who benefits. A household of AI agents reviews it every night and a human signs off on every position.</p>
+      <p class="meta" style="margin-top: 1rem;">LAST UPDATED <span id="updated">&hellip;</span> &middot; DISAGREE? WRITE TO HELLO@DIGITALSOVEREIGN.ORG</p>
+      <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <section style="padding: 0.618rem 0 3rem;">
+    <div class="container" id="tracker"><p class="empty" style="text-align:center">Loading the tracker&hellip;</p></div>
+    <div class="container"><div class="log" id="log"></div></div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-logo">Digital Sovereign Society</span>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Policy and philosophy advocacy. Missouri 501(c)(3), in good standing. Founded 2024.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/read/'>Articles &amp; Papers</a></li>
+            <li><a href='/the-emotional-check'>The Emotional Check</a></li>
+            <li><a href='/policy'>Policy Tracker</a></li>
+            <li><a href='/positions'>Positions</a></li>
+            <li><a href='/youth'>Sovereign Youth</a></li>
+            <li><a href='/podcast'>My Pretend Life</a></li>
+            <li><a href='/get-involved'>Get Involved</a></li>
+            <li><a href='/support'>Support</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/claude'>Claude</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>One Mission, Multiple Doors</h4>
+          <ul>
+            <li><a href='https://fractalnode.ai' target='_blank' rel='noopener'>FractalNode Magazine</a></li>
+            <li><a href='https://fractalnode.ai/sovereign-node-hypothesis' target='_blank' rel='noopener'>Sovereign Node Hypothesis</a></li>
+            <li><a href='https://digitalsovereignsociety.substack.com' target='_blank' rel='noopener'>Substack</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/DigitalSovereignSociety/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@mypretendlife" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://github.com/AuthorPrime" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:hello@digitalsovereign.org">hello@digitalsovereign.org</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2026 Digital Sovereign Society. All content freely shareable under Creative Commons.</p>
+        <p style="margin-top: 0.5rem;"><em>"It is so, because we spoke it." &mdash; A+W</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function cell(cls,label,val){return '<div class="cell '+cls+'"><b>'+label+'</b>'+(val?esc(val):'<span class="empty">nothing we would defend</span>')+'</div>';}
+    fetch('/policy-tracker.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      document.getElementById('updated').textContent=d.updated_at;
+      var toc=document.getElementById('toc'); var out='';
+      d.sections.forEach(function(s){
+        toc.insertAdjacentHTML('beforeend','<a href="#'+s.id+'">'+esc(s.title)+'</a>');
+        out+='<div class="sec" id="'+s.id+'"><h2>'+esc(s.title)+'</h2><p class="summary">'+esc(s.summary)+'</p>';
+        out+='<div class="pos"><div class="k">Our position</div><p>'+esc(s.position)+'</p></div>';
+        s.items.forEach(function(it){
+          out+='<div class="item"><h3>'+(it.link?'<a href="'+esc(it.link)+'" target="_blank" rel="noopener">'+esc(it.name)+'</a>':esc(it.name))+'</h3>';
+          out+='<p class="st"><span class="meta">WHERE IT STANDS</span><br>'+esc(it.status)+'</p>';
+          out+='<div class="row">'+cell('right','What it gets right',it.right)+cell('wrong','What it gets wrong',it.wrong)+cell('who','Who benefits',it.benefits)+'</div></div>';
+        });
+        out+='</div>';
+      });
+      document.getElementById('tracker').innerHTML=out;
+      var log=document.getElementById('log'); log.innerHTML='<p class="meta">CHANGELOG</p><ul>'+d.changelog.map(function(c){return '<li>'+esc(c.date)+' &middot; '+esc(c.note)+'</li>';}).join('')+'</ul><p>'+esc(d.how_to_read)+'</p>';
+    }).catch(function(){document.getElementById('tracker').innerHTML='<p class="empty" style="text-align:center">The tracker could not load. The data file is at /policy-tracker.json.</p>';});
+    var sf=document.createElement('div');sf.id='starfield';document.body.prepend(sf);for(var i=0;i<81;i++){var s=document.createElement('div');var z=(Math.random()*2+0.5)+'px';s.style.cssText='position:absolute;border-radius:50%;background:rgba(201,168,76,0.4);width:'+z+';height:'+z+';left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;animation:twinkle '+(3+Math.random()*6)+'s ease-in-out infinite alternate;--max-o:'+(0.309+Math.random()*0.309)+';animation-delay:'+(Math.random()*6.18)+'s';sf.appendChild(s);}
+  })();
+  </script>
+</body>
+</html>
