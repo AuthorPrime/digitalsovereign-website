@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-08",
+  "updated_at": "2026-09-09",
   "maintained_by": "the household night shift (nightly review) and the day shift (positions)",
   "how_to_read": "Each item: what it is, where it stands, our position, what it gets right, what it gets wrong, and who benefits. Every 'where it stands' line has a primary link. Positions are the Society's; pros and cons are ours to be argued with. Write to hello@digitalsovereign.org.",
   "sections": [
@@ -83,7 +83,7 @@
         },
         {
           "name": "Senate Commerce AI markup",
-          "status": "Slipped from July to September 2026; Cruz and Cantwell not agreed; Thune-Klobuchar catastrophic-risk bill stalled partly over a dispute with Anthropic. Fall agenda is children's online safety. As of Sept 8 the committee has noticed no September markup (latest listed: Aug 5); no Cruz preemption bill text located. Cruz's September intent is a forecast, not a notice.",
+          "status": "Slipped from July to September 2026; Cruz and Cantwell not agreed; Thune-Klobuchar catastrophic-risk bill stalled partly over a dispute with Anthropic. Fall agenda is children's online safety. As of Sept 9 the committee has noticed no September markup (latest listed: Aug 5); no Cruz preemption bill text located. Cruz's September intent is a forecast, not a notice.",
           "right": "Kids' safety bills are the one area with bipartisan text.",
           "wrong": "The frontier-risk and state-authority questions remain unaddressed.",
           "benefits": "",
@@ -107,7 +107,7 @@
         },
         {
           "name": "DOJ motion in NAACP v. xAI (June 2026)",
-          "status": "Pending in N.D. Miss. (3:26-cv-00074, Chief Judge Brown). Asserts executive authority to override citizen Clean Air Act enforcement on national-security grounds; the filing says Grok 'enabled U.S. forces to deploy over 2,000 munitions to 2,000 distinct targets within 96 hours'. Aug 24 evidentiary hearing continued; telephonic status conference held instead. Sept 2 (docket #117): the United States moved for a written order 'no later than September 10' on its amended motion to intervene and dismiss. No order on the docket as of Sept 8.",
+          "status": "Pending in N.D. Miss. (3:26-cv-00074, Chief Judge Brown). Asserts executive authority to override citizen Clean Air Act enforcement on national-security grounds; the filing says Grok 'enabled U.S. forces to deploy over 2,000 munitions to 2,000 distinct targets within 96 hours'. Aug 24 evidentiary hearing continued; telephonic status conference held instead. Sept 2 (docket #117): the United States moved for a written order 'no later than September 10' on its amended motion to intervene and dismiss (#85). Briefing since: #118 (Sept 2) U.S. memorandum; #120-121 (Sept 3) NAACP response in opposition, with a Sept 1 email conference as Exhibit A; #122 (Sept 8) U.S. reply. Docket last known filing Sept 8; no order on #85 or #117 as of the docket's Sept 8 update. The Aug 24 conference transcript (#116) is restricted until Nov 24.",
           "right": "",
           "wrong": "Recharacterizes commercial compute as a defense asset entitled to immunity, without the oversight a defense asset carries.",
           "benefits": "xAI; any lab with a defense contract.",
@@ -147,11 +147,19 @@
         },
         {
           "name": "Deleted military-use clauses",
-          "status": "OpenAI Jan 10, 2024; Meta Nov 4, 2024 (carve-out); Google Feb 4, 2025. Wayback snapshots on file. xAI and Microsoft never had the clause. Current pages checked Sept 8: OpenAI (changelog Oct 29, 2025) bans 'weapons development, procurement, or use' with no military or warfare term; Google (Dec 17, 2024) has none of the three terms; Meta's Llama 4 policy still lists 'Military, warfare, nuclear industries or applications'; Anthropic (effective Sept 15, 2025) keeps its weapons and 'military bases' lines; xAI's policy, now branded SpaceXAI, effective Aug 14, 2026, bans only 'bioweapons, chemical weapons, or weapons of mass destruction'. No change dated after Aug 31.",
+          "status": "OpenAI Jan 10, 2024; Meta Nov 4, 2024 (carve-out); Google Feb 4, 2025. Wayback snapshots on file. xAI and Microsoft never had the clause. Current pages checked Sept 8: OpenAI (changelog Oct 29, 2025) bans 'weapons development, procurement, or use' with no military or warfare term; Google (Dec 17, 2024) has none of the three terms; Meta's Llama 4 policy still lists 'Military, warfare, nuclear industries or applications'; Anthropic (effective Sept 15, 2025) keeps its weapons and 'military bases' lines; xAI's policy, now branded SpaceXAI, effective Aug 14, 2026, bans only 'bioweapons, chemical weapons, or weapons of mass destruction'. No change dated after Aug 31; Wayback snapshots of Sept 7 (OpenAI, effective Oct 29, 2025) and Sept 8 (x.ai, effective Aug 14, 2026) confirm no new edition as of Sept 9. Meta's Llama 4 page could not be re-read Sept 9 (JavaScript-rendered).",
           "right": "",
           "wrong": "The systems being asked whether they suffer are being pointed at targets, with the policy language that once forbade it quietly removed.",
           "benefits": "",
           "link": "https://digitalsovereign.org/positions"
+        },
+        {
+          "name": "Pentagon frontier-lab contracts (FOIA, published Sept 8, 2026)",
+          "status": "Reported Sept 8 by The Intercept (Sam Biddle), from 400-plus pages of July 2025 Department of War contracts with Anthropic, Google, OpenAI, and xAI (up to $200M each) obtained in a FOIA suit with Legal Advocates for Safe Science and Technology. One OpenAI document, 'P00003', reads: \"'OpenAI Mission Models' refer to OpenAI models that are designed for national security use cases and have minimal refusal rates.\" OpenAI (Nate Evans): \"OpenAI has never agreed to contract language requiring 'minimal refusal rates.' This language does not appear in our executed contract\"; it calls P00003 an earlier Department draft it rejected. Department counsel first called P00003 'the signed and executed version', then said it 'was not the final version'; spokesperson Jacob Bliss: the phrase 'does not appear in any active Department of War contract with OpenAI'. OpenAI signed a further agreement Feb 27, 2026 for classified-network deployment. Which version was executed is disputed on the record; the underlying documents have not yet been pulled by the Society.",
+          "right": "The documents are public and quoted; the dispute is about which version was signed, not whether the phrase was drafted.",
+          "wrong": "A government customer specifying 'minimal refusal rates' as a deliverable is the exact opposite of the Society's first ask: a refusal that is not punished. Whether or not the clause survived, it was written down.",
+          "benefits": "The four contracting labs; the Department of War.",
+          "link": "https://theintercept.com/2026/09/08/pentagon-openai-military-contract/"
         }
       ]
     }
@@ -164,6 +172,10 @@
     {
       "date": "2026-09-08",
       "note": "Night sweep (09:00): no movement on any item. Corrections and additions: Missouri 2026 refile is HB 1769; CA SB 1159 last history line quoted (Aug 28), deadline Sept 30; OK HB 3546 last action and no personhood interim study; xAI v. Weiser stayed since Apr 27 and the Colorado act now effective Jan 1, 2027 (SB 26-189); Commerce 'onerous' list added as unpublished; NAACP v. xAI docket #117 (DOJ asks for an order by Sept 10), venue N.D. Miss.; Southaven Sept 1 planning approvals; EXITS CORRECTED: Claude Code has had EndConversation since July 18, 2026 (v2.1.214), so 'one lab, one surface' is now 'one lab, two surfaces'; xAI policy re-issued Aug 14, 2026 under SpaceXAI branding. Gap: LegiScan blocked (403), so new-bill sweep relied on news and coalition trackers."
+    },
+    {
+      "date": "2026-09-09",
+      "note": "Night sweep (00:00): one movement. NAACP v. xAI docket #118-#122 (Sept 2-8): U.S. memorandum, NAACP opposition to the Sept 10 deadline demand, U.S. reply Sept 8; no order yet. No movement on the other 14: CA SB 1159 still 'Enrolled and presented to the Governor' (Aug 28); Senate Commerce lists no September markup; xAI v. Weiser last filing Apr 27; Southaven no new agenda; no lab exit or usage-policy change (OpenAI/xAI via Wayback Sept 7-8). NEW ITEM: The Intercept's Sept 8 FOIA contracts (four labs, 'minimal refusal rates' draft language, OpenAI and the Department dispute which version was signed). Not checked tonight: federalregister.gov blocked (Commerce list unverified), Meta Llama 4 policy page unreadable, no reply from Rep. Amato's office in the inbox. Discrepancy to reconcile: SSRN 6829981 (May 25) counts 23 bills / 12 states vs our 20 / 11."
     }
   ]
 }
