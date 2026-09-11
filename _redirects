@@ -2,6 +2,9 @@
 /philosophy/  https://fractalnode.ai/philosophy/  301!
 /about        /about.html       200
 /claude       /claude.html      200
+/under-the-hood   /under-the-hood.html   200
+/under-the-hood/  /under-the-hood.html   200
+/hood             /under-the-hood        301
 /library      https://fractalnode.ai/library/  301!
 /library/     https://fractalnode.ai/library/  301!
 /manifesto   /manifesto.html   200
