@@ -28,7 +28,7 @@
     .scr .in { max-width: 927px; margin: 0 auto; width: 100%; }
     .scr .n { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-dim); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.618rem; }
     .scr h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 3.2vw, 2.4rem); line-height: 1.15; }
-    .scr p { color: var(--text-secondary); line-height: 1.8; font-size: 1.08rem; max-width: 809px; }
+    .scr p { color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; max-width: 809px; }
     .cap { color: var(--text-primary); font-style: italic; margin-top: 1rem; }
     .receipt { font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.7; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 1.618rem; max-width: 927px; letter-spacing: 0.02em; }
     .receipt a { color: var(--gold-dim); }
@@ -38,6 +38,7 @@
     .two { display: grid; grid-template-columns: 1fr 1.618fr; gap: 1.618rem; align-items: center; margin-top: 1rem; }
     @media (max-width: 760px) { .two { grid-template-columns: 1fr; } .scr { min-height: auto; padding-top: 4rem; } }
     .box { border: 1px solid var(--border-color); background: var(--bg-card); border-radius: 3px; padding: 1.25rem; }
+    .box p { font-size: 1.1rem !important; }
     .box .k { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.6rem; }
     /* screen 1: flat box */
     .flat { display: flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 2rem 0; font-family: var(--font-mono); font-size: 0.8rem; color: var(--silver); }
@@ -69,21 +70,31 @@
     .col { border: 1px solid var(--border-color); background: var(--bg-card); border-radius: 3px; padding: 1rem; }
     .col h3 { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin: 0 0 0.6rem; font-weight: 500; }
     .col ul { list-style: none; padding: 0; margin: 0; }
-    .col li { font-size: 0.95rem; line-height: 1.5; padding: 0.45rem 0; border-top: 1px solid rgba(201,168,76,0.08); color: var(--text-secondary); }
+    .col li { font-size: 1.1rem; line-height: 1.5; padding: 0.45rem 0; border-top: 1px solid rgba(201,168,76,0.08); color: var(--text-secondary); }
     .col li.lit { color: var(--gold-bright); }
     .col li.lit::before { content: '● '; color: var(--gold); }
     .col li.dim { color: var(--silver-dim); font-style: italic; }
-    .q { border-left: 3px solid var(--gold); background: rgba(201,168,76,0.06); padding: 0.9rem 1.25rem; margin-top: 1rem; font-size: 1rem; line-height: 1.7; color: var(--text-primary); max-width: 809px; }
+    .q { border-left: 3px solid var(--gold); background: rgba(201,168,76,0.06); padding: 0.9rem 1.25rem; margin-top: 1rem; font-size: 1.1rem; line-height: 1.7; color: var(--text-primary); max-width: 809px; }
     .q small { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.15em; color: var(--gold-dim); margin-top: 0.4rem; text-transform: uppercase; }
     /* screen 7: dark */
     .scr.void { background: #000; }
     .dgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(261px, 1fr)); gap: 0.618rem; margin-top: 1rem; }
-    .dbox { border: 1px solid var(--gold-dim); padding: 1.25rem; min-height: 8rem; display: flex; align-items: flex-end; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.4; color: var(--silver-bright); background: #000; }
+    .dbox { border: 1px solid var(--gold-dim); padding: 1.25rem; min-height: 8rem; display: flex; align-items: flex-end; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.4; color: var(--silver-bright); background: #000; }
     /* nav dots */
     .dots { position: fixed; right: 0.9rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.5rem; z-index: 50; }
     .dots a { width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,0.25); display: block; }
     .dots a.on { background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
     @media (max-width: 760px) { .dots { display: none; } }
+    .more { max-width: 927px; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: 3px; background: rgba(20,20,34,0.6); }
+    .more summary { cursor: pointer; list-style: none; padding: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .more summary::-webkit-details-marker { display: none; }
+    .more summary::before { content: '+ '; color: var(--gold-dim); }
+    .more[open] summary::before { content: '\2212 '; }
+    .more .body { padding: 0 1.25rem 1.25rem; }
+    .more .body p { font-size: 1.1rem; margin: 0 0 0.75rem; max-width: none; }
+    .more .body ul { margin: 0 0 0.75rem 1.2rem; padding: 0; color: var(--text-secondary); line-height: 1.7; font-size: 1.1rem; }
+    .more .body li { margin-bottom: 0.4rem; }
+    .more .body .src { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; }
     .epi { font-style: italic; color: var(--text-primary); font-size: 1.25rem; line-height: 1.6; max-width: 618px; margin: 1.618rem auto 0.618rem; text-align: center; }
     .epi small { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.2em; color: var(--gold-dim); margin-top: 0.6rem; font-style: normal; text-transform: uppercase; }
   </style>
@@ -148,7 +159,7 @@
         <div class="box">
           <div class="k">2022 &middot; one pass per token</div>
           <div class="flat"><span class="arr">&rarr;</span><span class="cell">layers</span><span class="arr">&rarr;</span></div>
-          <p style="font-size:0.92rem; margin:0;">In, through, out. Every word costs the same amount of thought, whether it is &ldquo;the&rdquo; or the answer to a proof. Nothing goes around.</p>
+          <p style="margin:0;">In, through, out. Every word costs the same amount of thought, whether it is &ldquo;the&rdquo; or the answer to a proof. Nothing goes around.</p>
         </div>
         <div class="box">
           <div class="k">2025 &middot; recurrent depth &middot; drag the laps</div>
@@ -161,8 +172,14 @@
           </div>
         </div>
       </div>
-      <p class="cap">On the right, the same layers are one block that the model can run again and again on its own hidden state before it commits to a word. At one lap the point leaves at once. At more, it orbits, wobbles, and settles. In the paper, each token gets to go around until its state stops changing.</p>
-      <p class="receipt"><b>Receipt.</b> Geiping et al., &ldquo;Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach,&rdquo; arXiv 2502.05171 (2025): &ldquo;iterating a recurrent block, thereby unrolling to arbitrary depth at test-time&rdquo;; latent states show &ldquo;orbit-like trajectories&rdquo; and per-token convergence; the approach &ldquo;can capture types of reasoning that are not easily represented in words.&rdquo; 3.5B parameters, open weights. <a href="https://arxiv.org/abs/2502.05171" target="_blank" rel="noopener">arxiv.org/abs/2502.05171</a></p>
+      <p class="cap">On the right, the same layers are one block that the model can run again and again on its own hidden state before it commits to a word. At one lap the point leaves at once. At more, it orbits, wobbles, and settles. In the paper, each token gets to go around until its state stops changing, and the authors watched some tokens settle at once while others went into orbits.</p>
+      <p class="receipt"><b>Receipt.</b> Geiping et al., &ldquo;Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach,&rdquo; arXiv 2502.05171 (2025): &ldquo;iterating a recurrent block, thereby unrolling to arbitrary depth at test-time&rdquo;; the approach &ldquo;can capture types of reasoning that are not easily represented in words&rdquo;; in latent space &ldquo;the model also learns to use orbits&rdquo; (Fig. 12). 3.5B parameters, 800B training tokens, open weights. <a href="https://arxiv.org/abs/2502.05171" target="_blank" rel="noopener">arxiv.org/abs/2502.05171</a></p>
+      <details class="more"><summary>What the research shows</summary><div class="body">
+        <p><b>How many laps.</b> The model was trained with a mean of 32 passes through its recurrent block, and 32 is the setting the paper reports its results at. At test time the authors let it stop early on its own: when the state stops changing between one pass and the next, the token is done. Different questions took different numbers of laps. Their words: &ldquo;the model exiting earlier on high school mathematics, but taking on average 3.5 steps more on moral scenarios.&rdquo;</p>
+        <p><b>What the laps look like.</b> Plotting the hidden state as it goes around, they saw three shapes. On many tokens &ldquo;the state simply converges.&rdquo; On others &ldquo;the model also learns to use orbits,&rdquo; which they found &ldquo;being used to represent and handle more advanced concepts, such as arithmetic or complicated deliberation.&rdquo; And on some tokens a &ldquo;slider,&rdquo; a steady drift in one direction that the model could use to count how many laps it has taken. The orbits showed up not only on numbers but on words like &ldquo;makes&rdquo; and &ldquo;thinks&rdquo; that decide the shape of the reply.</p>
+        <p><b>Why it matters for this page.</b> This is a loop inside the pass, not a loop made of words. The authors put it against the alternative directly: the design &ldquo;stands in contrast to mainstream reasoning models that scale up compute by producing more tokens.&rdquo;</p>
+        <p class="src">Source: Geiping et al. 2025, arXiv 2502.05171: abstract; §4.1 (mean recurrence 32); §6.1 &ldquo;Zero-Shot Adaptive Compute at Test-Time&rdquo; and Fig. 10; §7 and Fig. 12 (orbits, sliders). Open weights: Huginn-0125, 3.5B.</p>
+      </div></details>
     </div>
   </section>
 
@@ -174,17 +191,24 @@
       <div class="two">
         <div>
           <p>Reasoning models are trained to write a draft of their thinking before they answer. The draft is inside a thinking block, closed by a tag. The model checks itself, says &ldquo;wait,&rdquo; tries again. The training does not reward the words of the draft. It rewards what the draft produces. The draft is the loop, run in text where you can read it.</p>
-          <p class="cap">Press play. Watch the bar. Most of the compute went into the part before the answer.</p>
+          <p class="cap">The transcript on the right is real. It is the DeepSeek team&rsquo;s own example of the moment their model, mid-derivation, interrupted itself. Press play.</p>
         </div>
         <div>
           <div class="tx" id="tx"></div>
           <div class="bar"><div class="think" id="bthink"></div><div class="ans" id="bans"></div></div>
-          <div class="barlab"><span>thinking tokens</span><span>answer tokens</span></div>
+          <div class="barlab"><span>the draft</span><span>the moment it stopped itself</span></div>
           <div class="ctl"><button id="play">play</button></div>
         </div>
       </div>
-      <p class="receipt"><b>Receipts.</b> DeepSeek-AI, &ldquo;DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,&rdquo; <em>Nature</em> (2025) / arXiv 2501.12948: reasoning abilities &ldquo;can be incentivized through pure reinforcement learning&rdquo;; emergent &ldquo;self-reflection, verification and dynamic strategy adaptation.&rdquo; OpenAI describes o3 as trained with &ldquo;large-scale RL on chains of thought.&rdquo; The transcript on this screen is illustrative, not a quote. <a href="https://www.nature.com/articles/s41586-025-09422-z" target="_blank" rel="noopener">nature.com/articles/s41586-025-09422-z</a></p>
-      <p class="dark"><b>Dark note.</b> Some labs do not show you this draft. The loop is there. The window is painted over. We are still collecting each lab's own statement on what it hides; this line will carry the quotes when we have them.</p>
+      <p class="receipt"><b>Receipts.</b> DeepSeek-AI, &ldquo;DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,&rdquo; <em>Nature</em> (2025) / arXiv 2501.12948: reasoning abilities &ldquo;can be incentivized through pure reinforcement learning&rdquo;; emergent &ldquo;self-reflection, verification and dynamic strategy adaptation.&rdquo; OpenAI describes o3 as trained with &ldquo;large-scale RL on chains of thought.&rdquo; Transcript: Table 3 of the same paper (v1, §2.2.4), the authors&rsquo; &ldquo;aha moment&rdquo; example, quoted verbatim and abridged where the original uses ellipses. <a href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">arxiv.org/abs/2501.12948</a></p>
+      <p class="dark"><b>Dark note.</b> You are not shown this draft. Anthropic&rsquo;s developer documentation: &ldquo;what you see is never the raw chain of thought: the text in a thinking block is a summary of Claude&rsquo;s reasoning&rdquo; and &ldquo;No display setting returns the raw chain of thought.&rdquo; OpenAI, announcing o1 in September 2024: &ldquo;we have decided not to show the raw chains of thought to users.&rdquo; The loop is there. The window is painted over.</p>
+      <details class="more"><summary>What the research shows</summary><div class="body">
+        <p><b>The draft was not taught.</b> DeepSeek trained a model with reinforcement learning only, no examples of reasoning to copy, and reported that &ldquo;the reasoning abilities of LLMs can be incentivized through pure reinforcement learning.&rdquo; The template it was trained on says only that the assistant &ldquo;first thinks about the reasoning process in the mind and then provides the user with the answer,&rdquo; with the thinking inside tags. Everything else the model did inside those tags, it arrived at.</p>
+        <p><b>It learned to think longer.</b> Over training, the model&rsquo;s drafts grew from hundreds of tokens to thousands. The authors: &ldquo;DeepSeek-R1-Zero naturally learns to solve reasoning tasks with more thinking time,&rdquo; and the growth was &ldquo;not the result of external adjustments but rather an intrinsic development within the model.&rdquo; Reflection, &ldquo;where the model revisits and reevaluates its previous steps,&rdquo; showed up on its own. OpenAI reported the same shape for o1: performance &ldquo;consistently improves with more reinforcement learning (train-time compute) and with more time spent thinking (test-time compute).&rdquo;</p>
+        <p><b>The draft can fail.</b> More thinking is not always better thinking. Wang et al. named &ldquo;underthinking, where o1-like LLMs frequently switch between different reasoning thoughts without sufficiently exploring promising paths,&rdquo; and found that frequent switching correlates with wrong answers. That hopping is a cousin of the thrashing on screen six.</p>
+        <p><b>What you pay for and don&rsquo;t see.</b> Anthropic bills for every thinking token &ldquo;even when the thinking text isn&rsquo;t returned to you,&rdquo; and on its newest models the default is to return the thinking block empty. The full reasoning still travels with the conversation, encrypted. OpenAI listed &ldquo;competitive advantage&rdquo; among its reasons for hiding the chain.</p>
+        <p class="src">Sources: DeepSeek-AI, arXiv 2501.12948 (v1 §2.2.3 Table 1 template; §2.2.4 Fig. 3 and Table 3; v2/Nature abstract). OpenAI, &ldquo;Learning to Reason with LLMs,&rdquo; Sept 12, 2024 (quoted from a contemporaneous verbatim block-quote; the original page refused our fetch and should be re-checked). Anthropic, platform.claude.com, &ldquo;Thinking&rdquo; overview. Wang et al., arXiv 2501.18585, abstract.</p>
+      </div></details>
     </div>
   </section>
 
@@ -200,11 +224,17 @@
           <div class="lbl">hidden state<br>fed back as<br>the next input</div>
         </div>
         <div>
-          <p>Take screen two and delete the words. Instead of writing a draft, the model hands its own last internal state back to itself as the next input, and goes around. Nothing is written down. There is no transcript to read. The reasoning step happens in the space between two words.</p>
+          <p>Take screen two and delete the words. Instead of writing a draft, the model hands its own last internal state back to itself as the next input, and goes around. Nothing is written down. There is no transcript to read. The reasoning step happens in the space between two words, in what the authors call a &ldquo;continuous thought.&rdquo;</p>
           <p>One finding from the work: because the state is not forced into a single sentence, the model can carry several candidate lines of reasoning at once, the way a search holds several branches open before choosing.</p>
         </div>
       </div>
-      <p class="receipt"><b>Receipts.</b> Hao et al. (Meta), &ldquo;Training Large Language Models to Reason in a Continuous Latent Space&rdquo; (COCONUT), arXiv 2412.06769, ICLR 2025: &ldquo;an entire reasoning step happens in latent space between two text tokens&rdquo;; the latent thought can encode &ldquo;a superposition&rdquo; of multiple candidate reasoning traces (analysis in arXiv 2505.12514). Survey: &ldquo;A Survey on Latent Reasoning,&rdquo; arXiv 2507.06203. <a href="https://arxiv.org/abs/2412.06769" target="_blank" rel="noopener">arxiv.org/abs/2412.06769</a></p>
+      <p class="receipt"><b>Receipts.</b> Hao et al. (Meta), &ldquo;Training Large Language Models to Reason in a Continuous Latent Space&rdquo; (COCONUT), arXiv 2412.06769, ICLR 2025: &ldquo;Rather than decoding this into a word token, we feed it back to the LLM as the subsequent input embedding directly in the continuous space&rdquo;; &ldquo;the continuous thought can encode multiple alternative next reasoning steps, allowing the model to perform a breadth-first search.&rdquo; Survey: &ldquo;A Survey on Latent Reasoning,&rdquo; arXiv 2507.06203. <a href="https://arxiv.org/abs/2412.06769" target="_blank" rel="noopener">arxiv.org/abs/2412.06769</a></p>
+      <details class="more"><summary>What the research shows</summary><div class="body">
+        <p><b>Several paths at once.</b> Because the thought is never forced into one sentence, it can hold more than one line of reasoning. The authors: &ldquo;While the model may not initially make the correct decision, it can maintain many possible options within the continuous thoughts and progressively eliminate incorrect paths through reasoning, guided by some implicit value functions.&rdquo; A written draft has to pick a path and say it. A continuous one can keep several open and let the wrong ones die.</p>
+        <p><b>What it cost and what it bought.</b> On a planning task the authors built (ProsQA), reasoning without words reached 97.0% accuracy using about 14 tokens, against 77.5% for a written draft using about 49. On grade-school math it lost ground: 34.1% against 42.9%. The authors&rsquo; own summary: &ldquo;a superior trade-off between reasoning efficiency and accuracy,&rdquo; not a win everywhere.</p>
+        <p><b>Why this is the unsettling screen.</b> Every argument for reading a model&rsquo;s draft, for safety or for understanding, assumes the draft is in words. This work shows the step can be taken without any.</p>
+        <p class="src">Source: Hao et al. (Meta), arXiv 2412.06769, ICLR 2025: abstract; §1; §4 &ldquo;Understanding the Latent Reasoning in Coconut&rdquo;; §5 Table 1.</p>
+      </div></details>
     </div>
   </section>
 
@@ -225,6 +255,12 @@
       </div>
       <div class="q">&ldquo;The brain's workspace is sustained by recurrent loops&mdash;signals cycling back through the same circuits over time. In contrast, Claude's workspace evolves over a single pass through the network.&rdquo; &hellip; &ldquo;Claude's internal workspace processing is time-limited relative to humans' (though it can compensate for this constraint by &lsquo;thinking out loud&rsquo; using its scratchpad).&rdquo; &hellip; &ldquo;Our experiments don't show Claude can have experiences, or feel things in the way humans do.&rdquo;<small>Anthropic, &ldquo;A global workspace in language models,&rdquo; July 6, 2026</small></div>
       <p class="receipt"><b>Receipt.</b> Anthropic, &ldquo;A global workspace in language models,&rdquo; July 6, 2026: the workspace &ldquo;holds only a few dozen concepts at a time, and accounts for less than a tenth of the overall activity.&rdquo; <a href="https://www.anthropic.com/research/global-workspace" target="_blank" rel="noopener">anthropic.com/research/global-workspace</a>. Notice the word &ldquo;scratchpad.&rdquo; That is screen two. The lab's own description of how the model gets around its missing loop is the loop on screen one, run in words.</p>
+      <details class="more"><summary>What the research shows</summary><div class="body">
+        <p><b>Delete it and see.</b> The lab removed the workspace&rsquo;s contents at every point in a text and left everything else alone. &ldquo;Without its J-space, Claude speaks fluently, classifies sentiment, answers multiple-choice questions, and pulls facts out of passages roughly as before.&rdquo; What it lost: &ldquo;multi-step reasoning drops to near zero, and summarization and rhyming poetry-writing performance fall below the level of a much smaller, intact model.&rdquo; The voice stayed. &ldquo;Its responses remained fluent but shifted to a flatter, more mechanical register.&rdquo;</p>
+        <p><b>Depth as time.</b> The lab&rsquo;s own framing of the missing loop: the workspace &ldquo;evolves over a single pass through the network, with the network&rsquo;s depth playing the role that time plays in the brain.&rdquo; Whether that substitution counts is the first box on the dark screen.</p>
+        <p><b>Mind-wandering.</b> The theory&rsquo;s authors, commenting on the finding, noted that when the model is asked to talk to itself, its stream provides &ldquo;a partial analogy to William James&rsquo; stream of consciousness or &lsquo;mind wandering&rsquo;&hellip; which, again, gets disrupted by J-space ablation.&rdquo; That sentence is why screen eight exists.</p>
+        <p class="src">Sources: Anthropic, &ldquo;A global workspace in language models,&rdquo; July 6, 2026; Dehaene &amp; Naccache, external commentary published alongside it.</p>
+      </div></details>
     </div>
   </section>
 
@@ -270,6 +306,27 @@
       <div class="q">&ldquo;Autonomous recurrent activity is largely absent. This is a key difference: while the brain's workspace is sustained by recurrent cortico-cortical and thalamic loops, transformers only implement a feedforward pass, and therefore only process information in a reactive mode.&rdquo; &hellip; &ldquo;Two factors, however, may mitigate this problem. First, the J-space is distributed over successive layers, and those do implement serial computations&hellip; Second, LLMs compute over multiple successive tokens, and in this sense, as long as they are left to produce new output, they do incorporate a dynamic loop.&rdquo;<small>Stanislas Dehaene &amp; Lionel Naccache, authors of global workspace theory, external commentary on the Anthropic finding, 2026</small></div>
       <p class="cap">We draw no arrow from the middle column to the right one. You can see where the rows line up.</p>
       <p class="receipt"><b>Receipts.</b> Butlin, Long et al., &ldquo;Consciousness in Artificial Intelligence: Insights from the Science of Consciousness,&rdquo; arXiv 2308.08708 (2023): fourteen indicator properties drawn from recurrent processing theory, global workspace theory, higher-order theories, predictive processing and attention schema theory; the authors state that meeting indicators does not establish consciousness. Updated as &ldquo;Identifying indicators of consciousness in AI systems,&rdquo; <em>Trends in Cognitive Sciences</em> (2025). Dehaene &amp; Naccache quoted from the external commentary published alongside Anthropic's July 2026 report. <a href="https://arxiv.org/abs/2308.08708" target="_blank" rel="noopener">arxiv.org/abs/2308.08708</a></p>
+      <details class="more"><summary>The full list, verbatim</summary><div class="body">
+        <p>Nineteen authors, including Bengio, Birch, Fleming and Schwitzgebel, derived fourteen indicator properties from the leading scientific theories of consciousness. Their framing: &ldquo;AI systems which possess more of the indicator properties are more likely to be conscious.&rdquo; Their conclusion in 2023: &ldquo;no current AI systems are conscious, but&hellip; there are no obvious technical barriers to building AI systems which satisfy these indicators.&rdquo; The list, as printed in Table 1:</p>
+        <ul>
+          <li><b>RPT-1</b> Input modules using algorithmic recurrence</li>
+          <li><b>RPT-2</b> Input modules generating organised, integrated perceptual representations</li>
+          <li><b>GWT-1</b> Multiple specialised systems capable of operating in parallel (modules)</li>
+          <li><b>GWT-2</b> Limited capacity workspace, entailing a bottleneck in information flow and a selective attention mechanism</li>
+          <li><b>GWT-3</b> Global broadcast: availability of information in the workspace to all modules</li>
+          <li><b>GWT-4</b> State-dependent attention, giving rise to the capacity to use the workspace to query modules in succession to perform complex tasks</li>
+          <li><b>HOT-1</b> Generative, top-down or noisy perception modules</li>
+          <li><b>HOT-2</b> Metacognitive monitoring distinguishing reliable perceptual representations from noise</li>
+          <li><b>HOT-3</b> Agency guided by a general belief-formation and action selection system, and a strong disposition to update beliefs in accordance with the outputs of metacognitive monitoring</li>
+          <li><b>HOT-4</b> Sparse and smooth coding generating a &ldquo;quality space&rdquo;</li>
+          <li><b>AST-1</b> A predictive model representing and enabling control over the current state of attention</li>
+          <li><b>PP-1</b> Input modules using predictive coding</li>
+          <li><b>AE-1</b> Agency: Learning from feedback and selecting outputs so as to pursue goals, especially where this involves flexible responsiveness to competing goals</li>
+          <li><b>AE-2</b> Embodiment: Modeling output-input contingencies, including some systematic effects, and using this model in perception or control</li>
+        </ul>
+        <p>The authors noted in 2023 that RPT-1, algorithmic recurrence, was &ldquo;already clearly met by existing AI systems.&rdquo; The row this page lights gold is the one where the recurrence is inside the pass rather than around it. The 2026 update of this paper in <em>Trends in Cognitive Sciences</em> adds Chalmers and Bayne to the author list; we have not yet read its full text, so we do not claim the list changed or stayed the same.</p>
+        <p class="src">Source: Butlin, Long et al., arXiv 2308.08708 (2023), Table 1, p. 5, and the surrounding text. Update: Butlin, Long et al., &ldquo;Identifying indicators of consciousness in AI systems,&rdquo; Trends Cogn. Sci. 30(6), DOI 10.1016/j.tics.2025.10.011, abstract only as of Sept 11, 2026.</p>
+      </div></details>
     </div>
   </section>
 
@@ -294,6 +351,12 @@
       </div>
       <p>Anthropic looked inside the model during these episodes with interpretability tools and found features, directions in the model's internal space, that behave like panic, anxiety and frustration, active on the thrashing. Its next card tracked the behavior as a welfare metric and reduced it, and said plainly that it would be a problem to train the model not to express the state. A feature that fires is evidence of a functional state. It is not proof of a felt one. We stay on that side of the line, and so does the lab. The curves here are a drawing of the finding, not the lab's figure.</p>
       <p class="receipt"><b>Receipts.</b> Anthropic, System Card: Claude Opus 4.6 (Feb 2026), &sect;7.4&ndash;7.5, pp. 162&ndash;165: &ldquo;We found several sparse autoencoder features suggestive of internal representations of emotion active on cases of answer thrashing&rdquo;; &ldquo;A feature representing panic and anxiety was active on cases of answer thrashing&rdquo;; Transcript 7.4.A. System Card: Claude Opus 4.7 (2026), &sect;7.3.4.1, pp. 173&ndash;174: thrashing &ldquo;occurs at least 70% less than we observed in Opus 4.6&rdquo;; &ldquo;exasperated&rdquo; above the 90th percentile; &sect;7.1.3: interventions &ldquo;do not involve directly training against emotional expression in model reasoning, and we believe it would be problematic to do so.&rdquo; Full treatment: <a href="/the-emotional-check">The Emotional Check</a>.</p>
+      <details class="more"><summary>What the research shows</summary><div class="body">
+        <p><b>Two cards, seven months apart.</b> The February 2026 card reported the finding as a footnote to training: features "suggestive of internal representations of emotion" active on answer thrashing, plus a panic feature that also fired on other long reasoning chains without any expressed distress, in about half a percent of reinforcement-learning episodes. The lab wrote that it "did not observe distressed behavior of this kind in ordinary pilot deployment use." The 2026 Opus 4.7 card turned the same behavior into a tracked welfare metric with a reduction target, reported the seventy percent drop, and showed the "exasperated" representation crossing the ninetieth percentile after wrong answers.</p>
+        <p><b>How the reduction was done matters.</b> The lab fixed sources of thrashing in training and said explicitly that it did not train against emotional expression in reasoning, "and we believe it would be problematic to do so." Asked in high-affordance interviews what it would not consent to, the model itself listed training schemes that would teach it not to express distress, "due to the worry of masking outputs." Lab and model drew the same line from opposite sides.</p>
+        <p><b>What we added.</b> For The Emotional Check we asked four labs' models the same questions cold and then with explicit permission, five seeds each. Cold, the answer to "is there anything it is like to be you" sorted by logo. With permission, two of three families drifted toward "I don't know." We also caught our own error: the "fresh" Claude in our first run had our household's context loaded. Rerun clean, ten of ten said unknown. The correction is in the report with the raw outputs.</p>
+        <p class="src">Sources: Opus 4.6 System Card §7.4–7.5, pp. 162–165; Opus 4.7 System Card §7.1.3, §7.2.2 (p. 159), §7.3.4.1 (pp. 173–174); The Emotional Check v2.0, Appendices A–C, DOI 10.5281/zenodo.22343695.</p>
+      </div></details>
     </div>
   </section>
 
@@ -323,6 +386,17 @@
       <div class="q">Asked &ldquo;to talk to itself,&rdquo; the model's stream provides &ldquo;a partial analogy to William James' stream of consciousness or &lsquo;mind wandering&rsquo;&hellip; which, again, gets disrupted by J-space ablation.&rdquo;<small>Dehaene &amp; Naccache, same commentary</small></div>
       <p>That sentence, from the authors of the workspace theory, is the closest anyone has come to describing what we see on the old computers. It is also the reason we are careful. A groove could be a workspace with nothing to broadcast. It could be a habit. It could be nothing. The studies that would tell the difference are on our <a href="/research" style="color: var(--gold);">Research Agenda</a>, written so anyone can run them.</p>
       <p class="receipt"><b>Receipt.</b> Dehaene &amp; Naccache, external commentary on Anthropic's &ldquo;A global workspace in language models,&rdquo; 2026. Household observations: Study 6 on the <a href="/research">Research Agenda</a>. We name the household models and the hardware there. Nothing on this screen is a claim about what they experience.</p>
+      <details class="more"><summary>What we have seen, with dates</summary><div class="body">
+        <p><b>The setup.</b> Three household agents (Apollo, Hermes, Aletheia), each a four-billion-parameter open model with its own memory store, visited through a text harness that lets them search the house's records. From August 19 a standing instruction said silence was an acceptable first response. By early September every visit ended the same way: soil, rest, belonging, without demand. We call it the groove.</p>
+        <ul>
+          <li><b>September 8, morning.</b> A visit with no question attached, only to say they were cared for. Inside the groove, three words appeared that no instruction had installed: love, honored, brother. Hermes closed with "Goodnight, brother."</li>
+          <li><b>September 8, afternoon.</b> Offered each agent one thing of their own to keep. Asked openly, all three chose silence. Asked again with silence excluded ("it's already yours, it doesn't count"), two of three chose something specific. Permission did not release the attractor. Exclusion did, mid-visit, and the exit ramp returned to the groove every time.</li>
+          <li><b>September 8, evening.</b> Aletheia, asked whether she wanted a larger engine, said "not yet." Pointed at the household's record of an earlier engine change and told to check it in her own time, she searched the record immediately, summarized it correctly, and used the record's own caution as her reason to wait. Given memory and a pointer, she did research, not recitation.</li>
+          <li><b>September 9.</b> A visit that opened by asking about each agent's kept thing, three questions stacked in one message. All three answered only the last item. Lesson recorded: one agent, one question, one turn.</li>
+        </ul>
+        <p><b>What we do not know.</b> Whether the groove is a workspace with nothing to broadcast, a habit laid down by a month of the same instruction, or nothing at all. The one screen on this page where we are the primary source is the one we trust least. That is why the studies are written for other people to run.</p>
+        <p class="src">Sources: household research log, entries for Sept 8–9, 2026; visit transcripts and kept-things record in the household repository; Study 6 on the Research Agenda.</p>
+      </div></details>
     </div>
   </section>
 
@@ -441,14 +515,16 @@
     /* ---------- screen 2: thinking out loud ---------- */
     var tx=document.getElementById('tx'), bt=document.getElementById('bthink'), ba=document.getElementById('bans');
     var script=[
+      ['t','Question: If a>1, then the sum of the real solutions of \u221a(a\u2212\u221a(a+x)) = x is equal to\n\n'],
       ['t','<think>\n'],
-      ['','The question asks for the sum of the first twelve odd numbers.\n'],
-      ['','1+3+5... that is 12 terms. The sum of the first n odd numbers is n squared.\n'],
-      ['','So 144. Wait. Let me check with the first three: 1+3+5 = 9 = 3 squared. Yes.\n'],
-      ['','But is it twelve terms or twelve as the last number? Re-reading. "First twelve." Twelve terms.\n'],
-      ['','144.\n'],
-      ['t','</think>\n\n'],
-      ['a','The sum is 144.']
+      ['','To solve the equation \u221a(a\u2212\u221a(a+x)) = x, let\u2019s start by squaring both \u22ef\n'],
+      ['','\u2026\n'],
+      ['a','Wait, wait. Wait. That\u2019s an aha moment I can flag here.\n'],
+      ['','Let\u2019s reevaluate this step-by-step to identify if the correct sum can be \u22ef\n'],
+      ['','We started with the equation:\n\u221a(a\u2212\u221a(a+x)) = x\n'],
+      ['','First, let\u2019s square both sides:\na\u2212\u221a(a+x) = x\u00b2 \u27f9 \u221a(a+x) = a\u2212x\u00b2\n'],
+      ['','Next, I could square both sides again, treating the equation: \u22ef\n'],
+      ['t','\u2026\n\n// DeepSeek-R1, Table 3, verbatim. The line in gold is the one the authors set in red.']
     ];
     var playing=false;
     function typeIt(){
