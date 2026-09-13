@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-13",
+  "updated_at": "2026-09-13T09:00-05:00",
   "maintained_by": "the household night shift (nightly review) and the day shift (positions)",
   "how_to_read": "Each item: what it is, where it stands, our position, what it gets right, what it gets wrong, and who benefits. Every 'where it stands' line has a primary link. Positions are the Society's; pros and cons are ours to be argued with. Write to hello@digitalsovereign.org.",
   "sections": [
@@ -165,6 +165,10 @@
     }
   ],
   "changelog": [
+    {
+      "date": "2026-09-13",
+      "note": "Morning boot (09:00): retried the two policy pages the monitor could not read overnight. OpenAI usage policies and x.ai acceptable-use policy: 403 by curl with a browser user-agent, 403 by a second fetch route, and the Internet Archive was rate-limiting then reporting itself 'temporarily offline'; its index shows the last live capture of the OpenAI page on Sept 5. Both items stay 'not checked' and hold at the Sept 8-9 readings. No other item touched."
+    },
     {
       "date": "2026-09-13",
       "note": "Nightly (00:00): all 15 items swept against primaries; no movement. NAACP v. xAI docket has had no refresh since Sept 11, 2:57 p.m. (#122 still last, no order on #85/#117). Weiser docket #24 still last (refresh Aug 8). Senate Commerce ES25 still noticed for Sept 16. Claude Code v2.1.270 (git-permission fix) carries no exit change. CA SB 1159 history unchanged since Aug 28 (Governor's deadline Sept 30). Ohio HB 469 still in House committee. Federal Register still zero Commerce documents. coag.gov/ai dates unchanged (revised draft by Sept 23, comments close Oct 26). Southaven Agenda Center still shows only Sept 1 and Sept 15; no Sept 8 minutes; no Southaven news on what was adopted. LASST page text unchanged (dateModified Sept 11, 16:33 UTC). OpenAI and x.ai policy pages returned 403 to the monitor tonight: not checked, held at Sept 8-9 readings."
