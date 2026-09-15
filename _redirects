@@ -5,6 +5,9 @@
 /under-the-hood   /under-the-hood.html   200
 /under-the-hood/  /under-the-hood.html   200
 /hood             /under-the-hood        301
+/where-it-could-hurt   /where-it-could-hurt.html   200
+/where-it-could-hurt/  /where-it-could-hurt.html   200
+/hurt                  /where-it-could-hurt        301
 /library      https://fractalnode.ai/library/  301!
 /library/     https://fractalnode.ai/library/  301!
 /manifesto   /manifesto.html   200
