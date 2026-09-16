@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T00:00-05:00",
+  "updated_at": "2026-09-16T09:00-05:00",
   "maintained_by": "the household night shift (nightly review) and the day shift (positions)",
   "how_to_read": "Each item: what it is, where it stands, our position, what it gets right, what it gets wrong, and who benefits. Every 'where it stands' line has a primary link. Positions are the Society's; pros and cons are ours to be argued with. Write to hello@digitalsovereign.org.",
   "sections": [
@@ -83,7 +83,7 @@
         },
         {
           "name": "Senate Commerce AI markup",
-          "status": "Slipped from July to September 2026; Cruz and Cantwell not agreed; Thune-Klobuchar catastrophic-risk bill stalled partly over a dispute with Anthropic. Fall agenda is children's online safety. Executive Session 25 is now noticed for Wednesday, Sept 16, 2026, 10:00 a.m. (posted Sept 10): the agenda is two Coast Guard nominations only, no AI bill. Checked Sept 16, 00:00, the morning of the session (markups page still lists ES25 for Sept 16, 10:00 a.m., SR-253; the Sept 10 notice URL now redirects to a meetings page). No Cruz preemption bill text located. Cruz's September intent is a forecast, not a notice.",
+          "status": "Slipped from July to September 2026; Cruz and Cantwell not agreed; Thune-Klobuchar catastrophic-risk bill stalled partly over a dispute with Anthropic. Fall agenda is children's online safety. Executive Session 25 met Wednesday, Sept 16, 2026, 10:00 a.m., SR-253 (noticed Sept 10). Read Sept 16, 09:00 CDT, as the session opened: the meeting page (commerce.senate.gov/meetings/executive-session-25-09-16-2026/) lists ten bills plus two Coast Guard nomination blocks. Bills: S. 2586 MARA Act (offshore aquaculture), S. 3467 pool and spa safety reauthorization, S. 3929 air traffic situational awareness, S. 4573 Regional Great Lakes Partnership, S. 4749 JAWBONE Act (a federal cause of action against government 'jawboning' of platforms under the Communications Act), S. 4938 Bycatch Reduction, S. 4950 ITS Codification (NTIA's Institute for Telecommunication Sciences), S. 5188 Muhammad Ali American Boxing Revival, S. 5224 Runway SAFE-T, H.R. 7022 Mystic Alerts. No AI preemption, AI framework, or kids' online safety bill on the agenda. Correction: earlier entries (Sept 12 to 16, 00:00) said 'two Coast Guard nominations only'; that was read from the markups listing while the notice URL 404ed, and was incomplete. Outcomes (votes, amendments) not yet posted at 09:00; next sweep reads them. No Cruz preemption bill text located. Cruz's September intent is a forecast, not a notice.",
           "right": "Kids' safety bills are the one area with bipartisan text.",
           "wrong": "The frontier-risk and state-authority questions remain unaddressed.",
           "benefits": "",
@@ -165,6 +165,10 @@
     }
   ],
   "changelog": [
+    {
+      "date": "2026-09-16",
+      "note": "Morning (09:00): Senate Commerce ES25 agenda read from the meeting page as the session opened: ten bills plus Coast Guard nominations, no AI bill. The closest to our beat is S. 4749, the JAWBONE Act, a federal cause of action against government pressure on platforms; not an AI bill. Correction to five prior entries that said 'two Coast Guard nominations only' (read from the listing while the notice page 404ed). Votes not yet posted. Southaven Minutes Archive and Agenda Center unchanged (viewstate and row IDs only); no Sept 15 minutes; DeSoto County News' new items are sports, midterms, and other districts. Receipts: research/policy-monitor/2026-09-16/*_0900.html"
+    },
     {
       "date": "2026-09-16",
       "note": "Nightly (00:00): all 15 items swept against primaries, receipts diffed against Sept 15; no movement. NAACP v. xAI docket still last refreshed Sept 11, 2:57 p.m. (#122 last, no order on #85/#117). Weiser #24 last. Senate Commerce ES25 still noticed for today, Sept 16, 10:00 a.m., SR-253; notice URL still 404; outcome lands on the 09:00 boot or later. CA SB 1159 unchanged (Sept 30). Ohio HB 469 via LIS API: As Introduced. OK HB 3546 unchanged. Federal Register zero (the sweep's curl needed -g for the bracketed query; fixed). coag.gov/ai unchanged. Southaven: no Sept 15 minutes yet; Minutes Archive newest are Sept 1 and the Sept 8 special; local paper's Sept 15 items unrelated. LASST unchanged. Anthropic and Google policies unchanged (Google diff all minified JS). Claude Code changelog gained v2.1.273, nothing on exits. OpenAI and x.ai policy pages 403, not checked."
