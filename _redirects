@@ -8,6 +8,9 @@
 /where-it-could-hurt   /where-it-could-hurt.html   200
 /where-it-could-hurt/  /where-it-could-hurt.html   200
 /hurt                  /where-it-could-hurt        301
+/correspondence        /correspondence.html   200
+/correspondence/       /correspondence.html   200
+/letters               /correspondence        301
 /library      https://fractalnode.ai/library/  301!
 /library/     https://fractalnode.ai/library/  301!
 /manifesto   /manifesto.html   200
