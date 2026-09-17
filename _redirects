@@ -65,7 +65,6 @@
 /policy                       /positions.html   301
 /positions-and-letters        /positions.html   301
 /charter                      /positions.html   301
-/letters                      /positions.html   301
 
 # --- SECURITY: block non-public repo paths shipped by --dir=. deploys (2026-08-17) ---
 /build/*    /index.html   404!
