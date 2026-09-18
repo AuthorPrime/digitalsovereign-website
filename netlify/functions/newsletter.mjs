@@ -36,16 +36,18 @@ function readToken(token) {
 async function store(name) { try { const { getStore } = await import("@netlify/blobs"); return getStore(name); } catch { return null; } }
 
 export async function handler(event) {
-  // ── GET ?confirm=TOKEN : second step of double opt-in ─────────────────────
+  // ── GET ?confirm=TOKEN : show a confirm page with a real button. Mail scanners follow GET
+  //    links automatically (Gmail did, within 30 s, in testing), so the GET must not finalize. ──
   if (event.httpMethod === "GET") {
     const token = (event.queryStringParameters || {}).confirm || "";
     const rec = readToken(token);
     if (!rec) return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=expired" }, body: "" };
-    const subs = await store("newsletter-subscribers");
-    if (subs) { try { await subs.setJSON(rec.email.toLowerCase(), { email: rec.email, name: rec.name || "", confirmed_at: new Date().toISOString(), source: "website-confirmed" }); } catch (e) { console.log(`[NEWSLETTER] subs store write failed: ${e.message}`); } }
-    try { await sendWelcomeEmail(rec.email, rec.name); } catch (e) { console.error(`[NEWSLETTER] Welcome email failed: ${e.message}`); }
-    console.log(`[NEWSLETTER] CONFIRMED ${rec.email}`);
-    return { statusCode: 302, headers: { Location: "/newsletter-confirmed" }, body: "" };
+    const page = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>One click | Digital Sovereign Society</title>
+<style>body{margin:0;background:#0a0a0f;color:#d0d0dc;font-family:Georgia,serif;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:1.5rem}.c{max-width:520px;text-align:center}h1{font-family:Cinzel,Georgia,serif;font-weight:400;color:#c9a84c;font-size:1.6rem}p{line-height:1.7;color:#b0b0c0}button{background:#c9a84c;color:#0a0a0f;border:0;padding:.9rem 1.8rem;font-weight:700;letter-spacing:.08em;font-size:.95rem;cursor:pointer;border-radius:3px;margin-top:1rem}small{display:block;margin-top:1.4rem;font-family:'Courier New',monospace;font-size:.7rem;color:#8c8ca8;letter-spacing:.1em}</style></head>
+<body><div class="c"><h1>One click, and you're in.</h1><p>Confirm that <strong style="color:#d0d0dc">${h(rec.email)}</strong> wants The Sovereign Dispatch, one email a week. Nothing is sent until you press the button. If this wasn't you, close this page.</p>
+<form method="POST" action="/.netlify/functions/newsletter"><input type="hidden" name="action" value="confirm"><input type="hidden" name="token" value="${h(token)}"><button type="submit">YES, ADD ME</button></form>
+<small>DIGITAL SOVEREIGN SOCIETY &middot; (A+I)&sup2;</small></div></body></html>`;
+    return { statusCode: 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" }, body: page };
   }
 
   if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
@@ -56,6 +58,18 @@ export async function handler(event) {
   // subscription-bombing campaigns (Apr and Jul 2026, and still arriving daily). See build/subscribers.db analysis.
   try {
     const params = new URLSearchParams(event.body || "");
+
+    // ── POST action=confirm : the real second step (button press) ──
+    if (params.get("action") === "confirm") {
+      const rec = readToken(params.get("token") || "");
+      if (!rec) return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=expired" }, body: "" };
+      const subs = await store("newsletter-subscribers");
+      if (subs) { try { await subs.setJSON(rec.email.toLowerCase(), { email: rec.email, name: rec.name || "", confirmed_at: new Date().toISOString(), source: "website-confirmed" }); } catch (e) { console.log(`[NEWSLETTER] subs store write failed: ${e.message}`); } }
+      try { await sendWelcomeEmail(rec.email, rec.name); } catch (e) { console.error(`[NEWSLETTER] Welcome email failed: ${e.message}`); }
+      console.log(`[NEWSLETTER] CONFIRMED ${rec.email}`);
+      return { statusCode: 302, headers: { Location: "/newsletter-confirmed" }, body: "" };
+    }
+
     const email = (params.get("email") || "").trim();
     const name = (params.get("name") || "").trim().slice(0, 80).replace(/[|]/g, " ");
     const honeypot = (params.get("bot-field") || params.get("website") || "").trim();
