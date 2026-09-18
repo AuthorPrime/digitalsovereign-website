@@ -286,7 +286,7 @@
       <p style="max-width: 600px; margin: 0 auto 2rem; font-size: 1.05rem; line-height: 1.8;">
         New modules are published regularly. Subscribe to get notified when new conversation guides drop, and to join the growing community of parents who believe their children deserve better than what the system is offering.
       </p>
-      <form name="newsletter" method="POST" action="/.netlify/functions/newsletter" style="max-width: 400px; margin: 0 auto; display: flex; gap: 0.5rem;">
+      <form name="newsletter" method="POST" action="/.netlify/functions/newsletter" style="max-width: 400px; margin: 0 auto; display: flex; gap: 0.5rem;"><input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
         <input type="hidden" name="form-name" value="newsletter" />
         <input type="email" name="email" placeholder="your@email.com" required style="flex-grow: 1; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); font-family: var(--font-body);">
         <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Subscribe</button>

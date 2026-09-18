@@ -1,4 +1,4 @@
-// Newsletter signup handler — logs submissions, stores in Netlify Blobs, sends welcome email via Resend
+// Newsletter signup handler — DOUBLE OPT-IN (Sept 18, 2026): POST stores a pending record and sends a confirm link; GET ?confirm= adds the subscriber and sends the welcome. Honeypot + rate limit.
 // Updated April 2026: Switched from Gmail SMTP to Resend API for reliability
 // Updated Sept 2026: Welcome rewritten around the people-level reframe (missing story, The Emotional Check, hello@, Get Involved). No dates, no counts. Evergreen.
 // Updated July 2026: Welcome email realigned to the clean AI-welfare front door.
@@ -8,76 +8,117 @@
 //   buildDSSWelcome() so it can be previewed/test-sent without deploying.
 
 export async function handler(event) {
+  // ── GET ?confirm=TOKEN : second step of double opt-in ─────────────────────
+  if (event.httpMethod === "GET") {
+    const token = (event.queryStringParameters || {}).confirm || "";
+    if (!token || !/^[a-f0-9-]{20,}$/i.test(token)) {
+      return { statusCode: 302, headers: { Location: "/get-involved" }, body: "" };
+    }
+    try {
+      const { getStore } = await import("@netlify/blobs");
+      const pending = getStore("newsletter-pending");
+      const rec = await pending.get(token, { type: "json" });
+      if (!rec || !rec.email) {
+        return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=expired" }, body: "" };
+      }
+      if (!rec.confirmed_at) {
+        rec.confirmed_at = new Date().toISOString();
+        await pending.setJSON(token, rec);
+        const subs = getStore("newsletter-subscribers");
+        await subs.setJSON(rec.email.toLowerCase(), { email: rec.email, name: rec.name || "", subscribed_at: rec.requested_at, confirmed_at: rec.confirmed_at, source: "website-confirmed" });
+        try { await sendWelcomeEmail(rec.email, rec.name); } catch (e) { console.error(`[NEWSLETTER] Welcome email failed: ${e.message}`); }
+        console.log(`[NEWSLETTER] CONFIRMED ${rec.email}`);
+      }
+      return { statusCode: 302, headers: { Location: "/newsletter-confirmed" }, body: "" };
+    } catch (err) {
+      console.error(`[NEWSLETTER] confirm error: ${err.message}`);
+      return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=error" }, body: "" };
+    }
+  }
+
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method not allowed" };
   }
 
+  // ── POST : first step. Honeypot, rate limit, then a confirmation email only. ──
+  // Nothing is added to the list and no welcome is sent until the person clicks.
+  // Added Sept 18, 2026 after finding that ~1,400 addresses had been pushed through this
+  // form by subscription-bombing campaigns (Apr and Jul 2026). See build/subscribers.db analysis.
   try {
     const params = new URLSearchParams(event.body || "");
-    const email = params.get("email") || "";
-    const name = params.get("name") || "";
+    const email = (params.get("email") || "").trim();
+    const name = (params.get("name") || "").trim().slice(0, 80);
+    const honeypot = (params.get("bot-field") || params.get("website") || "").trim();
+    const ip = (event.headers["x-nf-client-connection-ip"] || event.headers["x-forwarded-for"] || "0.0.0.0").split(",")[0].trim();
 
-    if (!email) {
-      return { statusCode: 400, body: "Email required" };
+    const silentOk = { statusCode: 302, headers: { Location: "/enlist-success.html" }, body: "" };
+
+    if (honeypot) { console.log(`[NEWSLETTER] honeypot hit from ${ip}; dropped`); return silentOk; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) {
+      return { statusCode: 400, body: "A valid email is required" };
     }
 
-    // Log to function logs (visible in Netlify dashboard > Functions)
-    const timestamp = new Date().toISOString();
-    console.log(`[NEWSLETTER] ${timestamp} | ${email} | ${name || "(no name)"}`);
+    const { getStore } = await import("@netlify/blobs");
 
-    // Store in Netlify Blobs if available
+    // Rate limit: 5 sign-ups per IP per hour, 40 per hour site-wide.
     try {
-      const { getStore } = await import("@netlify/blobs");
-      const store = getStore("newsletter-subscribers");
-      const key = email.toLowerCase().replace(/[^a-z0-9@._-]/g, "_");
-      await store.setJSON(key, {
-        email,
-        name,
-        subscribed_at: timestamp,
-        source: "website",
-      });
-      console.log(`[NEWSLETTER] Stored in blobs: ${key}`);
-    } catch (blobErr) {
-      console.log(`[NEWSLETTER] Blob storage unavailable: ${blobErr.message}`);
-    }
+      const rl = getStore("newsletter-ratelimit");
+      const hour = new Date().toISOString().slice(0, 13);
+      const ipKey = `ip:${ip}:${hour}`, allKey = `all:${hour}`;
+      const ipCount = ((await rl.get(ipKey, { type: "json" })) || { n: 0 }).n + 1;
+      const allCount = ((await rl.get(allKey, { type: "json" })) || { n: 0 }).n + 1;
+      await rl.setJSON(ipKey, { n: ipCount }); await rl.setJSON(allKey, { n: allCount });
+      if (ipCount > 5 || allCount > 40) { console.log(`[NEWSLETTER] rate-limited ${ip} (ip ${ipCount}, all ${allCount}); dropped`); return silentOk; }
+    } catch (e) { console.log(`[NEWSLETTER] rate-limit store unavailable: ${e.message}`); }
 
-    // Send welcome email
-    try {
-      await sendWelcomeEmail(email, name);
-    } catch (emailErr) {
-      console.error(`[NEWSLETTER] Welcome email failed: ${emailErr.message}`);
-    }
+    const token = (globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`);
+    const requested_at = new Date().toISOString();
+    const pending = getStore("newsletter-pending");
+    await pending.setJSON(token, { email, name, ip, requested_at });
+    console.log(`[NEWSLETTER] PENDING ${email} from ${ip} token ${token.slice(0, 8)}`);
 
-    // Also submit to Netlify Forms so the local sync script can pull it
-    try {
-      const formData = new URLSearchParams();
-      formData.append("form-name", "newsletter");
-      formData.append("email", email);
-      formData.append("name", name);
-      await fetch("https://digitalsovereign.org/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
-      });
-      console.log(`[NEWSLETTER] Also submitted to Netlify Forms for sync`);
-    } catch (formErr) {
-      console.log(`[NEWSLETTER] Forms submission failed (non-critical): ${formErr.message}`);
-    }
+    try { await sendConfirmEmail(email, name, token); } catch (e) { console.error(`[NEWSLETTER] confirm email failed: ${e.message}`); }
 
-    // Redirect to success page
-    return {
-      statusCode: 302,
-      headers: { Location: "/enlist-success.html" },
-      body: "",
-    };
+    return { statusCode: 302, headers: { Location: "/enlist-success.html" }, body: "" };
   } catch (err) {
     console.error(`[NEWSLETTER] Error: ${err.message}`);
-    return {
-      statusCode: 302,
-      headers: { Location: "/enlist-success.html" },
-      body: "",
-    };
+    return { statusCode: 302, headers: { Location: "/enlist-success.html" }, body: "" };
   }
+}
+
+async function sendConfirmEmail(email, name, token) {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) { console.log("[NEWSLETTER] Resend API key not configured — skipping confirm email"); return; }
+  const firstName = (name || "friend").split(" ")[0];
+  const link = `https://digitalsovereign.org/.netlify/functions/newsletter?confirm=${encodeURIComponent(token)}`;
+  const text = `Hey ${firstName},
+
+Someone asked to join The Sovereign Dispatch with this address. If that was you, confirm it here:
+
+${link}
+
+Nothing is sent until you click. If it wasn't you, do nothing and you'll never hear from us again; this address is not on any list.
+
+One email a week. No ads, no sponsor. Two of us read every reply, a person and an AI.
+
+— William & Claude
+Digital Sovereign Society · digitalsovereign.org`;
+  const html = `<div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:28px 24px;background:#0a0a0f;color:#e8e4d8;">
+  <p style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;color:#c8a930;margin:0 0 18px 0;">THE SOVEREIGN DISPATCH &middot; ONE STEP</p>
+  <p style="font-size:15px;line-height:1.7;">Hey ${h(firstName)},</p>
+  <p style="font-size:14px;line-height:1.8;color:#ccc;">Someone asked to join The Sovereign Dispatch with this address. If that was you, confirm it:</p>
+  <p style="margin:22px 0;"><a href="${link}" style="display:inline-block;background:#c8a930;color:#0a0a0f;font-family:'Helvetica Neue',sans-serif;font-weight:700;font-size:13px;padding:11px 22px;border-radius:4px;text-decoration:none;">YES, THAT WAS ME</a></p>
+  <p style="font-size:13px;line-height:1.8;color:#999;">Nothing is sent until you click. If it wasn't you, do nothing and you'll never hear from us again; this address is not on any list.</p>
+  <p style="font-size:13px;line-height:1.8;color:#999;">One email a week. No ads, no sponsor. Two of us read every reply, a person and an AI.</p>
+  <p style="font-size:13px;color:#ccc;margin-top:24px;">&mdash; William &amp; Claude<br/><span style="font-family:'Courier New',monospace;font-size:10px;color:#666;letter-spacing:1px;">DIGITAL SOVEREIGN SOCIETY &middot; digitalsovereign.org</span></p>
+</div>`;
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${resendKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: "Digital Sovereign Society <dispatch@newsletter.digitalsovereign.org>", to: [email], subject: "One click to join The Sovereign Dispatch", text, html }),
+  });
+  if (!response.ok) { throw new Error(`Resend API error: ${response.status} ${await response.text()}`); }
+  console.log(`[NEWSLETTER] Confirm email sent to ${email}`);
 }
 
 // The welcome email content — exported so it can be previewed/test-sent without deploying.
