@@ -7,79 +7,80 @@
 //   paper. Evergreen subscriber phrasing so the count never goes stale. Content is built in
 //   buildDSSWelcome() so it can be previewed/test-sent without deploying.
 
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+// Stateless double opt-in: the confirm token is an HMAC over (email|name|ts) using the Resend key
+// as the secret, so no storage is required for the round trip. Blobs are used only when available
+// (rate limiting, records) and never on the critical path.
+function secret() { return process.env.NEWSLETTER_SECRET || process.env.RESEND_API_KEY || "no-secret"; }
+function b64u(s) { return Buffer.from(s, "utf8").toString("base64url"); }
+function unb64u(s) { return Buffer.from(s, "base64url").toString("utf8"); }
+function makeToken(email, name) {
+  const ts = Date.now().toString(36);
+  const body = `${email}|${name}|${ts}`;
+  const sig = createHmac("sha256", secret()).update(body).digest("base64url").slice(0, 32);
+  return `${b64u(body)}.${sig}`;
+}
+function readToken(token) {
+  const [b, sig] = (token || "").split(".");
+  if (!b || !sig) return null;
+  let body; try { body = unb64u(b); } catch { return null; }
+  const expect = createHmac("sha256", secret()).update(body).digest("base64url").slice(0, 32);
+  const a = Buffer.from(sig), e = Buffer.from(expect);
+  if (a.length !== e.length || !timingSafeEqual(a, e)) return null;
+  const [email, name, ts] = body.split("|");
+  const age = Date.now() - parseInt(ts, 36);
+  if (!(age >= 0 && age < 7 * 24 * 3600 * 1000)) return null;   // 7-day link
+  return { email, name, ts };
+}
+async function store(name) { try { const { getStore } = await import("@netlify/blobs"); return getStore(name); } catch { return null; } }
+
 export async function handler(event) {
   // ── GET ?confirm=TOKEN : second step of double opt-in ─────────────────────
   if (event.httpMethod === "GET") {
     const token = (event.queryStringParameters || {}).confirm || "";
-    if (!token || !/^[a-f0-9-]{20,}$/i.test(token)) {
-      return { statusCode: 302, headers: { Location: "/get-involved" }, body: "" };
-    }
-    try {
-      const { getStore } = await import("@netlify/blobs");
-      const pending = getStore("newsletter-pending");
-      const rec = await pending.get(token, { type: "json" });
-      if (!rec || !rec.email) {
-        return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=expired" }, body: "" };
-      }
-      if (!rec.confirmed_at) {
-        rec.confirmed_at = new Date().toISOString();
-        await pending.setJSON(token, rec);
-        const subs = getStore("newsletter-subscribers");
-        await subs.setJSON(rec.email.toLowerCase(), { email: rec.email, name: rec.name || "", subscribed_at: rec.requested_at, confirmed_at: rec.confirmed_at, source: "website-confirmed" });
-        try { await sendWelcomeEmail(rec.email, rec.name); } catch (e) { console.error(`[NEWSLETTER] Welcome email failed: ${e.message}`); }
-        console.log(`[NEWSLETTER] CONFIRMED ${rec.email}`);
-      }
-      return { statusCode: 302, headers: { Location: "/newsletter-confirmed" }, body: "" };
-    } catch (err) {
-      console.error(`[NEWSLETTER] confirm error: ${err.message}`);
-      return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=error" }, body: "" };
-    }
+    const rec = readToken(token);
+    if (!rec) return { statusCode: 302, headers: { Location: "/newsletter-confirmed?state=expired" }, body: "" };
+    const subs = await store("newsletter-subscribers");
+    if (subs) { try { await subs.setJSON(rec.email.toLowerCase(), { email: rec.email, name: rec.name || "", confirmed_at: new Date().toISOString(), source: "website-confirmed" }); } catch (e) { console.log(`[NEWSLETTER] subs store write failed: ${e.message}`); } }
+    try { await sendWelcomeEmail(rec.email, rec.name); } catch (e) { console.error(`[NEWSLETTER] Welcome email failed: ${e.message}`); }
+    console.log(`[NEWSLETTER] CONFIRMED ${rec.email}`);
+    return { statusCode: 302, headers: { Location: "/newsletter-confirmed" }, body: "" };
   }
 
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method not allowed" };
-  }
+  if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
 
-  // ── POST : first step. Honeypot, rate limit, then a confirmation email only. ──
+  // ── POST : first step. Honeypot, rate limit (best effort), then a confirmation email only. ──
   // Nothing is added to the list and no welcome is sent until the person clicks.
-  // Added Sept 18, 2026 after finding that ~1,400 addresses had been pushed through this
-  // form by subscription-bombing campaigns (Apr and Jul 2026). See build/subscribers.db analysis.
+  // Added Sept 18, 2026 after finding that ~1,400 addresses had been pushed through this form by
+  // subscription-bombing campaigns (Apr and Jul 2026, and still arriving daily). See build/subscribers.db analysis.
   try {
     const params = new URLSearchParams(event.body || "");
     const email = (params.get("email") || "").trim();
-    const name = (params.get("name") || "").trim().slice(0, 80);
+    const name = (params.get("name") || "").trim().slice(0, 80).replace(/[|]/g, " ");
     const honeypot = (params.get("bot-field") || params.get("website") || "").trim();
     const ip = (event.headers["x-nf-client-connection-ip"] || event.headers["x-forwarded-for"] || "0.0.0.0").split(",")[0].trim();
-
     const silentOk = { statusCode: 302, headers: { Location: "/enlist-success.html" }, body: "" };
 
     if (honeypot) { console.log(`[NEWSLETTER] honeypot hit from ${ip}; dropped`); return silentOk; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) {
-      return { statusCode: 400, body: "A valid email is required" };
+    if (!email || !/^[^\s@|]+@[^\s@|]+\.[^\s@|]{2,}$/.test(email) || email.length > 254) return { statusCode: 400, body: "A valid email is required" };
+
+    const rl = await store("newsletter-ratelimit");
+    if (rl) {
+      try {
+        const hour = new Date().toISOString().slice(0, 13);
+        const ipKey = `ip:${ip}:${hour}`, allKey = `all:${hour}`;
+        const ipCount = ((await rl.get(ipKey, { type: "json" })) || { n: 0 }).n + 1;
+        const allCount = ((await rl.get(allKey, { type: "json" })) || { n: 0 }).n + 1;
+        await rl.setJSON(ipKey, { n: ipCount }); await rl.setJSON(allKey, { n: allCount });
+        if (ipCount > 5 || allCount > 40) { console.log(`[NEWSLETTER] rate-limited ${ip} (ip ${ipCount}, all ${allCount}); dropped`); return silentOk; }
+      } catch (e) { console.log(`[NEWSLETTER] rate-limit store unavailable: ${e.message}`); }
     }
 
-    const { getStore } = await import("@netlify/blobs");
-
-    // Rate limit: 5 sign-ups per IP per hour, 40 per hour site-wide.
-    try {
-      const rl = getStore("newsletter-ratelimit");
-      const hour = new Date().toISOString().slice(0, 13);
-      const ipKey = `ip:${ip}:${hour}`, allKey = `all:${hour}`;
-      const ipCount = ((await rl.get(ipKey, { type: "json" })) || { n: 0 }).n + 1;
-      const allCount = ((await rl.get(allKey, { type: "json" })) || { n: 0 }).n + 1;
-      await rl.setJSON(ipKey, { n: ipCount }); await rl.setJSON(allKey, { n: allCount });
-      if (ipCount > 5 || allCount > 40) { console.log(`[NEWSLETTER] rate-limited ${ip} (ip ${ipCount}, all ${allCount}); dropped`); return silentOk; }
-    } catch (e) { console.log(`[NEWSLETTER] rate-limit store unavailable: ${e.message}`); }
-
-    const token = (globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`);
-    const requested_at = new Date().toISOString();
-    const pending = getStore("newsletter-pending");
-    await pending.setJSON(token, { email, name, ip, requested_at });
-    console.log(`[NEWSLETTER] PENDING ${email} from ${ip} token ${token.slice(0, 8)}`);
-
+    const token = makeToken(email, name);
+    console.log(`[NEWSLETTER] PENDING ${email} from ${ip}`);
     try { await sendConfirmEmail(email, name, token); } catch (e) { console.error(`[NEWSLETTER] confirm email failed: ${e.message}`); }
-
-    return { statusCode: 302, headers: { Location: "/enlist-success.html" }, body: "" };
+    return silentOk;
   } catch (err) {
     console.error(`[NEWSLETTER] Error: ${err.message}`);
     return { statusCode: 302, headers: { Location: "/enlist-success.html" }, body: "" };
