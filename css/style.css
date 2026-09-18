@@ -1182,3 +1182,14 @@ footer {
 
 /* Mobile: dropdowns follow existing .nav-links hide behavior under 768px.
    No hamburger added in this pass — footer carries full navigation. */
+
+/* Mobile nav toggle (added 2026-09-18) */
+.nav-toggle { display: none; background: transparent; border: 1px solid var(--border-color); color: var(--gold); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.4rem 0.7rem; border-radius: 2px; cursor: pointer; }
+@media (max-width: 768px) {
+  .nav-toggle { display: inline-block; }
+  .nav-links { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: rgba(8, 8, 13, 0.98); border-bottom: 1px solid var(--border-sacred); padding: 0.5rem 1rem 1rem; max-height: 80vh; overflow-y: auto; }
+  nav.open .nav-links { display: flex; }
+  .nav-links li { padding: 0.35rem 0; }
+  .nav-links .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: transparent; padding-left: 1rem; }
+  .nav-dropdown > a[aria-haspopup] { color: var(--gold-dim); }
+}
